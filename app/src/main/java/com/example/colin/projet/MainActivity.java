@@ -7,6 +7,7 @@ public class MainActivity extends AppCompatActivity {
 
     int nombre = 0;
     String blabla ="test";
+    String salut ="hello";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
