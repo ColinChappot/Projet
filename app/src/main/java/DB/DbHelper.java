@@ -1,8 +1,12 @@
 package DB;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
+
+import java.util.ArrayList;
 
 import static DB.FeedReaderContract.SQL_CREAT_GRAVITY;
 import static DB.FeedReaderContract.SQL_CREAT_INSTALLATION;
@@ -14,12 +18,14 @@ import static DB.FeedReaderContract.SQL_CREAT_TASK;
 import static DB.FeedReaderContract.SQL_CREAT_WORKER;
 import static DB.FeedReaderContract.SQL_DELETE_GRAVITY;
 import static DB.FeedReaderContract.SQL_DELETE_INSTALLATION;
+import static DB.FeedReaderContract.SQL_DELETE_INSTALLATIONPLACED;
 import static DB.FeedReaderContract.SQL_DELETE_MATERIAL;
 import static DB.FeedReaderContract.SQL_DELETE_MATERIALNEEDED;
 import static DB.FeedReaderContract.SQL_DELETE_PLAYGROUND;
 import static DB.FeedReaderContract.SQL_DELETE_STATE;
 import static DB.FeedReaderContract.SQL_DELETE_TASK;
 import static DB.FeedReaderContract.SQL_DELETE_WORKER;
+import static DB.FeedReaderContract.SQL_CREAT_INSTALLATIONPLACED;
 
 /**
  * Created by Colin on 11.04.2017.
@@ -44,7 +50,10 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREAT_MATERIELNEEDED);
         db.execSQL(SQL_CREAT_STATE);
         db.execSQL(SQL_CREAT_GRAVITY);
+        db.execSQL(SQL_CREAT_INSTALLATIONPLACED);
     }
+
+
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
@@ -56,12 +65,174 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_MATERIALNEEDED);
         db.execSQL(SQL_DELETE_STATE);
         db.execSQL(SQL_DELETE_GRAVITY);
+        db.execSQL(SQL_DELETE_INSTALLATIONPLACED);
         onCreate(db);
     }
 
     public void onDownGrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
         onUpgrade(db, oldVersion, newVersion);
+    }
+
+    public void InsertPlayground(Context context, String name, String town, String surface, String GPS,String image, String timeTable, ArrayList<String> installation)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+
+        value.put(FeedReaderContract.Playground.COLUMN_NAME_TOWN, town);
+        value.put(FeedReaderContract.Playground.COLUMN_NAME_NAME, name);
+        value.put(FeedReaderContract.Playground.COLUMN_NAME_SURFACE, surface);
+        value.put(FeedReaderContract.Playground.COLUMN_NAME_TIMETABLETOAVOID, timeTable);
+        value.put(FeedReaderContract.Playground.COLUMN_NAME_GPSLOCALISATION, GPS);
+        value.put(FeedReaderContract.Playground.COLUMN_NAME_PICTURE, image);
+
+        db.insert(FeedReaderContract.Playground.TABLE_NAME, null,value);
+
+        InsertInstallationPlaced(context, FeedReaderContract.Playground._ID, installation);
+
+    }
+
+    public void UpdatePlayground(Context context,String Id, String name, String town, String surface, String GPS,String image, String timeTable, String installation)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        value.put(FeedReaderContract.Playground.COLUMN_NAME_NAME, name);
+        value.put(FeedReaderContract.Playground.COLUMN_NAME_TOWN, town);
+        value.put(FeedReaderContract.Playground.COLUMN_NAME_SURFACE, surface);
+        value.put(FeedReaderContract.Playground.COLUMN_NAME_GPSLOCALISATION, GPS);
+        value.put(FeedReaderContract.Playground.COLUMN_NAME_PICTURE, image);
+        value.put(FeedReaderContract.Playground.COLUMN_NAME_TIMETABLETOAVOID, timeTable);
+
+        db.update(FeedReaderContract.Playground.TABLE_NAME, value, FeedReaderContract.Playground._ID + " = ?", new String[] {String.valueOf(Id)});
+    }
+
+    public void InsertWorker(Context context, String login, String password, String firstname, String lastname, String phone)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        value.put(FeedReaderContract.Worker.COLUMN_NAME_LOGIN, login);
+        value.put(FeedReaderContract.Worker.COLUMN_NAME_PASSWORD, password);
+        value.put(FeedReaderContract.Worker.COLUMN_NAME_FIRSTNAME, firstname);
+        value.put(FeedReaderContract.Worker.COLUMN_NAME_LASTNAME, lastname);
+        value.put(FeedReaderContract.Worker.COLUMN_NAME_CELLPHONE, phone);
+
+        db.insert(FeedReaderContract.Worker.TABLE_NAME, null,value);
+
+    }
+
+    public void UpdateWorker(Context context,String Id, String login, String password, String firstname, String lastname, String phone)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        value.put(FeedReaderContract.Worker.COLUMN_NAME_LOGIN, login);
+        value.put(FeedReaderContract.Worker.COLUMN_NAME_PASSWORD, password);
+        value.put(FeedReaderContract.Worker.COLUMN_NAME_FIRSTNAME, firstname);
+        value.put(FeedReaderContract.Worker.COLUMN_NAME_LASTNAME, lastname);
+        value.put(FeedReaderContract.Worker.COLUMN_NAME_CELLPHONE, phone);
+
+        db.update(FeedReaderContract.Worker.TABLE_NAME, value, FeedReaderContract.Worker._ID + " = ?", new String[] {String.valueOf(Id)});
+
+    }
+
+    public void InsertTask(Context context, String playground, String worker, String gravity, String description, String observation, String state, ArrayList material)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        value.put(FeedReaderContract.Task.COLUMN_NAME_IDPLAYGROUND, playground);
+        value.put(FeedReaderContract.Task.COLUMN_NAME_IDWORKER, worker);
+        value.put(FeedReaderContract.Task.COLUMN_NAME_IDGRAVITY, gravity);
+        value.put(FeedReaderContract.Task.COLUMN_NAME_DESCRIPTION, description);
+        value.put(FeedReaderContract.Task.COLUMN_NAME_OBSERVATION, observation);
+        value.put(FeedReaderContract.Task.COLUMN_NAME_IDSTATE, state);
+
+        db.insert(FeedReaderContract.Task.TABLE_NAME, null,value);
+
+        InsertMaterialNeeded(context,FeedReaderContract.Task._ID,material);
+    }
+
+    public void InsertInstallation(Context context, String description, String state)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        value.put(FeedReaderContract.Installation.COLUMN_NAME_DESCRIPTION, description);
+        value.put(FeedReaderContract.Installation.COLUMN_NAME_STATE, state);
+
+        db.insert(FeedReaderContract.Installation.TABLE_NAME, null,value);
+    }
+
+    public void InsertInstallationPlaced(Context context,String playground, ArrayList<String> installation)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        for (int i =0; i<installation.size();i++)
+        {
+            value.put(FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDPLAYGROUND, playground);
+            value.put(FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDINSTALLATION, installation.get(i));
+            db.insert(FeedReaderContract.InstallationPlaced.TABLE_NAME, null,value);
+        }
+    }
+
+    public void InsertMaterial(Context context, String description)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        value.put(FeedReaderContract.Material.COLUMN_NAME_DESCRIPTION, description);
+
+        db.insert(FeedReaderContract.Material.TABLE_NAME, null,value);
+    }
+
+    public void InsertMaterialNeeded(Context context, String task, ArrayList<String> material)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        for (int i =0; i<material.size();i++)
+        {
+            value.put(FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDTASK, task);
+            value.put(FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDMATERIAL, material.get(i));
+            db.insert(FeedReaderContract.Material.TABLE_NAME, null,value);
+        }
+
+    }
+
+    public void InsertState(Context context, String task, String description)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        value.put(FeedReaderContract.State.TABLE_NAME_IDTASK, task);
+        value.put(FeedReaderContract.State.COLUMN_NAME_DESCRIPTION, description);
+
+        db.insert(FeedReaderContract.State.TABLE_NAME, null,value);
+    }
+
+    public void InsertGravity(Context context, String level)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        value.put(FeedReaderContract.Gravity.COLUMN_NAME_GRAVITYLEVEL, level);
+
+        db.insert(FeedReaderContract.Gravity.TABLE_NAME, null,value);
     }
 
 }
