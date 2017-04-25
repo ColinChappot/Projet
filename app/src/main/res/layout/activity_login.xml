@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.colin.projet.LoginActivity">
+    tools:context="com.example.colin.projet.LoginActivity"
+    android:weightSum="1">
 
     <!-- Login progress -->
     <ProgressBar
@@ -22,7 +23,8 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="249dp"
+        android:layout_weight="0.11">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -41,7 +43,8 @@
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    tools:text="@string/prompt_email" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -59,7 +62,8 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    tools:text="@string/prompt_password" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -70,7 +74,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="@string/action_sign_in" />
 
         </LinearLayout>
     </ScrollView>
