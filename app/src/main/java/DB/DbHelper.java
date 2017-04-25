@@ -209,7 +209,6 @@ public class DbHelper extends SQLiteOpenHelper {
             value.put(FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDMATERIAL, material.get(i));
             db.insert(FeedReaderContract.Material.TABLE_NAME, null,value);
         }
-
     }
 
     public void InsertState(Context context, String task, String description)
