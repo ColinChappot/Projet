@@ -3,16 +3,11 @@ package com.example.colin.projet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
-
-    int nombre = 0;
-    String blabla ="test";
-    String daf ="afdvvffgvshvbbfda";
-    int voila = 0;
+public class PlayGroundMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_play_ground_menu);
     }
 }
