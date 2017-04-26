@@ -90,11 +90,11 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.insert(FeedReaderContract.Playground.TABLE_NAME, null,value);
 
-        InsertInstallationPlaced(context, FeedReaderContract.Playground._ID, installation);
+        InsertInstallationPlaced(context, Integer.valueOf(FeedReaderContract.Playground._ID), installation);
 
     }
 
-    public void UpdatePlayground(Context context,String Id, String name, String town, String surface, String GPS,String image, String timeTable, String installation)
+    public void UpdatePlayground(Context context,int Id, String name, String town, String surface, String GPS,String image, String timeTable, String installation)
     {
         DbHelper mDbHelper = new DbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -126,7 +126,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
-    public void UpdateWorker(Context context,String Id, String login, String password, String firstname, String lastname, String phone)
+    public void UpdateWorker(Context context,int Id, String login, String password, String firstname, String lastname, String phone)
     {
         DbHelper mDbHelper = new DbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -142,7 +142,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
-    public void InsertTask(Context context, String playground, String worker, String gravity, String description, String observation, String state, ArrayList material)
+    public void InsertTask(Context context, int playground, int worker, int gravity, String description, String observation, int state, ArrayList material)
     {
         DbHelper mDbHelper = new DbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -157,10 +157,28 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.insert(FeedReaderContract.Task.TABLE_NAME, null,value);
 
-        InsertMaterialNeeded(context,FeedReaderContract.Task._ID,material);
+        InsertMaterialNeeded(context,Integer.valueOf(FeedReaderContract.Task._ID),material);
     }
 
-    public void InsertInstallation(Context context, String description, String state)
+    public void UpdateTask(Context context,int Id, int playground, int worker, int gravity, String description, String observation, int state, ArrayList material)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        value.put(FeedReaderContract.Task.COLUMN_NAME_IDPLAYGROUND, playground);
+        value.put(FeedReaderContract.Task.COLUMN_NAME_IDWORKER, worker);
+        value.put(FeedReaderContract.Task.COLUMN_NAME_IDGRAVITY, gravity);
+        value.put(FeedReaderContract.Task.COLUMN_NAME_DESCRIPTION, description);
+        value.put(FeedReaderContract.Task.COLUMN_NAME_OBSERVATION, observation);
+        value.put(FeedReaderContract.Task.COLUMN_NAME_IDSTATE, state);
+
+
+        db.update(FeedReaderContract.Task.TABLE_NAME, value, FeedReaderContract.Task._ID + " = ?", new String[] {String.valueOf(Id)});
+    }
+
+
+    public void InsertInstallation(Context context, String description, int state)
     {
         DbHelper mDbHelper = new DbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -172,7 +190,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.insert(FeedReaderContract.Installation.TABLE_NAME, null,value);
     }
 
-    public void InsertInstallationPlaced(Context context,String playground, ArrayList<String> installation)
+    public void InsertInstallationPlaced(Context context,int playground, ArrayList<String> installation)
     {
         DbHelper mDbHelper = new DbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -197,7 +215,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.insert(FeedReaderContract.Material.TABLE_NAME, null,value);
     }
 
-    public void InsertMaterialNeeded(Context context, String task, ArrayList<String> material)
+    public void InsertMaterialNeeded(Context context, int task, ArrayList<String> material)
     {
         DbHelper mDbHelper = new DbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -211,7 +229,7 @@ public class DbHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void InsertState(Context context, String task, String description)
+    public void InsertState(Context context, int task, String description)
     {
         DbHelper mDbHelper = new DbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -223,7 +241,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.insert(FeedReaderContract.State.TABLE_NAME, null,value);
     }
 
-    public void InsertGravity(Context context, String level)
+    public void InsertGravity(Context context, int level)
     {
         DbHelper mDbHelper = new DbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -233,5 +251,39 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.insert(FeedReaderContract.Gravity.TABLE_NAME, null,value);
     }
+
+    public int DeletePlayground(Context context,int Id)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        db.delete(FeedReaderContract.InstallationPlaced.TABLE_NAME,FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDPLAYGROUND+" = ?",new String[]{String.valueOf(Id)});
+
+        return db.delete(FeedReaderContract.Playground.TABLE_NAME,FeedReaderContract.Playground._ID+" = ?",new String[]{String.valueOf(Id)});
+    }
+    public int DeleteWorker(Context context,int Id)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        return db.delete(FeedReaderContract.Worker.TABLE_NAME,FeedReaderContract.Worker._ID+" = ?",new String[]{String.valueOf(Id)});
+    }
+    public int DeleteTask(Context context,int Id)
+    {
+        DbHelper mDbHelper = new DbHelper(context);
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        ContentValues value = new ContentValues();
+
+        db.delete(FeedReaderContract.MaterialNeeded.TABLE_NAME,FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDTASK+" = ?",new String[]{String.valueOf(Id)});
+
+        return db.delete(FeedReaderContract.Task.TABLE_NAME,FeedReaderContract.Task._ID+" = ?",new String[]{String.valueOf(Id)});
+    }
+
+
+
+
+
 
 }
