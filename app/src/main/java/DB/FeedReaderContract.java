@@ -81,7 +81,7 @@ public final class FeedReaderContract {
 
     public static final String SQL_CREAT_PLAYGROUND=
             "CREATE TABLE" + Playground.TABLE_NAME + " ("
-                    +Playground._ID + " INTERGER PRIMARY KEY,"
+            +Playground._ID + INT_TYPE+ " PRIMARY KEY,"
             + Playground.COLUMN_NAME_TOWN +TEXT_TYPE + COMMA_SEP
             + Playground.COLUMN_NAME_NAME +TEXT_TYPE + COMMA_SEP
             + Playground.COLUMN_NAME_SURFACE+TEXT_TYPE+COMMA_SEP
@@ -91,7 +91,7 @@ public final class FeedReaderContract {
 
     public static final String SQL_CREAT_WORKER=
             "CREATE TABLE" + Worker.TABLE_NAME + " ("
-                    +Worker._ID + " INTERGER PRIMARY KEY,"
+                    +Worker._ID + INT_TYPE+ " PRIMARY KEY,"
                     + Worker.COLUMN_NAME_LOGIN +TEXT_TYPE + COMMA_SEP
                     + Worker.COLUMN_NAME_PASSWORD +TEXT_TYPE + COMMA_SEP
                     + Worker.COLUMN_NAME_FIRSTNAME+TEXT_TYPE+COMMA_SEP
@@ -100,7 +100,7 @@ public final class FeedReaderContract {
 
     public static final String SQL_CREAT_TASK=
             "CREATE TABLE" + Task.TABLE_NAME + " ("
-                    +Task._ID + " INTERGER PRIMARY KEY,"
+                    +Task._ID + INT_TYPE+ " PRIMARY KEY,"
                     + Task.COLUMN_NAME_IDPLAYGROUND + INT_TYPE +"NOT NULL"
                     + "FOREIGNE KEY ("+Task.COLUMN_NAME_IDPLAYGROUND+")"+
                     "References " + Playground.TABLE_NAME+ "("+Playground._ID+")"+ COMMA_SEP
@@ -121,18 +121,18 @@ public final class FeedReaderContract {
 
     public static final String SQL_CREAT_INSTALLATION=
             "CREATE TABLE" + Installation.TABLE_NAME + " ("
-                    +Installation._ID + " INTERGER PRIMARY KEY,"
+                    +Installation._ID + INT_TYPE+ " PRIMARY KEY,"
                     + Installation.COLUMN_NAME_DESCRIPTION+TEXT_TYPE+COMMA_SEP
                     + Installation.COLUMN_NAME_STATE+TEXT_TYPE+COMMA_SEP+" )";
 
     public static final String SQL_CREAT_MATERIAL=
             "CREATE TABLE" + Material.TABLE_NAME+ " ("
-                    +Material._ID + " INTERGER PRIMARY KEY,"
+                    +Material._ID + INT_TYPE+ " PRIMARY KEY,"
                     + Material.COLUMN_NAME_DESCRIPTION+TEXT_TYPE+COMMA_SEP+" )";
 
     public static final String SQL_CREAT_INSTALLATIONPLACED=
             "CREATE TABLE" + InstallationPlaced.TABLE_NAME+ " ("
-                    +InstallationPlaced._ID + " INTERGER PRIMARY KEY,"
+                    +InstallationPlaced._ID + INT_TYPE+ " PRIMARY KEY,"
                     + InstallationPlaced.COLUMN_NAME_IDPLAYGROUND+ INT_TYPE +"NOT NULL"
                     + "FOREIGNE KEY ("+InstallationPlaced.COLUMN_NAME_IDPLAYGROUND+")"+
                     "References " + Playground.TABLE_NAME+ "("+Playground._ID+")"+ COMMA_SEP
@@ -142,7 +142,7 @@ public final class FeedReaderContract {
 
     public static final String SQL_CREAT_MATERIELNEEDED=
             "CREATE TABLE" + MaterialNeeded.TABLE_NAME + " ("
-                    +MaterialNeeded._ID + " INTERGER PRIMARY KEY,"
+                    +MaterialNeeded._ID + INT_TYPE+ " PRIMARY KEY,"
                     + MaterialNeeded.COLUMN_NAME_IDTASK+ INT_TYPE +"NOT NULL"
                     + "FOREIGNE KEY ("+MaterialNeeded.COLUMN_NAME_IDTASK+")"+
                     "References " + Task.TABLE_NAME+ "("+Task._ID+")"+ COMMA_SEP
@@ -152,12 +152,12 @@ public final class FeedReaderContract {
 
     public static final String SQL_CREAT_STATE=
             "CREATE TABLE" + State.TABLE_NAME + " ("
-                    +State._ID + " INTERGER PRIMARY KEY,"
+                    +State._ID + INT_TYPE+ " PRIMARY KEY,"
                     + State.COLUMN_NAME_DESCRIPTION+TEXT_TYPE+COMMA_SEP+" )";
 
     public static final String SQL_CREAT_GRAVITY=
             "CREATE TABLE" + Gravity.TABLE_NAME + " ("
-                    +Gravity._ID + " INTERGER PRIMARY KEY,"
+                    +Gravity._ID + INT_TYPE+ " PRIMARY KEY,"
                     + Gravity.COLUMN_NAME_GRAVITYLEVEL+INT_TYPE+COMMA_SEP+" )";
 
 

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.colin.projet.WorkerFicheActivity">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="93dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="32dp"
+        android:text="Firtname"
+        android:textColor="Black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView15"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="32dp"
+        android:text="Fname"
+        android:textColor="Black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        android:layout_marginRight="43dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="93dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="23dp"
+        android:text="Lastname"
+        android:textColor="Black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="93dp"
+        android:layout_height="30dp"
+        android:text="Cellphone"
+        android:textColor="Black"
+        android:textSize="20dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="126dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="23dp"
+        android:text="Lname"
+        android:textColor="Black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        android:layout_marginRight="43dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:text="Cphone"
+        android:textColor="Black"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteY="355dp"
+        android:layout_marginRight="43dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="129dp"
+        android:layout_height="130dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_marginTop="29dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="383dp"
+        android:layout_height="41dp"
+        android:text="Worker"
+        android:textAlignment="center"
+        android:background="@drawable/Grey"
+        android:textColor="Black"
+        android:textSize="30dp"
+        tools:layout_editor_absoluteX="1dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="0dp" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="44dp"
+        android:layout_height="32dp"
+        android:background="@drawable/Back"
+        tools:layout_editor_absoluteX="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="4dp" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:background="@drawable/Telephone"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="444dp" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:background="@drawable/Message"
+        tools:layout_editor_absoluteX="200dp"
+        tools:layout_editor_absoluteY="444dp" />
+
+</android.support.constraint.ConstraintLayout>
