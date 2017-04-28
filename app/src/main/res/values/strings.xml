@@ -19,4 +19,14 @@
     <string name="title_activity_play_ground_mdenu">PlayGroundMdenu</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <!-- String Task-->
+    <string name="Description_editText">Entrer une description</string>
+    <string name="Observation_editText">Entrer une Observation</string>
+
+    <!-- String Worker -->
+    <string name="Firstname_textView">Fname</string>
+    <string name="Lastname_textView">Lname</string>
+    <string name="Cellphone_textView">Cphone</string>
+
 </resources>
