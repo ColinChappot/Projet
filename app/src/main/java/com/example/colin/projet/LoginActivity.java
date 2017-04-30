@@ -47,6 +47,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.btnSignIn :
                 Log.i("DEBUG", "Bouton Cliqué");
+
+                //pour voir dans la continuité des frame
+                startActivity(new Intent(LoginActivity.this, PlayGroundListMenuActivity.class));
+                finish();
+
                 // checkData();
                 break;
         }

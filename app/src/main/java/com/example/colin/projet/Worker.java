@@ -24,4 +24,8 @@ public class Worker {
         this.phone =phone;
         this.image = image;
     }
+
+    public String getName(){
+        return firstname + " " + lastname ;
+    }
 }
