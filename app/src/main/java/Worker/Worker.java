@@ -1,4 +1,4 @@
-package com.example.colin.projet;
+package Worker;
 
 import android.media.Image;
 
@@ -14,6 +14,13 @@ public class Worker {
     private String  lastname;
     private String phone;
     private Image image;
+
+
+
+    public Worker ( String firstname, String lastname){
+        this.firstname=firstname;
+        this.lastname=lastname;
+    }
 
 
     public Worker ( String login, String password, String firstname, String lastname, String phone, Image image){

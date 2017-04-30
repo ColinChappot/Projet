@@ -1,4 +1,4 @@
-package com.example.colin.projet;
+package Playground;
 
 import android.media.Image;
 

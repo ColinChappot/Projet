@@ -1,4 +1,4 @@
-package com.example.colin.projet;
+package Playground;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.colin.projet.LoginActivity;
+import com.example.colin.projet.R;
+import com.example.colin.projet.Session;
 
 import java.util.ArrayList;
 import java.util.List;

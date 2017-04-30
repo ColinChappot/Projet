@@ -23,8 +23,6 @@
         </activity>
 
         <!-- activity android:name=".PlayGroundListMenuActivity" /> -->
-        <activity android:name=".WorkerListMenuActivity" />
-        <activity android:name=".PlayGroundListMenuActivity" />
 
     </application>
 
