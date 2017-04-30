@@ -9,9 +9,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
-/*
-Je Précise que c est un code copié collé que je voulais adapter pour voir comment il fonctionnait
- */
+
 
 public class PlayGroundListMenuActivity extends ActionBarActivity {
 
@@ -28,10 +26,10 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_ground_list_menu);
 
-        session = new Session(this);
+        /*session = new Session(this);
         if(!session.loggedIn()){
             logout();
-        }
+        }*/
 
         listPlayGround = (ListView) findViewById(R.id.list_view);
 
