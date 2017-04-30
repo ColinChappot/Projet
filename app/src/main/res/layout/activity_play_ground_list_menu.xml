@@ -1,10 +1,12 @@
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.colin.projet.LoginActivity">
 
         <android.support.v7.widget.SearchView
             android:id="@+id/search"
@@ -14,7 +16,7 @@
 
 
         <ListView
-            android:id="@+id/list_view"
+            android:id="@+id/list_view_Playground"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -33,4 +35,3 @@
 
     </RelativeLayout>
 
-</layout>

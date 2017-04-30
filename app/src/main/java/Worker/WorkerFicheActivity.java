@@ -1,15 +1,13 @@
-package com.example.colin.projet;
+package Worker;
 
 
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
+import com.example.colin.projet.R;
 
 import DB.DbHelper;
-import DB.FeedReaderContract;
 
 
 public class WorkerFicheActivity extends AppCompatActivity {
@@ -21,6 +19,7 @@ public class WorkerFicheActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_fiche);
 
+        getIntent().getIntExtra("IdWorker", 0);//Ligne pour sélectionner le bon worker
 
         SQLiteDatabase db = new DbHelper(this).getReadableDatabase();
 
