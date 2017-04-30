@@ -1,7 +1,9 @@
-package com.example.colin.projet;
+package Playground;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.example.colin.projet.R;
 
 public class PlaygroundFicheActivity extends AppCompatActivity {
 
