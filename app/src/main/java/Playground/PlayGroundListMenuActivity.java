@@ -4,7 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.colin.projet.LoginActivity;
@@ -14,6 +15,8 @@ import com.example.colin.projet.Session;
 import java.util.ArrayList;
 import java.util.List;
 
+import Worker.WorkerListMenuActivity;
+
 
 public class PlayGroundListMenuActivity extends ActionBarActivity {
 
@@ -21,24 +24,34 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
     private ListView listPlayGround;
     private PlayGroundAdapter adapter;
     private SearchView editSearch;
-    private String[] playGrounds = new String[]{
-            "Place du Midi", "Place de la planta", "place du carré", "Place du petit Bec", "Place de la Houlette"
-    };
+    private Button button2;
 
     @Override
     protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_play_ground_list_menu);
 
+        //A décommenter quand on pourra utilisez le login avec la BD
         /*session = new Session(this);
         if(!session.loggedIn()){
             logout();
         }*/
 
-        listPlayGround = (ListView) findViewById(R.id.list_view);
+        listPlayGround = (ListView) findViewById(R.id.list_view_Playground);
+        button2 =(Button) findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(PlayGroundListMenuActivity.this, WorkerListMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         //Affiche la liste des playgrounds
         showListPlayGround();
+        showListPlayGroundName();
 
         //Localiser le edit text dans la listeView du fichier xml
         editSearch = (SearchView) findViewById(R.id.search);
@@ -57,9 +70,15 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
     private void showListPlayGroundName(){
         //android.R.layout.simple_list_item_1 est une vue disponible de base dans le SDK android,
         //Contenant une TextView avec comme identifiant "@android:id/text1"
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(PlayGroundListMenuActivity.this, android.R.layout.simple_list_item_1, playGrounds);
+       // ArrayAdapter<String> adapter = new ArrayAdapter<String>(PlayGroundListMenuActivity.this, R.layout.row_playground,playGrounds);
 
-        listPlayGround.setAdapter(adapter);
+        Playground a = new Playground("a");
+        Playground b = new Playground("b");
+        ArrayList<Playground> listest = new ArrayList<Playground>();
+        listest.add(a);
+        listest.add(b);
+
+        listPlayGround.setAdapter(new PlayGroundAdapter(this, listest));
     }
     //méthodes qui génère liste
     private  List<Playground> generePlayGrounds(){
@@ -75,6 +94,10 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
         PlayGroundAdapter adapter = new PlayGroundAdapter(PlayGroundListMenuActivity.this, playgrounds );
         listPlayGround.setAdapter(adapter);
     }
+
+
+
+
 /*
     //méthode permettant valider la recherche du search...
     @Override

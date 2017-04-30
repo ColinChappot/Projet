@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.colin.projet.LoginActivity;
@@ -14,12 +17,16 @@ import com.example.colin.projet.Session;
 import java.util.ArrayList;
 import java.util.List;
 
+import Playground.PlayGroundListMenuActivity;
+
 public class WorkerListMenuActivity extends AppCompatActivity {
 
     private Session session;
     private ListView listWorker;
     private WorkerAdapter adapter;
     private SearchView editSearch;
+    private Button btnSwitchPlayGround;
+
     private String[] workers = new String[]{
       "Jean Alfred", "Pierre Richarc", "Porto Ricain", "Posey Douze"
     };
@@ -30,24 +37,39 @@ public class WorkerListMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_worker_list_menu);
 
         session = new Session(this);
-        if(!session.loggedIn()){
+        /*if(!session.loggedIn()){
         logout();
-        }
+        }*/
+        listWorker = (ListView) findViewById(R.id.list_view_worker);
+        editSearch = (SearchView) findViewById(R.id.search);
+        editSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
-        listWorker = (ListView) findViewById(R.id.list_view);
+        btnSwitchPlayGround = (Button) findViewById(R.id.btnSwitchPlayGround);
+
+        btnSwitchPlayGround.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(WorkerListMenuActivity.this, PlayGroundListMenuActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //affiche la liste des workers
         showListWorker();
 
-        editSearch = (SearchView) findViewById(R.id.search);
-        editSearch.setOnQueryTextListener((SearchView.OnQueryTextListener) this);
 
     }
 
-    /*
-    Méthodes
-     */
 
     /*
     Méthode logout : renvoie à l'activité ActivitéLogin
@@ -65,6 +87,14 @@ public class WorkerListMenuActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter(WorkerListMenuActivity.this, android.R.layout.simple_list_item_1, workers );
 
         listWorker.setAdapter(adapter);
+        listWorker.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(WorkerListMenuActivity.this, WorkerFicheActivity.class);
+                intent.putExtra("IdWorker", position);
+                startActivity(intent);
+            }
+        });
     }
 
     /*
@@ -107,6 +137,15 @@ public class WorkerListMenuActivity extends AppCompatActivity {
 
     /*
     Méthodes onClickListener: Permet de prends l'id de la session et d'ouvrir WorkerFicheActivity
+
+    J'ai regardé sur: http://stackoverflow.com/questions/16270092/listview-setonitemclicklistener-action-for-specific-item
      */
-    
+    /*
+    private void onClikListener(View V){
+        Intent detailUserIntent = new Intent(this, WorkerFicheActivity.class );
+        detailUserIntent.putExtra("userId"), workers.get(position).getAuthorID());
+        this.startActivity(detailUserIntent);
+    }
+    */
+
 }

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.colin.projet">
 
+
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -22,7 +23,11 @@
             </intent-filter>
         </activity>
 
-        <!-- activity android:name=".PlayGroundListMenuActivity" /> -->
+        <activity android:name="Playground.PlayGroundListMenuActivity"/>
+
+        <activity android:name="Worker.WorkerListMenuActivity"/>
+
+        <activity android:name="Worker.WorkerFicheActivity"/>
 
     </application>
 
