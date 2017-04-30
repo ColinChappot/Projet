@@ -11,13 +11,13 @@
         android:layout_width="93dp"
         android:layout_height="30dp"
         android:layout_marginBottom="32dp"
-        android:text="Firtname"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
         android:textColor="@color/black_overlay"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/textView15"
-        android:layout_marginLeft="25dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="25dp" />
+        tools:text="@string/Firstname_brute_textView" />
 
     <TextView
         android:id="@+id/textView14"
@@ -37,26 +37,26 @@
         android:layout_width="93dp"
         android:layout_height="30dp"
         android:layout_marginBottom="23dp"
-        android:text="Lastname"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
         android:textColor="@color/black_overlay"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/textView16"
-        android:layout_marginLeft="25dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="25dp" />
+        tools:text="@string/Lastname_brute_textView" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="93dp"
         android:layout_height="30dp"
-        android:text="Cellphone"
+        android:layout_marginBottom="126dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
         android:textColor="@color/black_overlay"
         android:textSize="20dp"
-        android:layout_marginLeft="25dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="126dp"
-        android:layout_marginStart="25dp" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="@string/Cellphone_brute_textView" />
 
     <TextView
         android:id="@+id/textView10"
@@ -103,17 +103,17 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="0dp"
         android:background="@drawable/grey"
-        android:text="Worker"
         android:textAlignment="center"
         android:textColor="@color/black_overlay"
         android:textSize="30dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"
-        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp"
+        tools:text="@string/Worker_brute_textView" />
 
     <Button
         android:id="@+id/button7"
