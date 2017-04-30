@@ -1,24 +1,42 @@
 <resources>
     <string name="app_name">Projet</string>
-    <string name="title_activity_login">Sign in</string>
+
+<!--LoginActivity-->
+    <string name="txtVLogin">Login</string>
+    <string name="textVUserName">User Name</string>
+    <string name="textPassword">Password</string>
+    <string name="edTxtUserName">prenom.nom</string>
+    <string name="edTxtPassword" />
+    <string name="btnSignIn">Sign in</string>
+    <string name="title_activity_login">LoginActivity</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">User</string>
-    <string name="prompt_password">Password</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This user name is invalid</string>
+    <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
     <string name="title_activity_play_ground_menu">PlayGroundMenu</string>
 
     <string name="title_activity_play_ground_mdenu">PlayGroundMdenu</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <!-- PLayGroundListMenu -->
+    <string name="action_stwich_worker">Worker</string>
+    <string name="action_stwich_playground">PlayGround</string>
+    <string name="title_activity_play_ground_sub_menu">PlayGroundSubMenu</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- PlayGroundSubMenu - Task TO Do -->
+    <string name="title_PlayGroundSubMenu_TaskToDo">Tasks to do</string>
 
     <!-- String Task-->
     <string name="Description_editText">Entrer une description</string>
@@ -28,5 +46,6 @@
     <string name="Firstname_textView">Fname</string>
     <string name="Lastname_textView">Lname</string>
     <string name="Cellphone_textView">Cphone</string>
+
 
 </resources>
