@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Projet</string>
 
-<!--LoginActivity-->
+    <!--LoginActivity-->
     <string name="txtVLogin">Login</string>
     <string name="textVUserName">User Name</string>
     <string name="textPassword">Password</string>
@@ -19,15 +19,10 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."
     </string>
 
     <string name="title_activity_play_ground_menu">PlayGroundMenu</string>
-
-    <string name="title_activity_play_ground_mdenu">PlayGroundMdenu</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <!-- PLayGroundListMenu -->
     <string name="action_stwich_worker">Worker</string>
@@ -37,6 +32,9 @@
 
     <!-- PlayGroundSubMenu - Task TO Do -->
     <string name="title_PlayGroundSubMenu_TaskToDo">Tasks to do</string>
+    <string name="title_PlayGroundSubMenu_LastUpdate">Last update</string>
+    <string name="title_PlayGroundSubMenu_InfoZone">Information Zone</string>
+
 
     <!-- String Task-->
     <string name="Description_editText">Entrer une description</string>
@@ -55,6 +53,15 @@
     <string name="Lastname_brute_textView">Lastname</string>
     <string name="Cellphone_brute_textView">Cellphone</string>
     <string name="Worker_brute_textView">Worker</string>
+    <string name="taskDescription">taskDescription</string>
+
+
+    <string name="PlayGroundName">PlayGroundName</string>
+    <string name="btnTaskToDo">Task To Do</string>
+    <string name="btnLastUpdate">Last Update</string>
+    <string name="btnInfoZone">Information Zone</string>
+    <string name="btnAddTask">Add Task</string>
+    <string name="taskLastUpdate">taskLastUpdate</string>
 
 
 </resources>

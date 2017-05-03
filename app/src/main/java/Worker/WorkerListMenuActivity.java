@@ -68,6 +68,7 @@ public class WorkerListMenuActivity extends AppCompatActivity {
         showListWorker();
 
 
+
     }
 
 
@@ -111,7 +112,7 @@ public class WorkerListMenuActivity extends AppCompatActivity {
     /*
     Méthodes shoListWorker:
      */
-    private void showListPlayGround(){
+    private void showListWorker2(){
         List<Worker> workers = genereWorkers();
 
         WorkerAdapter adapter = new WorkerAdapter(WorkerListMenuActivity.this, workers );
