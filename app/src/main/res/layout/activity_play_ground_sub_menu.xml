@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="Playground.PlayGroundSubMenuActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="359dp"
+        android:layout_height="34dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/PlayGroundName"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="8dp"
+        tools:text="@string/PlayGroundName" />
+
+    <Button
+        android:id="@+id/btnTaskToDo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnTaskToDo"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="136dp"
+        tools:text="@string/btnTaskToDo" />
+
+    <Button
+        android:id="@+id/btnLastUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnLastUpdate"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="259dp"
+        tools:text="@string/btnLastUpdate" />
+
+    <Button
+        android:id="@+id/btnInfoZone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnInfoZone"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="383dp"
+        tools:text="@string/btnInfoZone" />
+
+</android.support.constraint.ConstraintLayout>

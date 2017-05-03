@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -51,7 +52,7 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
 
         //Affiche la liste des playgrounds
         showListPlayGround();
-        showListPlayGroundName();
+       // showListPlayGroundName();
 
         //Localiser le edit text dans la listeView du fichier xml
         editSearch = (SearchView) findViewById(R.id.search);
@@ -70,7 +71,7 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
     private void showListPlayGroundName(){
         //android.R.layout.simple_list_item_1 est une vue disponible de base dans le SDK android,
         //Contenant une TextView avec comme identifiant "@android:id/text1"
-       // ArrayAdapter<String> adapter = new ArrayAdapter<String>(PlayGroundListMenuActivity.this, R.layout.row_playground,playGrounds);
+        // ArrayAdapter<String> adapter = new ArrayAdapter<String>(PlayGroundListMenuActivity.this, R.layout.row_playground,playGrounds);
 
         Playground a = new Playground("a");
         Playground b = new Playground("b");
@@ -79,6 +80,15 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
         listest.add(b);
 
         listPlayGround.setAdapter(new PlayGroundAdapter(this, listest));
+        listPlayGround.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(PlayGroundListMenuActivity.this, PlayGroundSubMenuActivity.class);
+                intent.putExtra("IdWorker", position);
+                startActivity(intent);
+            }
+        });
+
     }
     //méthodes qui génère liste
     private  List<Playground> generePlayGrounds(){

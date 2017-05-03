@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.colin.projet">
 
-
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -22,13 +21,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="Playground.PlayGroundListMenuActivity"/>
-
-        <activity android:name="Worker.WorkerListMenuActivity"/>
-
-        <activity android:name="Worker.WorkerFicheActivity"/>
-
+        <activity android:name="Playground.PlayGroundListMenuActivity" />
+        <activity android:name="Worker.WorkerListMenuActivity" />
+        <activity android:name="Worker.WorkerFicheActivity" />
+        <activity
+            android:name="Playground.PlayGroundSubMenuActivity"
+            android:label="@string/title_activity_play_ground_sub_menu"
+            android:theme="@style/AppTheme" />
+        <activity android:name="Task.TaskToDoActivity" />
+        <activity android:name="Task.TaskLastUpdate" />
+        <activity android:name="Task.TaskInfoZoneActivity"></activity>
     </application>
 
 </manifest>
