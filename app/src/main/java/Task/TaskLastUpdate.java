@@ -39,10 +39,10 @@ public class TaskLastUpdate extends AppCompatActivity {
 
     //méthodes qui génère liste
     private List<Task> genereTasks(){
-        List<Task> LastTasks = new ArrayList<Task>();
+        List<Task> lastTasks = new ArrayList<Task>();
 
-        LastTasks.add(new Task("tondre la pelouze", 12, "15.03.17"));
-        return LastTasks ;
+        lastTasks.add(new Task("tondre la pelouze", 12, "15.03.17"));
+        return lastTasks ;
     }
 
     private void showListLastTask(){

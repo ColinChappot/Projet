@@ -62,6 +62,18 @@
     <string name="btnInfoZone">Information Zone</string>
     <string name="btnAddTask">Add Task</string>
     <string name="taskLastUpdate">taskLastUpdate</string>
+    <string name="txtbTown">Town</string>
+    <string name="txtView">TownName</string>
+    <string name="txtBName">Place\'s name</string>
+    <string name="txtVPlacesName">txtVPlacesName</string>
+    <string name="txtBSurface">Surface</string>
+    <string name="txtVSurface">Surface</string>
+    <string name="txtBInstallation">Installations</string>
+    <string name="txtBTimeToAvoid">Time To Avoid</string>
+    <string name="txtVTimeToAvoid">txtVTimeToAvoid</string>
+    <string name="txtBGPS">GPS location</string>
+    <string name="txtVGPS">txtVGPS</string>
+    <string name="installation">installation</string>
 
 
 </resources>
