@@ -38,6 +38,7 @@ public class TaskToDoActivity extends AppCompatActivity {
 
 
         showListTask();
+        showListtask2();
     }
 
     private void showListTask(){
@@ -48,12 +49,12 @@ public class TaskToDoActivity extends AppCompatActivity {
         listest.add(t1);
         listest.add(t2);
 
-        listTasks.setAdapter(new TaskToDoAdapter(this, listest));
+        listTasks.setAdapter(adapter);
         listTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(TaskToDoActivity.this, PlaygroundFicheActivity.class);
-                intent.putExtra("IdPlayground", position);
+                Intent intent=new Intent(TaskToDoActivity.this, Playground.PlaygroundFicheActivity.class);
+                //intent.putExtra("IdPlayground", position);
                 startActivity(intent);
             }
         });
@@ -66,7 +67,7 @@ public class TaskToDoActivity extends AppCompatActivity {
     private List<Task> generetaks(){
         List<Task> Tasks = new ArrayList<>();
 
-        Tasks.add(new Task("t3: genereWorkers"));
+        Tasks.add(new Task("tache Générée"));
         return Tasks;
 
     }

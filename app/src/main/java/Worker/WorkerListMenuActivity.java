@@ -67,8 +67,6 @@ public class WorkerListMenuActivity extends AppCompatActivity {
         //affiche la liste des workers
         showListWorker();
 
-
-
     }
 
 
@@ -118,35 +116,5 @@ public class WorkerListMenuActivity extends AppCompatActivity {
         WorkerAdapter adapter = new WorkerAdapter(WorkerListMenuActivity.this, workers );
         listWorker.setAdapter(adapter);
     }
-
-    /*
-
-    //méthode permettant valider la recherche du search...
-    @Override
-    public boolean onQueryTextSubmit(String query){
-        return false;
-    }
-    //méthode permettant d'afficher la nouvelle sélection
-    @Override
-    public boolean onQueryTextChange(String newText){
-        String.text = newText;
-        adapter.filter(text);
-        return false;
-    }
-
-   */
-
-    /*
-    Méthodes onClickListener: Permet de prends l'id de la session et d'ouvrir WorkerFicheActivity
-
-    J'ai regardé sur: http://stackoverflow.com/questions/16270092/listview-setonitemclicklistener-action-for-specific-item
-     */
-    /*
-    private void onClikListener(View V){
-        Intent detailUserIntent = new Intent(this, WorkerFicheActivity.class );
-        detailUserIntent.putExtra("userId"), workers.get(position).getAuthorID());
-        this.startActivity(detailUserIntent);
-    }
-    */
 
 }

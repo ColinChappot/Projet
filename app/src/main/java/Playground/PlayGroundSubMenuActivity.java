@@ -11,7 +11,7 @@ import com.example.colin.projet.R;
 
 public class PlayGroundSubMenuActivity extends AppCompatActivity {
 
-    TextView titlePlayGroung;
+    TextView titlePlayGround;
     Button btnTaskTodo;
     Button btnLastUpdate;
     Button btnInfoZone;
@@ -40,6 +40,7 @@ public class PlayGroundSubMenuActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(PlayGroundSubMenuActivity.this, Task.TaskLastUpdate.class);
+                    startActivity(intent);
                     finish();
                 }
             });

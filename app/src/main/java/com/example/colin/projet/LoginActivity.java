@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import DB.DbHelper;
-import Worker.WorkerListMenuActivity;
+import Playground.PlayGroundListMenuActivity;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         //pour voir dans la continuité des frame
                         //startActivity(new Intent(LoginActivity.this, PlayGroundListMenuActivity.class));
-                        Intent intent=new Intent(LoginActivity.this, WorkerListMenuActivity.class);
+                        Intent intent=new Intent(LoginActivity.this, PlayGroundListMenuActivity.class);
                         startActivity(intent);
 
 
