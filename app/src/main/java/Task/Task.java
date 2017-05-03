@@ -18,7 +18,7 @@ public class Task {
     private String date;
 
     //pour créer les infos d'une simple tache
-    public Task(String Description){
+    public Task(String description){
         this.description = description;
     }
 
@@ -47,7 +47,7 @@ public class Task {
     }
 
     public String getTaskDescription(){
-        return  this.description;
+        return  description;
     }
     public String getTaskObservation(){
         return this.observation;

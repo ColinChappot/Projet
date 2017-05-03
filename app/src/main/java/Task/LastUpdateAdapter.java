@@ -11,9 +11,7 @@ import com.example.colin.projet.R;
 
 import java.util.List;
 
-/**
- * Created by uadmin on 03.05.2017.
- */
+
 
 public class LastUpdateAdapter extends ArrayAdapter {
 
@@ -40,13 +38,15 @@ public class LastUpdateAdapter extends ArrayAdapter {
             convertView.setTag(lastupdateViewHolder);
         }
 
-         Task task = (Task) getItem(position);
-
-        lastupdateViewHolder.taskLastUpdate.setText(task.getTaskDescription());
+        Task task = (Task)getItem(position);
+        lastupdateViewHolder.taskLastUpdate.setText(task.getLastTask());
 
         return convertView;
     }
 
+    /*
+    Tag lasttask
+     */
     private class LastUpdateViewHolder{
         public TextView taskLastUpdate;
     }
