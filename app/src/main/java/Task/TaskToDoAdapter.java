@@ -33,13 +33,13 @@ public class TaskToDoAdapter extends ArrayAdapter<Task> {
         TaskViewHolder taskViewHolder = (TaskViewHolder) convertView.getTag();
         if(taskViewHolder == null){
             taskViewHolder = new TaskViewHolder();
-            taskViewHolder.taskDescription=(TextView) convertView.findViewById(R.id.taskDescription);
+            taskViewHolder.taskDescrip=(TextView) convertView.findViewById(R.id.taskDescription);
 
             convertView.setTag(taskViewHolder);
         }
 
         Task task = getItem(position);
-        taskViewHolder.taskDescription.setText(task.getTaskDescription());
+        taskViewHolder.taskDescrip.setText(task.getTaskDescription());
 
         return convertView;
     }
@@ -49,6 +49,6 @@ public class TaskToDoAdapter extends ArrayAdapter<Task> {
     Tag task
      */
     private class TaskViewHolder{
-        public TextView taskDescription;
+        public TextView taskDescrip;
     }
 }

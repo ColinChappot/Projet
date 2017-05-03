@@ -66,7 +66,7 @@ public class WorkerListMenuActivity extends AppCompatActivity {
 
         //affiche la liste des workers
         showListWorker();
-
+        showListWorker2();
     }
 
 
