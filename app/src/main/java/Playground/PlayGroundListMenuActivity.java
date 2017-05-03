@@ -3,7 +3,6 @@ package Playground;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -24,7 +23,6 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
     private Session session;
     private ListView listPlayGround;
     private PlayGroundAdapter adapter;
-    private SearchView editSearch;
     private Button button2;
 
     @Override
@@ -51,12 +49,9 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
 
 
         //Affiche la liste des playgrounds
-        showListPlayGround();
-       // showListPlayGroundName();
+        //showListPlayGround();
+       showListPlayGroundName();
 
-        //Localiser le edit text dans la listeView du fichier xml
-        editSearch = (SearchView) findViewById(R.id.search);
-//        editSearch.setOnQueryTextListener(this);
     }
 
 
@@ -84,7 +79,7 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent=new Intent(PlayGroundListMenuActivity.this, PlayGroundSubMenuActivity.class);
-                intent.putExtra("IdWorker", position);
+               // intent.putExtra("IdPlayGround", position);
                 startActivity(intent);
             }
         });
@@ -104,81 +99,5 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
         PlayGroundAdapter adapter = new PlayGroundAdapter(PlayGroundListMenuActivity.this, playgrounds );
         listPlayGround.setAdapter(adapter);
     }
-
-
-
-
-/*
-    //méthode permettant valider la recherche du search...
-    @Override
-    public boolean onQueryTextSubmit(String query){
-        return false;
-    }
-    //méthode permettant d'afficher la nouvelle sélection
-    @Override
-    public boolean onQueryTextChange(String newText){
-        String.text = newText;
-        adapter.filter(text);
-        return false;
-    }
-*/
-
-
-
-
-//Code pour gérer la recherche a voir comment le tourner
-/*public class PlayGroundListMenuActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-
-    // Declare Variables
-    ListView list;
-    ListViewAdapter adapter;
-    SearchView editsearch;
-    String[] animalNameList;
-    ArrayList<AnimalNames> arraylist = new ArrayList<AnimalNames>();
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        // Generate sample data
-
-        animalNameList = new String[]{"Lion", "Tiger", "Dog",
-                "Cat", "Tortoise", "Rat", "Elephant", "Fox",
-                "Cow","Donkey","Monkey"};
-
-        // Locate the ListView in listview_main.xml
-        list = (ListView) findViewById(R.id.listview);
-
-        for (int i = 0; i < animalNameList.length; i++) {
-            AnimalNames animalNames = new AnimalNames(animalNameList[i]);
-            // Binds all strings into an array
-            arraylist.add(animalNames);
-        }
-
-        // Pass results to ListViewAdapter Class
-        adapter = new ListViewAdapter(this, arraylist);
-
-        // Binds the Adapter to the ListView
-        list.setAdapter(adapter);
-
-        // Locate the EditText in listview_main.xml
-        editsearch = (SearchView) findViewById(R.id.search);
-        editsearch.setOnQueryTextListener(this);
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        String text = newText;
-        adapter.filter(text);
-        return false;
-    }
-*/
 
 }
