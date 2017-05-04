@@ -1,6 +1,7 @@
 package com.example.colin.projet;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Locale;
 
 import DB.DbHelper;
 import DB.FeedReaderContract;
@@ -83,8 +87,32 @@ public class SettingsActivity extends AppCompatActivity {
                 "('"+Login+"','"+Password+"','"+Firstname+"','"+Lastname+"','"+Cellphone+ "')" +
                 " WHERE "+ FeedReaderContract.Worker._ID+" = "+idWorker ;
         db.execSQL(strSQL);
+        Toast.makeText(getApplicationContext(), this.getString(R.string.settingsSaved), Toast.LENGTH_SHORT).show();
     }
 
+    public static void changeToFr(Resources res)
+    {
+        Configuration config;
+        config = new Configuration(res.getConfiguration());
 
+        config.locale = Locale.FRENCH;
+
+    }
+    public static void changeToDE(Resources res)
+    {
+        Configuration config;
+        config = new Configuration(res.getConfiguration());
+
+        config.locale = Locale.GERMAN;
+
+    }
+    public static void changeToEN(Resources res)
+    {
+        Configuration config;
+        config = new Configuration(res.getConfiguration());
+
+        config.locale = Locale.ENGLISH;
+
+    }
 }
 

@@ -15,6 +15,7 @@
         android:layout_alignParentTop="true"
         android:text="@string/taskDescription"
         android:textColor="@android:color/black"
+        android:textSize="26dp"
         android:textStyle="bold"
         tools:text="@string/taskDescription" />
 
