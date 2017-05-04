@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.colin.projet.LoginActivity;
 import com.example.colin.projet.R;
 
 import java.util.ArrayList;
@@ -19,10 +18,7 @@ import java.util.List;
 
 import DB.DbHelper;
 import DB.FeedReaderContract;
-import Playground.Playground;
 import Playground.PlaygroundFicheActivity;
-import Worker.WorkerFicheActivity;
-import Worker.WorkerListMenuActivity;
 
 public class TaskToDoActivity extends AppCompatActivity {
 
@@ -45,7 +41,7 @@ public class TaskToDoActivity extends AppCompatActivity {
         btnAddTask.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(TaskToDoActivity.this, PlaygroundFicheActivity.class);
+                Intent intent=new Intent(TaskToDoActivity.this, NewTask.class);
                 startActivity(intent);
             }
         });

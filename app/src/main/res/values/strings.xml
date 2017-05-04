@@ -70,6 +70,11 @@
     <string name="NewWorker">New Worker</string>
     <string name="btnAddWorker">Add new Worker</string>
     <string name="Worker_brute_textView">Worker</string>
+    <string name="btnPlayGround">Add New PlayGround</string>
+    <string name="btnSavePlayground">save</string>
+    <string name="NewPlayground">New Playground</string>
+    <string name="TaskName">Task Name</string>
+    <string name="btnSaveTask2">Save</string>
 
 
 </resources>
