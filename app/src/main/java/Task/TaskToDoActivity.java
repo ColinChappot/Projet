@@ -35,7 +35,6 @@ public class TaskToDoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         idPlayground = intent.getStringExtra("idPlayground");
-        Toast.makeText(getApplicationContext(), idPlayground, Toast.LENGTH_SHORT).show();
         listTasks = (ListView) findViewById(R.id.list_view_Task);
         btnAddTask = (Button) findViewById(R.id.btnAddTask);
         btnAddTask.setOnClickListener( new View.OnClickListener(){
@@ -69,8 +68,6 @@ public class TaskToDoActivity extends AppCompatActivity {
                 ));
             } while (c.moveToNext());
         }
-        else
-            Toast.makeText(getApplicationContext(), idPlayground, Toast.LENGTH_SHORT).show();
 
         listTasks.setAdapter(new TaskToDoAdapter(this, listest));
         listTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -80,7 +77,6 @@ public class TaskToDoActivity extends AppCompatActivity {
                 c.moveToPosition(position);
                 intent.putExtra("idTask",c.getString(0));
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), idPlayground, Toast.LENGTH_SHORT).show();
             }
         });
 

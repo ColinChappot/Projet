@@ -181,7 +181,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.insert(FeedReaderContract.Installation.TABLE_NAME, null,value);
     }
 
-    public void InsertInstallationPlaced(Context context,int playground, String installation)
+    public void InsertInstallationPlaced(Context context,int playground, String idinstallation)
     {
         DbHelper mDbHelper = new DbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -189,7 +189,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
             value.put(FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDPLAYGROUND, playground);
-            value.put(FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDINSTALLATION, Integer.valueOf(installation));
+            value.put(FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDINSTALLATION, Integer.valueOf(idinstallation));
             db.insert(FeedReaderContract.InstallationPlaced.TABLE_NAME, null,value);
 
     }
@@ -212,9 +212,9 @@ public class DbHelper extends SQLiteOpenHelper {
         ContentValues value = new ContentValues();
 
 
-            value.put(FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDTASK, task);
-            value.put(FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDMATERIAL, materiel);
-            db.insert(FeedReaderContract.Material.TABLE_NAME, null,value);
+            value.put(FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDTASK, Integer.valueOf(task));
+            value.put(FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDMATERIAL, Integer.valueOf(materiel));
+            db.insert(FeedReaderContract.MaterialNeeded.TABLE_NAME, null,value);
 
     }
 

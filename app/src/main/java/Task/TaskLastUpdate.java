@@ -50,16 +50,19 @@ public class TaskLastUpdate extends AppCompatActivity {
                 " where "+ FeedReaderContract.Task.COLUMN_NAME_IDSTATE+" = 3 " +
                 "AND "+ FeedReaderContract.Task.COLUMN_NAME_IDPLAYGROUND+" = "+idPlayground, null);
 
-        String nomTache ;
-        String Worker;
-        String date;
+
+
+
 
         if (c.moveToFirst())
         {
-            nomTache = c.getString(5);
+
             do{
+
                 listest.add(new Task(
-                        c.getString(5)
+                        c.getString(5),
+                        c.getString(7)
+
                 ));
             } while (c.moveToNext());
         }
