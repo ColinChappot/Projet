@@ -71,9 +71,9 @@ public class LoginActivity extends AppCompatActivity {
             db.InsertWorker(this, "Marc", "123", "Marc", "Panatier", "11111111");
             db.InsertWorker(this, "Paul", "123", "Paul", "Zufferey", "00000000");
             db.InsertWorker(this, "Pierre", "123", "Pierre", "Smith", "0099990");
-            db.InsertInstallation(this, "Balançoire", "Bon état");
-            db.InsertInstallation(this, "Toboggan", "Très bon état");
-            db.InsertInstallation(this, "Cabane", "Etat moyen");
+            db.InsertInstallation(this, "Balançoire");
+            db.InsertInstallation(this, "Toboggan");
+            db.InsertInstallation(this, "Cabane");
             db.InsertMaterial(this, "marteau");
             db.InsertMaterial(this, "échelle");
             db.InsertMaterial(this, "tronçonneuse");
@@ -82,27 +82,21 @@ public class LoginActivity extends AppCompatActivity {
             db.InsertMaterial(this, "perceuse");
             db.InsertMaterial(this, "visseuse");
             db.InsertMaterial(this, "autre");
-            db.InsertGravity(this, 1);
-            db.InsertGravity(this, 2);
-            db.InsertGravity(this, 3);
-            db.InsertGravity(this, 4);
-            db.InsertGravity(this, 5);
             db.InsertState(this, "libre");
             db.InsertState(this, "en cours");
             db.InsertState(this, "terminer");
-            ArrayList<String> installation = new ArrayList<String>();
-            installation.add("1");
-            installation.add("2");
-            db.InsertPlayground(this, "Parc des écoles", "Martigny", "40", "46.10192488017465 - 7.070822239184054", "10h00 - 10h30", installation);
-            installation.remove(1);
-            installation.add("3");
-            db.InsertPlayground(this, "Parc municipale", "Martigny", "70", "46.097758806831635 - 7.073804855608614", "16h00 - 17h00", installation);
-            ArrayList<String> material = new ArrayList<String>();
-            material.add("1");
-            material.add("7");
-            db.InsertTask(this, 1, 1, 5, "Grand trou dans le parc", "Essayer de combler le trou avec des fleures","Combler trou", material);
-            material.remove(0);
-            db.InsertTask(this, 2, 1, 3, "Tondre le gazon", "Prendre tondeuse et faire bien attention aux arbustes","Tondre pelouse", material);
+            db.InsertInstallationPlaced(this,1,"1");
+            db.InsertInstallationPlaced(this,1,"2");
+            db.InsertInstallationPlaced(this,2,"2");
+            db.InsertInstallationPlaced(this,2,"3");
+            db.InsertPlayground(this, "Parc des écoles", "Martigny", "40", "46.10192488017465 - 7.070822239184054", "10h00 - 10h30");
+            db.InsertPlayground(this, "Parc municipale", "Martigny", "70", "46.097758806831635 - 7.073804855608614", "16h00 - 17h00");
+            db.InsertTask(this, 1, 0, "Grand trou dans le parc", "Essayer de combler le trou avec des fleures","Combler trou");
+            db.InsertTask(this, 2, 0, "Tondre le gazon", "Prendre tondeuse et faire bien attention aux arbustes","Tondre pelouse");
+            db.InsertTask(this, 1, 0, "", "Prendre rateau","nettoyer parc");
+            db.InsertTask(this, 2, 0, "arroser tout les arbres", "","arrosage");
+            db.InsertTask(this, 1, 0, "réparer les installations", "","Maintenance");
+            db.InsertTask(this, 2, 0, "peindre barrière", "couleur = brun","Peinture");
         }
 
 /*
@@ -151,7 +145,6 @@ public class LoginActivity extends AppCompatActivity {
                 String message= c.getString(0);
                 intent.putExtra("idWorker", message);
                 startActivity(intent);
-                finish();
             }
             else
             {

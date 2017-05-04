@@ -44,6 +44,7 @@ public class NewWorkerActitivy extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                add();
                 Intent intent=new Intent(NewWorkerActitivy.this, WorkerListMenuActivity.class);
                 intent.putExtra("idWorker",idWorker);
                 startActivity(intent);

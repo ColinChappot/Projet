@@ -41,4 +41,17 @@
     <string name="textPassword">Password</string>
     <string name="btnAddWorker">Add new worker</string>
     <string name="btnPlayGround">Add new playground</string>
+    <string name="Label_DetailTask">Task detail</string>
+    <string name="Label_LastUpdate">Last updates</string>
+    <string name="Label_ListPlayGround">Playground\'s list</string>
+    <string name="Label_ListWorker">Worker\'s list</string>
+    <string name="Label_NewPlayground">New Playground</string>
+    <string name="Label_NewTask">New Task</string>
+    <string name="Label_NewWorker">New Worker</string>
+    <string name="Label_Setting">Settings</string>
+    <string name="newPlaygroundCreated">New playground created</string>
+    <string name="newTaskCreated">New task create</string>
+    <string name="newWorkerCreated">New worker created</string>
+    <string name="btnTaskTerminate">Terminated</string>
+    <string name="taskUpdate">Task terminated</string>
 </resources>

@@ -33,7 +33,6 @@ public final class FeedReaderContract {
         public static final String TABLE_NAME = "task";
         public static final String COLUMN_NAME_IDPLAYGROUND = "idPlayground" ;
         public static final String COLUMN_NAME_IDWORKER = "idWorker";
-        public static final String COLUMN_NAME_IDGRAVITY = "idGravity";
         public static final String COLUMN_NAME_DESCRIPTION = "description";
         public static final String COLUMN_NAME_OBSERVATION = "observation";
         public static final String COLUMN_NAME_NAME = "name";
@@ -44,7 +43,6 @@ public final class FeedReaderContract {
     {
         public static final String TABLE_NAME = "installation";
         public static final String COLUMN_NAME_DESCRIPTION = "description";
-        public static final String COLUMN_NAME_STATE = "state";
     }
     public static abstract class Material  implements BaseColumns
     {
@@ -69,11 +67,6 @@ public final class FeedReaderContract {
         public static final String TABLE_NAME = "state";
         public static final String TABLE_NAME_IDTASK = "idTask";
         public static final String COLUMN_NAME_DESCRIPTION = "description";
-    }
-    public static abstract class Gravity  implements BaseColumns
-    {
-        public static final String TABLE_NAME= "gravity";
-        public static final String COLUMN_NAME_GRAVITYLEVEL= "GravityLevel";
     }
 
     private static final String TEXT_TYPE = " TEXT";
@@ -105,7 +98,6 @@ public final class FeedReaderContract {
                     +Task._ID + " INTEGER  PRIMARY KEY , "
                     + Task.COLUMN_NAME_IDPLAYGROUND + INT_TYPE +" NOT NULL"+COMMA_SEP
                     + Task.COLUMN_NAME_IDWORKER + INT_TYPE +" NOT NULL"+COMMA_SEP
-                    + Task.COLUMN_NAME_IDGRAVITY + INT_TYPE +" NOT NULL"+COMMA_SEP
                     + Task.COLUMN_NAME_DESCRIPTION+TEXT_TYPE+COMMA_SEP
                     + Task.COLUMN_NAME_OBSERVATION+TEXT_TYPE+COMMA_SEP
                     + Task.COLUMN_NAME_NAME+TEXT_TYPE+COMMA_SEP
@@ -117,8 +109,7 @@ public final class FeedReaderContract {
     public static final String SQL_CREAT_INSTALLATION=
             "CREATE TABLE " + Installation.TABLE_NAME + " ( "
                     +Installation._ID + " INTEGER  PRIMARY KEY , "
-                    + Installation.COLUMN_NAME_DESCRIPTION+TEXT_TYPE+COMMA_SEP
-                    + Installation.COLUMN_NAME_STATE+TEXT_TYPE+" )";
+                    + Installation.COLUMN_NAME_DESCRIPTION+TEXT_TYPE+" )";
 
     public static final String SQL_CREAT_MATERIAL=
             "CREATE TABLE " + Material.TABLE_NAME+ " ( "
@@ -143,10 +134,6 @@ public final class FeedReaderContract {
                     +State._ID + " INTEGER  PRIMARY KEY , "
                     + State.COLUMN_NAME_DESCRIPTION+TEXT_TYPE+" )";
 
-    public static final String SQL_CREAT_GRAVITY=
-            "CREATE TABLE " + Gravity.TABLE_NAME + " ( "
-                    +Gravity._ID + " INTEGER  PRIMARY KEY , "
-                    + Gravity.COLUMN_NAME_GRAVITYLEVEL+INT_TYPE+" )";
 
 
 
@@ -166,6 +153,5 @@ public final class FeedReaderContract {
             "DROP TABLE IF EXISTS" + InstallationPlaced.TABLE_NAME;
     public static final String SQL_DELETE_STATE=
             "DROP TABLE IF EXISTS" + State.TABLE_NAME;
-    public static final String SQL_DELETE_GRAVITY=
-            "DROP TABLE IF EXIsts" + Gravity.TABLE_NAME;
+
 }

@@ -24,11 +24,10 @@ public class Task {
     }
 
     //c est pour créer les infos pour une lastTask
-    public Task (String idTask, String description, String idWorker, String date){
+    public Task ( String description, String idWorker, String date){
         this.description=description;
         this.idWorker = idWorker;
         this.date=date;
-        this.idTask=idTask;
     }
 
     /*

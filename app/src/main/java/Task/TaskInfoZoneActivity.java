@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -38,6 +41,7 @@ public class TaskInfoZoneActivity extends AppCompatActivity {
     private InstallationAdapter adapter;
     private SQLiteDatabase dbR;
     private String idPlayground;
+    private Button btnAddInstallation;
 
 
     @Override
@@ -56,6 +60,7 @@ public class TaskInfoZoneActivity extends AppCompatActivity {
         txtVGPSlocation = (TextView) findViewById(R.id.txtVGPS);
         imgPlayground = (ImageView) findViewById(R.id.ImgPlayGround);
         listViewInstallation = (ListView) findViewById(R.id.listViewInstallation);
+        btnAddInstallation = (Button) findViewById(R.id.btnAddInstallation) ;
 
         dbR = new DbHelper(this).getReadableDatabase();
         Cursor c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Playground.TABLE_NAME+
@@ -84,19 +89,29 @@ public class TaskInfoZoneActivity extends AppCompatActivity {
 
 
         showInstallation();
+
+        btnAddInstallation.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                add();
+                Intent intent = new Intent(TaskInfoZoneActivity.this, TaskInfoZoneActivity.class);
+                intent.putExtra("idPlayground",idPlayground);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
     private void showInstallation(){
         ArrayList<Installation> listest = new ArrayList<>();
         dbR = new DbHelper(this).getReadableDatabase();
-        Cursor c = dbR.rawQuery("SELECT install."+ FeedReaderContract.Installation.COLUMN_NAME_DESCRIPTION+",install."+ FeedReaderContract.Installation.COLUMN_NAME_STATE+" FROM " +FeedReaderContract.Installation.TABLE_NAME +" install, "+FeedReaderContract.InstallationPlaced.TABLE_NAME+" place "+
+        Cursor c = dbR.rawQuery("SELECT install."+ FeedReaderContract.Installation.COLUMN_NAME_DESCRIPTION+" FROM " +FeedReaderContract.Installation.TABLE_NAME +" install, "+FeedReaderContract.InstallationPlaced.TABLE_NAME+" place "+
                  "where place."+ FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDPLAYGROUND+" = "+idPlayground+" and install."+ FeedReaderContract.Installation._ID+" = "+ FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDINSTALLATION, null);
         String message;
         if (c.moveToFirst())
         {
             do {
                 listest.add(new Installation(
-                      c.getString(0),
-                        c.getString(1)
+                      c.getString(0)
                 ));
 
             }while (c.moveToNext());
@@ -106,17 +121,32 @@ public class TaskInfoZoneActivity extends AppCompatActivity {
 
     }
 
-    private List<Installation> genereInstallation(){
-        List<Installation> installations = new ArrayList<>();
 
-        installations.add(new Installation("balançoire", "neuf"));
-        return installations;
-    }
+    public  void add()
+    {
+        EditText material = (EditText) findViewById(R.id.editText);
+        String message = material.getText().toString();
+        DbHelper db = new DbHelper(this);
+        SQLiteDatabase dbR = new DbHelper(this).getWritableDatabase();
 
-    private void showListInstal(){
-        List<Installation> installations = genereInstallation();
+        Cursor c = dbR.rawQuery("SELECT * FROM "+ FeedReaderContract.Installation.TABLE_NAME+"" +
+                " where "+ FeedReaderContract.Material.COLUMN_NAME_DESCRIPTION+" = '"+message+"'", null);
 
-       InstallationAdapter adapter = new InstallationAdapter(TaskInfoZoneActivity.this, installations);
-        listViewInstallation.setAdapter(adapter);
+        if(c.moveToFirst())
+        {
+            db.InsertInstallationPlaced(this,Integer.valueOf(idPlayground),c.getString(0));
+        }
+        else
+        {
+            db.InsertInstallation(this, message);
+
+            c = dbR.rawQuery("SELECT * FROM "+ FeedReaderContract.Installation.TABLE_NAME+"" +
+                    " where "+ FeedReaderContract.Material.COLUMN_NAME_DESCRIPTION+" = '"+message+"'", null);
+            if(c.moveToFirst())
+            {
+                db.InsertInstallationPlaced(this,Integer.valueOf(idPlayground),c.getString(0));
+            }
+        }
+
     }
 }

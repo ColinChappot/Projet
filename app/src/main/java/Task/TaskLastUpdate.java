@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.colin.projet.R;
 
@@ -29,12 +30,12 @@ public class TaskLastUpdate extends AppCompatActivity {
         setContentView(R.layout.activity_task_last_update);
 
         Intent intent = getIntent();
-        idPlayground = intent.getStringExtra("IdPlayGround");
+        idPlayground = intent.getStringExtra("idPlayground");
+
 
         listLastTasks = (ListView) findViewById(R.id.list_view_LastTask);
 
         showListLasTaks();
-        //showListLastTask();
     }
 
 
@@ -43,41 +44,31 @@ public class TaskLastUpdate extends AppCompatActivity {
         ArrayList<Task> listest = new ArrayList<Task>();
 
         SQLiteDatabase dbR = new DbHelper(this).getReadableDatabase();
+        Toast.makeText(getApplicationContext(), idPlayground, Toast.LENGTH_SHORT).show();
 
-        Cursor c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Task.TABLE_NAME+"" +
+        Cursor c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Task.TABLE_NAME+
                 " where "+ FeedReaderContract.Task.COLUMN_NAME_IDSTATE+" = 3 " +
                 "AND "+ FeedReaderContract.Task.COLUMN_NAME_IDPLAYGROUND+" = "+idPlayground, null);
 
+        String nomTache ;
+        String Worker;
+        String date;
 
         if (c.moveToFirst())
         {
+            nomTache = c.getString(5);
             do{
                 listest.add(new Task(
-                        c.getString(0),
-                        c.getString(4),
-                        c.getString(2),
-                        c.getString(8)
+                        c.getString(5)
                 ));
             } while (c.moveToNext());
         }
+        else
+            Toast.makeText(getApplicationContext(), "vide", Toast.LENGTH_SHORT).show();
 
         listLastTasks.setAdapter(new LastUpdateAdapter(this, listest));
     }
 
-    //méthodes qui génère liste
-    private List<Task> genereTasks(){
-        List<Task> lastTasks = new ArrayList<Task>();
-
-
-        return lastTasks ;
-    }
-
-    private void showListLastTask(){
-        List<Task> LastTasks = genereTasks();
-
-        LastUpdateAdapter  adapter = new LastUpdateAdapter(TaskLastUpdate.this, LastTasks );
-        listLastTasks.setAdapter(adapter);
-    }
     
 }
 

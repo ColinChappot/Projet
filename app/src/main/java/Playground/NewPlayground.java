@@ -6,8 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.colin.projet.R;
+
+import DB.DbHelper;
+import Worker.WorkerListMenuActivity;
 
 public class NewPlayground extends AppCompatActivity {
 
@@ -17,6 +21,7 @@ public class NewPlayground extends AppCompatActivity {
     private EditText etxtGPS;
     private EditText etxtTimtoAvoid;
     private Button btnSavePlayground;
+    private String idWorker;
 
 
 
@@ -24,6 +29,8 @@ public class NewPlayground extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_playground);
+        Intent intent = getIntent();
+        idWorker = intent.getStringExtra("idWorker");
 
         etxtTown = (EditText) findViewById(R.id.etxtTown);
         etxtPlacesName = (EditText) findViewById(R.id.etxtPlacename);
@@ -34,11 +41,22 @@ public class NewPlayground extends AppCompatActivity {
         btnSavePlayground.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(NewPlayground.this, PlayGroundListMenuActivity.class);
+
+                add();
+                Intent intent=new Intent(NewPlayground.this, WorkerListMenuActivity.class);
+                intent.putExtra("idWorker", idWorker);
                 startActivity(intent);
                 finish();
             }
         });
 
+    }
+    public void add()
+    {
+        DbHelper db = new DbHelper(this);
+
+        db.InsertPlayground(this,etxtPlacesName.getText().toString(),etxtTown.getText().toString(),etxtSurface.getText().toString(),etxtGPS.getText().toString(),etxtTimtoAvoid.getText().toString());
+
+        Toast.makeText(getApplicationContext(), this.getString(R.string.newPlaygroundCreated), Toast.LENGTH_SHORT).show();
     }
 }
