@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.colin.projet.LoginActivity;
 import com.example.colin.projet.R;
 
 public class PlayGroundSubMenuActivity extends AppCompatActivity {
@@ -15,6 +16,7 @@ public class PlayGroundSubMenuActivity extends AppCompatActivity {
     Button btnTaskTodo;
     Button btnLastUpdate;
     Button btnInfoZone;
+    String idPlayground;
 
 
         @Override
@@ -26,11 +28,15 @@ public class PlayGroundSubMenuActivity extends AppCompatActivity {
             btnLastUpdate = (Button) findViewById(R.id.btnLastUpdate);
             btnInfoZone = (Button) findViewById(R.id.btnInfoZone);
 
+            Intent intent = getIntent();
+           idPlayground = intent.getStringExtra("IdPlayGround");
+
 
             btnTaskTodo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(PlayGroundSubMenuActivity.this, Task.TaskToDoActivity.class);
+                    intent.putExtra("idPlayground",idPlayground);
                     startActivity(intent);
                     finish();
                 }
@@ -40,6 +46,7 @@ public class PlayGroundSubMenuActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(PlayGroundSubMenuActivity.this, Task.TaskLastUpdate.class);
+                    intent.putExtra("idPlayground",idPlayground);
                     startActivity(intent);
                     finish();
                 }
@@ -49,6 +56,7 @@ public class PlayGroundSubMenuActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(PlayGroundSubMenuActivity.this, Task.TaskInfoZoneActivity.class);
+                    intent.putExtra("idPlayground",idPlayground);
                     startActivity(intent);
                     finish();
                 }

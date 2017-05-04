@@ -1,5 +1,9 @@
 package Task;
 
+import android.content.Intent;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
@@ -11,8 +15,11 @@ import com.example.colin.projet.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import DB.DbHelper;
+import DB.FeedReaderContract;
 import Playground.Installation;
 import Playground.InstallationAdapter;
+import Worker.Worker;
 
 public class TaskInfoZoneActivity extends AppCompatActivity {
 
@@ -29,6 +36,8 @@ public class TaskInfoZoneActivity extends AppCompatActivity {
     private ImageView imgPlayground;
     private ListView  listViewInstallation;
     private InstallationAdapter adapter;
+    private SQLiteDatabase dbR;
+    private String idPlayground;
 
 
     @Override
@@ -36,29 +45,62 @@ public class TaskInfoZoneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_info_zone);
 
-        txtBTown = (TextView) findViewById(R.id.txtBTown);
+        Intent intent = getIntent();
+        idPlayground = intent.getStringExtra("idPlayground");
+
         txtVTown = (TextView) findViewById(R.id.txtVTown);
-        txtBPlacesName = (TextView) findViewById(R.id.txtBName);
         txtVPlacesName = (TextView) findViewById(R.id.txtVPlacesName);
-        txtBSurface = (TextView) findViewById(R.id.txtBSurface);
         txtVSurface = (TextView) findViewById(R.id.txtVSurfafce);
-        txtBTimeToAvoid = (TextView) findViewById(R.id.txtBTimeToAvoid);
         txtVTimeToAvoid = (TextView) findViewById(R.id.txtVTimeToAvoid);
         txtBGPSlocation = (TextView) findViewById(R.id.txtBGPS);
         txtVGPSlocation = (TextView) findViewById(R.id.txtVGPS);
         imgPlayground = (ImageView) findViewById(R.id.ImgPlayGround);
         listViewInstallation = (ListView) findViewById(R.id.listViewInstallation);
 
+        dbR = new DbHelper(this).getReadableDatabase();
+        Cursor c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Playground.TABLE_NAME+
+                " where "+ FeedReaderContract.Playground._ID+" = "+idPlayground, null);
+        Resources res = getResources();
+        String message;
+        if (c.moveToFirst())
+        {
+            do {
+                message=c.getString(1);
+                txtVTown.setText(message);
+                message = c.getString(2);
+                txtVPlacesName.setText(message);
+                message = c.getString(3);
+                txtVSurface.setText(message);
+                message = c.getString(4);
+                txtVTimeToAvoid.setText(message);
+                message = c.getString(5);
+                txtVGPSlocation.setText(message);
 
-    showInstallation();
+                int resID = res.getIdentifier("parc"+c.getString(0), "drawable",  TaskInfoZoneActivity.this.getPackageName());
+                imgPlayground .setImageResource(resID);
+
+            }while (c.moveToNext());
+        }
+
+
+        showInstallation();
     }
     private void showInstallation(){
-        Installation instal1 = new Installation("Tyrolliène","usé");
-        Installation instal2 = new Installation("Tobogan","defectueux");
-
         ArrayList<Installation> listest = new ArrayList<>();
-        listest.add(instal1);
-        listest.add(instal2);
+        dbR = new DbHelper(this).getReadableDatabase();
+        Cursor c = dbR.rawQuery("SELECT install."+ FeedReaderContract.Installation.COLUMN_NAME_DESCRIPTION+",install."+ FeedReaderContract.Installation.COLUMN_NAME_STATE+" FROM " +FeedReaderContract.Installation.TABLE_NAME +" install, "+FeedReaderContract.InstallationPlaced.TABLE_NAME+" place "+
+                 "where place."+ FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDPLAYGROUND+" = "+idPlayground+" and install."+ FeedReaderContract.Installation._ID+" = "+ FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDINSTALLATION, null);
+        String message;
+        if (c.moveToFirst())
+        {
+            do {
+                listest.add(new Installation(
+                      c.getString(0),
+                        c.getString(1)
+                ));
+
+            }while (c.moveToNext());
+        }
 
         listViewInstallation.setAdapter(new InstallationAdapter(this, listest));
 

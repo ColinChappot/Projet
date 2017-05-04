@@ -21,11 +21,9 @@
         android:id="@+id/txtVTown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:text="@string/txtView"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBTown" />
 
     <TextView
@@ -43,22 +41,18 @@
         android:id="@+id/txtVPlacesName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txtVPlacesName"
-        tools:text="@string/txtVPlacesName"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBName" />
 
     <TextView
         android:id="@+id/txtVSurfafce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txtVSurface"
-        tools:text="@string/txtVSurface"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBSurface" />
 
     <TextView
@@ -119,11 +113,9 @@
         android:id="@+id/txtVTimeToAvoid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:text="@string/txtVTimeToAvoid"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBTimeToAvoid" />
 
     <TextView

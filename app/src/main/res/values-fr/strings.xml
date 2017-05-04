@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Projet</string>
+    <string name="action_stwich_playground">Terrain de Jeu</string>
+    <string name="Cellphone_brute_textView">Natel</string>
+    <string name="Description_brute_textView">Description</string>
+    <string name="Firstname_brute_textView">Prénom</string>
+    <string name="Lastname_brute_textView">Nom</string>
+    <string name="NeedsMaterials_brute_textView">Matériel nécessaire</string>
+    <string name="Observation_brute_textView">Observation</string>
+    <string name="PlayGroundCityManagerLogin"></string>
+    <string name="Playground_brute_textView">Parc</string>
+    <string name="UserName">Nom d\'utilisateur</string>
+    <string name="action_settings">Options</string>
+    <string name="action_stwich_worker">Travailleur</string>
+    <string name="btnAddTask">Ajouter une tache</string>
+    <string name="btnInfoZone">Information de la zone</string>
+    <string name="btnLastUpdate">Dernière mise à jour</string>
+    <string name="btnSignIn">Se connecter</string>
+    <string name="btnTaskToDo">Tache à faire</string>
+    <string name="title_PlayGroundSubMenu_TaskToDo"></string>
+</resources>

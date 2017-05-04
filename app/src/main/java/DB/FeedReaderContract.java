@@ -18,7 +18,6 @@ public final class FeedReaderContract {
         public static final String COLUMN_NAME_SURFACE = "surface";
         public static final String COLUMN_NAME_TIMETABLETOAVOID = "timetable";
         public static final String COLUMN_NAME_GPSLOCALISATION = "GPS";
-        public static final String COLUMN_NAME_PICTURE = "picture";
     }
     public static abstract class Worker  implements BaseColumns
     {
@@ -37,7 +36,9 @@ public final class FeedReaderContract {
         public static final String COLUMN_NAME_IDGRAVITY = "idGravity";
         public static final String COLUMN_NAME_DESCRIPTION = "description";
         public static final String COLUMN_NAME_OBSERVATION = "observation";
+        public static final String COLUMN_NAME_NAME = "name";
         public static final String COLUMN_NAME_IDSTATE = "idState";
+        public static final String COLUMN_NAME_DATE = "date";
     }
     public static abstract class Installation  implements BaseColumns
     {
@@ -86,8 +87,8 @@ public final class FeedReaderContract {
                     + Playground.COLUMN_NAME_NAME +TEXT_TYPE + COMMA_SEP
                     + Playground.COLUMN_NAME_SURFACE+TEXT_TYPE+COMMA_SEP
                     + Playground.COLUMN_NAME_TIMETABLETOAVOID+TEXT_TYPE+COMMA_SEP
-                    + Playground.COLUMN_NAME_GPSLOCALISATION+TEXT_TYPE+COMMA_SEP
-                    + Playground.COLUMN_NAME_PICTURE+TEXT_TYPE+" )";
+                    + Playground.COLUMN_NAME_GPSLOCALISATION+TEXT_TYPE
+                    + " )";
 
     public static final String SQL_CREAT_WORKER=
             "CREATE TABLE " + Worker.TABLE_NAME + " ( "
@@ -98,24 +99,6 @@ public final class FeedReaderContract {
                     + Worker.COLUMN_NAME_LASTNAME+TEXT_TYPE+COMMA_SEP
                     + Worker.COLUMN_NAME_CELLPHONE+TEXT_TYPE+" )";
 
-    /*public static final String SQL_CREAT_TASK=
-            "CREATE TABLE " + Task.TABLE_NAME + " ( "
-                    +Task._ID + " INTEGER  PRIMARY KEY , "
-                    + Task.COLUMN_NAME_IDPLAYGROUND + INT_TYPE +" NOT NULL"
-                    + " FOREIGNE KEY ( "+Task.COLUMN_NAME_IDPLAYGROUND+" ) "+
-                    "References " + Playground.TABLE_NAME+ "( "+Playground._ID+" ) "+ COMMA_SEP
-                    + Task.COLUMN_NAME_IDWORKER + INT_TYPE +" NOT NULL"
-                    + " FOREIGNE KEY ( "+Task.COLUMN_NAME_IDWORKER+" ) "+
-                    "References " + Worker.TABLE_NAME+ "( "+Worker._ID+" ) "+ COMMA_SEP
-                    + Task.COLUMN_NAME_IDGRAVITY + INT_TYPE +" NOT NULL"
-                    + " FOREIGNE KEY ( "+Task.COLUMN_NAME_IDGRAVITY+" ) "+
-                    "References " + Gravity.TABLE_NAME+ "( "+Gravity._ID+" ) "+ COMMA_SEP
-                    + Task.COLUMN_NAME_DESCRIPTION+TEXT_TYPE+COMMA_SEP
-                    + Task.COLUMN_NAME_OBSERVATION+TEXT_TYPE+COMMA_SEP
-                    + Task.COLUMN_NAME_IDSTATE+INT_TYPE +"NOT NULL"
-                    + " FOREIGNE KEY ( "+Task.COLUMN_NAME_IDSTATE+" ) "+
-                    "References " + State.TABLE_NAME+ "( "+State._ID+" ) "
-                    +" )";*/
 
     public static final String SQL_CREAT_TASK=
             "CREATE TABLE " + Task.TABLE_NAME + " ( "
@@ -125,9 +108,10 @@ public final class FeedReaderContract {
                     + Task.COLUMN_NAME_IDGRAVITY + INT_TYPE +" NOT NULL"+COMMA_SEP
                     + Task.COLUMN_NAME_DESCRIPTION+TEXT_TYPE+COMMA_SEP
                     + Task.COLUMN_NAME_OBSERVATION+TEXT_TYPE+COMMA_SEP
-                    + Task.COLUMN_NAME_IDSTATE+INT_TYPE +"NOT NULL"
+                    + Task.COLUMN_NAME_NAME+TEXT_TYPE+COMMA_SEP
+                    + Task.COLUMN_NAME_IDSTATE+INT_TYPE +"NOT NULL"+COMMA_SEP
+                    + Task.COLUMN_NAME_DATE+TEXT_TYPE
                     +" )";
-
 
 
     public static final String SQL_CREAT_INSTALLATION=
@@ -141,31 +125,12 @@ public final class FeedReaderContract {
                     +Material._ID + " INTEGER  PRIMARY KEY,"
                     + Material.COLUMN_NAME_DESCRIPTION+TEXT_TYPE+" )";
 
-  /*  public static final String SQL_CREAT_INSTALLATIONPLACED=
-            "CREATE TABLE " + InstallationPlaced.TABLE_NAME+ " ( "
-                    +InstallationPlaced._ID +" INTEGER  PRIMARY KEY , "
-                    + InstallationPlaced.COLUMN_NAME_IDPLAYGROUND+ INT_TYPE +"NOT NULL"
-                    + "FOREIGNE KEY ( "+InstallationPlaced.COLUMN_NAME_IDPLAYGROUND+" ) "+
-                    "References " + Playground.TABLE_NAME+ " ( "+Playground._ID+" ) "+ COMMA_SEP
-                    + InstallationPlaced.COLUMN_NAME_IDINSTALLATION + INT_TYPE +"NOT NULL"
-                    + "FOREIGNE KEY ( "+InstallationPlaced.COLUMN_NAME_IDINSTALLATION+" ) "+
-                    "References " + Installation.TABLE_NAME+ "( "+Installation._ID+" ) "+ " )";*/
 
     public static final String SQL_CREAT_INSTALLATIONPLACED=
             "CREATE TABLE " + InstallationPlaced.TABLE_NAME+ " ( "
                     +InstallationPlaced._ID +" INTEGER  PRIMARY KEY , "
                     + InstallationPlaced.COLUMN_NAME_IDPLAYGROUND+ INT_TYPE +"NOT NULL"+ COMMA_SEP
                     + InstallationPlaced.COLUMN_NAME_IDINSTALLATION + INT_TYPE +"NOT NULL"+ " )";
-
-   /* public static final String SQL_CREAT_MATERIELNEEDED=
-            "CREATE TABLE " + MaterialNeeded.TABLE_NAME + " ( "
-                    +MaterialNeeded._ID + " INTEGER  PRIMARY KEY , "
-                    + MaterialNeeded.COLUMN_NAME_IDTASK+ INT_TYPE +"NOT NULL"
-                    + "FOREIGNE KEY ( "+MaterialNeeded.COLUMN_NAME_IDTASK+" )"+
-                    "References " + Task.TABLE_NAME+ " ( "+Task._ID+" ) "+ COMMA_SEP
-                    + MaterialNeeded.COLUMN_NAME_IDMATERIAL + INT_TYPE +" NOT NULL "
-                      + "FOREIGNE KEY ( "+MaterialNeeded.COLUMN_NAME_IDMATERIAL+" ) "+
-                    "References " + Material.TABLE_NAME+ " ( "+Material._ID+" ) "+ " )";*/
 
     public static final String SQL_CREAT_MATERIELNEEDED=
             "CREATE TABLE " + MaterialNeeded.TABLE_NAME + " ( "

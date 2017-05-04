@@ -1,6 +1,8 @@
 package Playground;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,22 +12,30 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.colin.projet.LoginActivity;
 import com.example.colin.projet.R;
 import com.example.colin.projet.Session;
+import com.example.colin.projet.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import DB.DbHelper;
+import DB.FeedReaderContract;
+import Worker.WorkerListMenuActivity;
+
 
 public class PlayGroundListMenuActivity extends ActionBarActivity {
-
     private Session session;
     private ListView listPlayGround;
     private PlayGroundAdapter adapter;
     private Button button2;
     private Toolbar toolbar;
+    private String idWorker;
+    private Cursor c;
 
     @Override
     protected  void onCreate(Bundle savedInstanceState){
@@ -39,16 +49,11 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
             logout();
         }*/
 
+        Intent intent = getIntent();
+        idWorker = intent.getStringExtra("idWorker");
+        Toast.makeText(getApplicationContext(), idWorker, Toast.LENGTH_SHORT).show();
 
         listPlayGround = (ListView) findViewById(R.id.list_view_Playground);
-//        button2 =(Button) findViewById(R.id.action_switch_worker);
-//        button2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(PlayGroundListMenuActivity.this, WorkerListMenuActivity.class);
-//                startActivity(intent);
-//            }
-//        });
 
 
         //Affiche la liste des playgrounds
@@ -71,32 +76,46 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
         //Contenant une TextView avec comme identifiant "@android:id/text1"
         // ArrayAdapter<String> adapter = new ArrayAdapter<String>(PlayGroundListMenuActivity.this, R.layout.row_playground,playGrounds);
 
-        Playground a = new Playground("a");
-        Playground b = new Playground("b");
-        ArrayList<Playground> listest = new ArrayList<Playground>();
-        listest.add(a);
-        listest.add(b);
+        final ArrayList<Playground> listest = new ArrayList<Playground>();
+
+        SQLiteDatabase dbR = new DbHelper(this).getReadableDatabase();
+
+        c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Playground.TABLE_NAME, null);
+
+
+        if (c.moveToFirst())
+        {
+           do{
+                listest.add(new Playground(
+                        c.getString(0),
+                        c.getString(2)
+                ));
+            } while (c.moveToNext());
+        }
 
         listPlayGround.setAdapter(new PlayGroundAdapter(this, listest));
         listPlayGround.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent=new Intent(PlayGroundListMenuActivity.this, PlayGroundSubMenuActivity.class);
-               // intent.putExtra("IdPlayGround", position);
+                c.moveToPosition(position);
+                intent.putExtra("IdPlayGround",c.getString(0));
                 startActivity(intent);
             }
         });
 
     }
     //méthodes qui génère liste
-    private  List<Playground> generePlayGrounds(){
+    private  List<Playground> generePlayGrounds() {
         List<Playground> playgrounds = new ArrayList<Playground>();
 
-        playgrounds.add(new Playground("Place du majeur"));
-        return playgrounds ;
+            return playgrounds;
+
     }
 
     private void showListPlayGround(){
+
+
         List<Playground> playgrounds = generePlayGrounds();
 
         PlayGroundAdapter adapter = new PlayGroundAdapter(PlayGroundListMenuActivity.this, playgrounds );
@@ -114,18 +133,18 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
 
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
-        /*
+
         if(id == R.id.action_settings){
             Intent intent = new Intent(this,SettingsActivity.class);
+             intent.putExtra("idWorker", idWorker);
             startActivity(intent);
-            return true;
         }
-        */
+
 
         if(id == R.id.action_switch_worker){
-            Intent intent = new Intent(this,Worker.WorkerListMenuActivity.class);
+            Intent intent = new Intent(PlayGroundListMenuActivity.this,WorkerListMenuActivity.class);
+            intent.putExtra("idWorker", idWorker);
             startActivity(intent);
-            return true;
         }
 
 

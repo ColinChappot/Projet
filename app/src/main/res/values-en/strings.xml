@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Projet</string>
-    <string name="action_stwich_playground">Terrain de Jeu</string>
+    <string name="action_stwich_playground">Playground</string>
+    <string name="Cellphone_brute_textView">Cellphone</string>
+    <string name="Description_brute_textView">Description</string>
+    <string name="Firstname_brute_textView">Firstname</string>
+    <string name="Lastname_brute_textView">Lastname</string>
+    <string name="NeedsMaterials_brute_textView">Needs Materials</string>
+    <string name="Observation_brute_textView">Observation</string>
+    <string name="PlayGroundName">PlayGroundName</string>
+    <string name="Playground_brute_textView">Playground</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_stwich_worker">Worker</string>
+    <string name="btnAddTask">Add Task</string>
+    <string name="btnInfoZone">Information Zone</string>
+    <string name="btnLastUpdate">Last Update</string>
+    <string name="btnSignIn">Sign in</string>
+    <string name="btnTaskToDo">Task To Do</string>
+    <string name="Login_textView">Login</string>
 </resources>
