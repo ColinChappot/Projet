@@ -65,6 +65,10 @@
         PlayGroundSubMenuBottomBarActitivy
     </string>
     <string name="material">material</string>
+    <string name="btnSaveTask">Save Task</string>
+    <string name="btnSaveWorker">Save</string>
+    <string name="NewWorker">New Worker</string>
+    <string name="btnAddWorker">Add new Worker</string>
     <string name="Worker_brute_textView">Worker</string>
 
 

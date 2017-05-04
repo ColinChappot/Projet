@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="Worker.NewWorkerActitivy">
+
+    <TextView
+        android:id="@+id/txtbFirstname"
+        android:layout_width="93dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/Firstname_brute_textView"
+        android:textColor="@color/black_overlay"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtBlastName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="@string/Firstname_brute_textView" />
+
+    <EditText
+        android:id="@+id/eTxtFirstname"
+        android:layout_width="151dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="43dp"
+        android:textColor="@color/black_overlay"
+        android:textSize="20dp"
+        tools:text="@string/"
+        tools:layout_editor_absoluteY="235dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/txtbFirstname"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/txtBlastName"
+        android:layout_width="93dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="23dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/Lastname_brute_textView"
+        android:textColor="@color/black_overlay"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtbCellPhone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="@string/Lastname_brute_textView" />
+
+    <TextView
+        android:id="@+id/txtbCellPhone"
+        android:layout_width="93dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="126dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/Cellphone_brute_textView"
+        android:textColor="@color/black_overlay"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="@string/Cellphone_brute_textView" />
+
+    <EditText
+        android:id="@+id/eTxtLastname"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:textColor="@color/black_overlay"
+        android:textSize="20dp"
+        tools:text="@string/Lastname_textView"
+        android:layout_marginEnd="43dp"
+        tools:layout_editor_absoluteY="287dp"
+        android:layout_marginRight="43dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/txtBlastName"
+        android:layout_marginLeft="8dp" />
+
+    <EditText
+        android:id="@+id/eTxtCellphone"
+        android:layout_width="153dp"
+        android:layout_height="43dp"
+        android:layout_marginRight="44dp"
+        android:textColor="@color/black_overlay"
+        android:textSize="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="@string/Cellphone_textView"
+        android:layout_marginEnd="43dp"
+        tools:layout_editor_absoluteY="349dp"
+        app:layout_constraintLeft_toRightOf="@+id/txtbCellPhone"
+        android:layout_marginLeft="8dp" />
+
+    <ImageView
+        android:id="@+id/imgWorker"
+        android:layout_width="129dp"
+        android:layout_height="130dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="41dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.502" />
+
+    <Button
+        android:id="@+id/btnSaveWorker"
+        android:layout_width="352dp"
+        android:layout_height="47dp"
+        android:text="Button"
+        tools:text="@string/btnSaveWorker"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
+
+</android.support.constraint.ConstraintLayout>
