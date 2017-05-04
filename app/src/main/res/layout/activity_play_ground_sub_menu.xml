@@ -18,12 +18,11 @@
         tools:layout_editor_absoluteY="39dp"
         tools:text="@string/PlayGroundName"
         tools:layout_editor_absoluteX="14dp"
-        android:layout_marginTop="15dp"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/btnTaskToDo"
-        android:layout_alignEnd="@+id/btnTaskToDo"
-        android:layout_alignLeft="@+id/btnInfoZone"
-        android:layout_alignStart="@+id/btnInfoZone" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/toolbar"
+        android:layout_alignEnd="@+id/toolbar" />
 
     <Button
         android:id="@+id/btnTaskToDo"
@@ -67,6 +66,18 @@
         android:layout_alignStart="@+id/btnLastUpdate"
         android:layout_alignRight="@+id/btnTaskToDo"
         android:layout_alignEnd="@+id/btnTaskToDo"></Button>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        android:layout_above="@+id/textView"
+        android:layout_alignRight="@+id/btnTaskToDo"
+        android:layout_alignEnd="@+id/btnTaskToDo"
+        android:layout_alignParentTop="true" />
 
 
 </RelativeLayout>

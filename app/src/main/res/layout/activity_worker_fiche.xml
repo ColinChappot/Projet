@@ -7,7 +7,7 @@
     tools:context="Worker.WorkerListMenuActivity">
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/txtbFirstname"
         android:layout_width="93dp"
         android:layout_height="30dp"
         android:layout_marginBottom="32dp"
@@ -16,43 +16,45 @@
         android:text="@string/Firstname_brute_textView"
         android:textColor="@color/black_overlay"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView15"
+        app:layout_constraintBottom_toTopOf="@+id/txtBlastName"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:text="@string/Firstname_brute_textView" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/txtVFirstname"
         android:layout_width="150dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginRight="43dp"
+        android:layout_marginBottom="37dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginRight="116dp"
         android:textColor="@color/black_overlay"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintBottom_toTopOf="@+id/txtVLastname"
         app:layout_constraintRight_toRightOf="parent"
-        tools:text="@string/Firstname_textView"
-        android:layout_marginEnd="43dp" />
+        tools:text="@string/Firstname_textView" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/txtBlastName"
         android:layout_width="93dp"
         android:layout_height="30dp"
         android:layout_marginBottom="23dp"
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
+        android:text="@string/Lastname_brute_textView"
         android:textColor="@color/black_overlay"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        app:layout_constraintBottom_toTopOf="@+id/txtbCellPhone"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:text="@string/Lastname_brute_textView" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/txtbCellPhone"
         android:layout_width="93dp"
         android:layout_height="30dp"
         android:layout_marginBottom="126dp"
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
+        android:text="@string/Cellphone_brute_textView"
         android:textColor="@color/black_overlay"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,45 +62,45 @@
         tools:text="@string/Cellphone_brute_textView" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/txtVLastname"
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_marginBottom="23dp"
         android:layout_marginRight="43dp"
         android:textColor="@color/black_overlay"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintBottom_toTopOf="@+id/txtVCellphone"
         app:layout_constraintRight_toRightOf="parent"
         tools:text="@string/Lastname_textView"
         android:layout_marginEnd="43dp" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/txtVCellphone"
         android:layout_width="150dp"
         android:layout_height="30dp"
-        android:layout_marginRight="43dp"
+        android:layout_marginRight="39dp"
         android:textColor="@color/black_overlay"
         android:textSize="20dp"
         app:layout_constraintRight_toRightOf="parent"
         tools:text="@string/Cellphone_textView"
         android:layout_marginEnd="43dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="126dp" />
+        android:layout_marginBottom="132dp" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgWorker"
         android:layout_width="129dp"
         android:layout_height="130dp"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:layout_marginTop="29dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontal_bias="0.502" />
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="29dp"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/textView12"
@@ -117,36 +119,25 @@
         tools:text="@string/Worker_brute_textView" />
 
     <Button
-        android:id="@+id/button7"
-        android:layout_width="62dp"
-        android:layout_height="30dp"
-        android:background="@drawable/back"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="31dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="4dp" />
-
-    <Button
-        android:id="@+id/button8"
+        android:id="@+id/btnCall"
         android:layout_width="88dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="79dp"
+        android:layout_marginStart="84dp"
         android:background="@drawable/telephone"
-        android:layout_marginLeft="84dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="84dp" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btnMessage"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:background="@drawable/message"
-        android:layout_marginRight="85dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="85dp" />
+        android:layout_marginEnd="85dp"
+        android:layout_marginRight="85dp"
+        android:background="@drawable/message"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

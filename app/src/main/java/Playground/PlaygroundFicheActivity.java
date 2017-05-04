@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import com.example.colin.projet.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlaygroundFicheActivity extends AppCompatActivity {
 
     private Button btnPreviewTask;
@@ -45,5 +48,33 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
         eTxtObservation = (EditText) findViewById(R.id.eTxtObservation);
         listViewMateriel = (ListView) findViewById(R.id.listViewMateriel);
 
+
+        showMaterial();
     }
+    private void showMaterial(){
+        Material mat1 = new Material("Pelle");
+        Material mat2 = new Material("Tondeuse");
+
+        ArrayList<Material> listest = new ArrayList<>();
+        listest.add(mat1);
+        listest.add(mat2);
+
+        listViewMateriel.setAdapter(new MaterialAdapter(this, listest));
+
+    }
+
+    private List<Material> genereMaterial(){
+        List<Material> materials = new ArrayList<>();
+
+        materials.add(new Material("Gant"));
+        return materials;
+    }
+
+    private void showMaterial2(){
+        List<Material> materials = genereMaterial();
+
+        MaterialAdapter adapter = new MaterialAdapter(PlaygroundFicheActivity.this, materials);
+        listViewMateriel.setAdapter(adapter);
+    }
+
 }

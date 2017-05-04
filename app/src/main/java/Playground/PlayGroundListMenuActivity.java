@@ -3,6 +3,9 @@ package Playground;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -15,8 +18,6 @@ import com.example.colin.projet.Session;
 import java.util.ArrayList;
 import java.util.List;
 
-import Worker.WorkerListMenuActivity;
-
 
 public class PlayGroundListMenuActivity extends ActionBarActivity {
 
@@ -24,6 +25,7 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
     private ListView listPlayGround;
     private PlayGroundAdapter adapter;
     private Button button2;
+    private Toolbar toolbar;
 
     @Override
     protected  void onCreate(Bundle savedInstanceState){
@@ -37,15 +39,16 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
             logout();
         }*/
 
+
         listPlayGround = (ListView) findViewById(R.id.list_view_Playground);
-        button2 =(Button) findViewById(R.id.button2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(PlayGroundListMenuActivity.this, WorkerListMenuActivity.class);
-                startActivity(intent);
-            }
-        });
+//        button2 =(Button) findViewById(R.id.action_switch_worker);
+//        button2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(PlayGroundListMenuActivity.this, WorkerListMenuActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
         //Affiche la liste des playgrounds
@@ -100,4 +103,32 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
         listPlayGround.setAdapter(adapter);
     }
 
+    /*
+    Méthode pour la toolbar.
+     */
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_toolbar,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        /*
+        if(id == R.id.action_settings){
+            Intent intent = new Intent(this,SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        */
+
+        if(id == R.id.action_switch_worker){
+            Intent intent = new Intent(this,Worker.WorkerListMenuActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="Playground.PlayGroundListMenuActivity">
+
+    <!--<item
+        android:id="@+id/options"
+        android:title="Options">
+        <menu>-->
+
+    <item
+        android:id="@+id/action_switch_worker"
+        android:title="@string/action_stwich_worker"
+        android:text="@string/action_stwich_worker"
+        android:orderInCategory="50"/>
+
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="@string/action_settings"
+        android:text="@string/action_settings"
+        android:orderInCategory="100"/>
+
+
+</menu>

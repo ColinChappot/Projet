@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btnTaskToDo"
+        android:text="@string/btnTaskToDo"
+        android:title="@string/btnTaskToDo" />
+
+    <item
+        android:id="@+id/btnLastUpdate"
+        android:text="@string/btnLastUpdate"
+        android:title="@string/btnLastUpdate" />
+
+    <item
+        android:id="@+id/btnInfoZone"
+        android:text="@string/btnInfoZone"
+        android:title="@string/btnInfoZone" />
+
+</menu>
