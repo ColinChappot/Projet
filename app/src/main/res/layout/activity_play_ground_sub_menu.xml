@@ -28,7 +28,7 @@
 
     <Button
         android:id="@+id/btnTaskToDo"
-        android:layout_width="358dp"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
 
         android:text="@string/btnTaskToDo"
@@ -42,7 +42,7 @@
 
     <Button
         android:id="@+id/btnLastUpdate"
-        android:layout_width="358dp"
+        android:layout_width="400dp"
         android:layout_height="40dp"
         android:text="@string/btnLastUpdate"
         tools:layout_editor_absoluteX="1dp"
@@ -51,9 +51,7 @@
         android:layout_marginTop="61dp"
         android:layout_below="@+id/btnTaskToDo"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"></Button>
+        android:layout_alignParentStart="true"></Button>
 
 
     <Button
@@ -63,14 +61,14 @@
         android:elevation="0dp"
         android:text="@string/btnInfoZone"
         tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="383dp"
+        tools:layout_editor_absoluteY="400dp"
         tools:text="@string/btnInfoZone"
         android:layout_marginTop="65dp"
         android:layout_below="@+id/btnLastUpdate"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/btnTaskToDo"
-        android:layout_alignEnd="@+id/btnTaskToDo"></Button>
+        android:layout_alignEnd="@+id/btnTaskToDo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></Button>
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
