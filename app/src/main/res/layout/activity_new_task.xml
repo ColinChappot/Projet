@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,8 +17,11 @@
         android:textColor="@color/black_overlay"
         android:textSize="30dp"
         tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="3dp"
         tools:text="@string/Playground_brute_textView"
-        tools:layout_editor_absoluteY="3dp" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/txtVTaskName"
@@ -30,7 +33,10 @@
         android:textSize="20dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="85dp"
-        tools:text="@string/TaskName" />
+        tools:text="@string/TaskName"
+        android:layout_above="@+id/eTextTaskName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/eTextTaskName"
@@ -40,7 +46,11 @@
         android:inputType="textPersonName"
         android:text="Name"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="109dp" />
+        tools:layout_editor_absoluteY="109dp"
+        android:layout_marginBottom="21dp"
+        android:layout_above="@+id/txtBDescritpion"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
     <TextView
@@ -53,7 +63,10 @@
         android:textSize="20dp"
         tools:text="@string/Description_brute_textView"
         tools:layout_editor_absoluteY="172dp"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_above="@+id/eTxtDescription"
+        android:layout_alignLeft="@+id/eTxtDescription"
+        android:layout_alignStart="@+id/eTxtDescription" />
 
     <EditText
         android:id="@+id/eTxtDescription"
@@ -64,7 +77,10 @@
         android:inputType="textMultiLine"
         android:selectAllOnFocus="false"
         tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="196dp" />
+        tools:layout_editor_absoluteY="196dp"
+        android:layout_above="@+id/txtBObservation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:id="@+id/txtBObservation"
@@ -77,7 +93,11 @@
         android:textSize="20dp"
         tools:text="@string/Observation_brute_textView"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="321dp" />
+        tools:layout_editor_absoluteY="321dp"
+        android:layout_marginBottom="7dp"
+        android:layout_above="@+id/eTxtObservation"
+        android:layout_alignLeft="@+id/eTxtDescription"
+        android:layout_alignStart="@+id/eTxtDescription" />
 
     <EditText
         android:id="@+id/eTxtObservation"
@@ -87,7 +107,11 @@
         android:ems="10"
         android:inputType="textMultiLine"
         tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="353dp" />
+        tools:layout_editor_absoluteY="353dp"
+        android:layout_above="@+id/btnSaveTask"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="23dp" />
 
 
     <Button
@@ -97,7 +121,13 @@
         android:text="@string/save"
         tools:layout_editor_absoluteX="13dp"
         tools:layout_editor_absoluteY="446dp"
-        tools:text="@string/save" />
+        tools:text="@string/save"
+        android:layout_marginBottom="14dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/eTxtDescription"
+        android:layout_alignEnd="@+id/eTxtDescription"
+        android:layout_alignLeft="@+id/txtBObservation"
+        android:layout_alignStart="@+id/txtBObservation" />
 
 
-</android.support.v7.widget.LinearLayoutCompat>
+</RelativeLayout>
