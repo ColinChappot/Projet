@@ -167,17 +167,6 @@ public class DbHelper extends SQLiteOpenHelper {
         value.put(FeedReaderContract.Task.COLUMN_NAME_DATE, "");
 
         db.insert(FeedReaderContract.Task.TABLE_NAME, null,value);
-
-        SQLiteDatabase dbR = new DbHelper(context).getReadableDatabase();
-        int id=0;
-        Cursor c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Task.TABLE_NAME + " ORDER BY "+FeedReaderContract.Task._ID+" DESC LIMIT 1" , null);
-        if (c.moveToFirst())
-        {
-            id = Integer.valueOf(c.getString(0));
-        }
-
-
-        InsertMaterialNeeded(context,id,material);
     }
 
     public void UpdateTask(Context context,int Id, int playground, int worker, int gravity, String description, String observation, String name, int state, ArrayList material)
@@ -237,18 +226,17 @@ public class DbHelper extends SQLiteOpenHelper {
         db.insert(FeedReaderContract.Material.TABLE_NAME, null,value);
     }
 
-    public void InsertMaterialNeeded(Context context, int task, ArrayList<String> material)
+    public void InsertMaterialNeeded(Context context, String task, String materiel)
     {
         DbHelper mDbHelper = new DbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
         ContentValues value = new ContentValues();
 
-        for (int i =0; i<material.size();i++)
-        {
+
             value.put(FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDTASK, task);
-            value.put(FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDMATERIAL, material.get(i));
+            value.put(FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDMATERIAL, materiel);
             db.insert(FeedReaderContract.Material.TABLE_NAME, null,value);
-        }
+
     }
 
     public void InsertState(Context context, String description)

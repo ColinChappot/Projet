@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
             }
             else
             {
-                Toast.makeText(getApplicationContext(), "Wrong username/password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), this.getString(R.string.LoginProblem), Toast.LENGTH_SHORT).show();
             }
 
 

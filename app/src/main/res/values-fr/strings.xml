@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Projet</string>
-    <string name="action_stwich_playground">Terrain de Jeu</string>
+    <string name="action_stwich_playground">Parc</string>
     <string name="Cellphone_brute_textView">Natel</string>
     <string name="Description_brute_textView">Description</string>
     <string name="Firstname_brute_textView">Prénom</string>
     <string name="Lastname_brute_textView">Nom</string>
     <string name="NeedsMaterials_brute_textView">Matériel nécessaire</string>
     <string name="Observation_brute_textView">Observation</string>
-    <string name="PlayGroundCityManagerLogin"></string>
     <string name="Playground_brute_textView">Parc</string>
     <string name="UserName">Nom d\'utilisateur</string>
     <string name="action_settings">Options</string>
     <string name="action_stwich_worker">Travailleur</string>
-    <string name="btnAddTask">Ajouter une tache</string>
+    <string name="btnAddTask">Ajouter une tâche</string>
     <string name="btnInfoZone">Information de la zone</string>
     <string name="btnLastUpdate">Dernière mise à jour</string>
     <string name="btnSignIn">Se connecter</string>
     <string name="btnTaskToDo">Tache à faire</string>
-    <string name="title_PlayGroundSubMenu_TaskToDo"></string>
+    <string name="Login_textView">S\'identifier</string>
+    <string name="PlayGroundCityManagerLogin">PlayGround City Manager Login</string>
+    <string name="PlayGroundName">Nom du parc</string>
+    <string name="Worker_brute_textView">Travailleur</string>
+    <string name="installation">Installation</string>
+    <string name="material">Matériel</string>
+    <string name="txtbTown">Ville</string>
+    <string name="txtBTimeToAvoid">Horaire à éviter</string>
+    <string name="txtBSurface">Surface</string>
+    <string name="txtBName">Nom du parc</string>
+    <string name="txtBInstallation">Installations</string>
+    <string name="txtBGPS">localisation GPS</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Accueil</string>
+    <string name="LoginProblem">Mauvais identifiant ou mot de passe</string>
+    <string name="save">Sauver</string>
+    <string name="settingsSaved">Options sauvées</string>
+    <string name="TaskModified">Tâche modifiée</string>
+    <string name="NewPlayground">Nouveau parc</string>
+    <string name="NewWorker">Nouveau travailleur</string>
+    <string name="TaskName">Nom de la tâche</string>
 </resources>

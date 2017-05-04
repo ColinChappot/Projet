@@ -94,10 +94,10 @@
         android:id="@+id/btnSaveTask"
         android:layout_width="338dp"
         android:layout_height="46dp"
-        android:text="@string/btnSaveTask2"
+        android:text="@string/save"
         tools:layout_editor_absoluteX="13dp"
         tools:layout_editor_absoluteY="446dp"
-        tools:text="@string/btnSaveTask2" />
+        tools:text="@string/save" />
 
 
 </android.support.v7.widget.LinearLayoutCompat>

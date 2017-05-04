@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.colin.projet.R;
 
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import DB.DbHelper;
 import DB.FeedReaderContract;
+import Worker.Worker;
 import Worker.WorkerFicheActivity;
 
 public class PlaygroundFicheActivity extends AppCompatActivity {
@@ -45,19 +47,11 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
         btnSave = (Button) findViewById(R.id.btnSave);
         txtVPlayGroundName = (TextView) findViewById(R.id.txtVLogin);
         txtTask = (TextView) findViewById((R.id.txtTask));
-        txtBDescription = (TextView) findViewById((R.id.txtBDescritpion));
-        txtBObservation = (TextView) findViewById((R.id.txtBObservation));
-        txtBNeedMaterials = (TextView) findViewById((R.id.txtBDescritpion));
-        eTxtDescription = (EditText) findViewById(R.id.eTxtDescription);
-        eTxtObservation = (EditText) findViewById(R.id.eTxtObservation);
         listViewMateriel = (ListView) findViewById(R.id.listViewMateriel);
-
-
-        showMaterial();
-
 
         Intent intent = getIntent();
         idTask = intent.getStringExtra("idTask");
+
 
         btnSave = (Button) findViewById(R.id.btnAddTask);
 /*        btnSave.setOnClickListener(new View.OnClickListener() {
@@ -99,14 +93,28 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
             editText = (EditText) findViewById(R.id.eTxtObservation);
             editText.setText(message);
         }
+
+        showMaterial();
     }
     private void showMaterial(){
-        Material mat1 = new Material("Pelle");
-        Material mat2 = new Material("Tondeuse");
+
 
         ArrayList<Material> listest = new ArrayList<>();
-        listest.add(mat1);
-        listest.add(mat2);
+
+        SQLiteDatabase dbR= new DbHelper(this).getReadableDatabase();
+
+        Cursor c = dbR.rawQuery("SELECT * FROM "+ FeedReaderContract.Material.TABLE_NAME+" material , "+ FeedReaderContract.MaterialNeeded.TABLE_NAME+
+                " need where material."+ FeedReaderContract.Material._ID+" = need."+ FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDMATERIAL+"" +
+                " and need."+ FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDTASK+" = "+idTask, null);
+
+        if (c.moveToFirst())
+        {
+            do {
+                listest.add(new Material(
+                       c.getString(1)
+                ));
+            }while (c.moveToNext());
+        }
 
         listViewMateriel.setAdapter(new MaterialAdapter(this, listest));
 
@@ -135,9 +143,33 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
 
         String strSQL = "UPDATE task SET (description,observation) = ('"+descritpion+"','"+observation+"') WHERE "+ FeedReaderContract.Task._ID+" = "+idTask ;
         db.execSQL(strSQL);
+        Toast.makeText(getApplicationContext(), this.getString(R.string.TaskModified), Toast.LENGTH_SHORT).show();
+    }
+    public  void add()
+    {
+        EditText material = (EditText) findViewById(R.id.addMaterial);
+        String message = material.getText().toString();
+        DbHelper db = new DbHelper(this);
+        SQLiteDatabase dbR = new DbHelper(this).getWritableDatabase();
+
+        Cursor c = dbR.rawQuery("SELECT * FROM "+ FeedReaderContract.Material.TABLE_NAME+"" +
+                " where "+ FeedReaderContract.Material.COLUMN_NAME_DESCRIPTION+" = '"+message+"'", null);
+
+        if(c.moveToFirst())
+        {
+            db.InsertMaterialNeeded(this,idTask,c.getString(0));
+        }
+        else
+        {
+            db.InsertMaterial(this, message);
+
+            c = dbR.rawQuery("SELECT * FROM "+ FeedReaderContract.Material.TABLE_NAME+"" +
+                    " where "+ FeedReaderContract.Material.COLUMN_NAME_DESCRIPTION+" = '"+message+"'", null);
+            c.moveToFirst();
+            db.InsertMaterialNeeded(this,idTask,c.getString(0));
+        }
+
     }
 
-    /*  c = dbR.rawQuery("SELECT * FROM "+ FeedReaderContract.Material.TABLE_NAME+" material , "+ FeedReaderContract.MaterialNeeded.TABLE_NAME+
-                " need where material."+ FeedReaderContract.Material._ID+" = need."+ FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDMATERIAL+"" +
-            " and need."+ FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDTASK+" = "+idTask, null);*/
+
 }
