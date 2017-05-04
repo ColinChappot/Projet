@@ -10,7 +10,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/Playground_brute_textView"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -21,22 +21,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--Playground-->
+        <!-- Playground -->
         <activity android:name="Playground.PlayGroundListMenuActivity" />
         <activity
             android:name="Playground.PlayGroundSubMenuActivity"
             android:label="@string/title_activity_play_ground_sub_menu"
             android:theme="@style/AppTheme" />
-        <activity android:name="Playground.PlaygroundFicheActivity"/>
+        <activity android:name="Playground.PlaygroundFicheActivity" />
 
-        <!--Worker-->
-        <activity android:name="Worker.WorkerListMenuActivity" />
+        <!-- Worker -->
+        <activity android:name="Worker.WorkerListMenuActivity"
+            android:label="@string/Worker_brute_textView" />
         <activity android:name="Worker.WorkerFicheActivity" />
 
-        <!--Task-->
+        <!-- Task -->
         <activity android:name="Task.TaskToDoActivity" />
         <activity android:name="Task.TaskLastUpdate" />
-        <activity android:name="Task.TaskInfoZoneActivity"></activity>
+        <activity android:name="Task.TaskInfoZoneActivity" />
+
+        <!-- <activity android:name=".TestToolbar"></activity> -->
+        <activity
+            android:name=".PlayGroundSubMenuBottomBarActitivy"
+            android:label="@string/title_activity_play_ground_sub_menu_bottom_bar_actitivy"></activity>
     </application>
 
 </manifest>

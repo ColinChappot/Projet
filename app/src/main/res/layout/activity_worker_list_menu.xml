@@ -1,48 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.colin.projet.LoginActivity">
+    tools:context="com.example.colin.projet.LoginActivity"
+    android:weightSum="1">
 
-
-    <Button
-        android:id="@+id/btnSwitchPlayGround"
-        android:layout_width="347dp"
-        android:layout_height="41dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="6dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/action_stwich_playground"
-        tools:text="@string/action_stwich_playground" />
-
-    <android.support.v7.widget.SearchView
-            android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:clickable="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp" />
 
     <ListView
         android:id="@+id/list_view_worker"
         android:layout_width="match_parent"
         android:layout_height="483dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/avatar"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:textColor="@android:color/black"
         android:textStyle="bold"
         tools:layout_editor_absoluteY="63dp"
-        tools:text="PlayGround" />
+        tools:text="PlayGround"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-</LinearLayout>
+</RelativeLayout>
 

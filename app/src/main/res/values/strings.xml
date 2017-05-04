@@ -74,6 +74,14 @@
     <string name="txtBGPS">GPS location</string>
     <string name="txtVGPS">txtVGPS</string>
     <string name="installation">installation</string>
+    <string name="title_activity_test2">test2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_play_ground_sub_menu_bottom_bar_actitivy">
+        PlayGroundSubMenuBottomBarActitivy
+    </string>
+    <string name="material">material</string>
 
 
 </resources>
