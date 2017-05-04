@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+
 
     <application
         android:allowBackup="true"
@@ -30,7 +33,8 @@
             android:name="Playground.PlayGroundSubMenuActivity"
             android:label="@string/title_activity_play_ground_sub_menu"
             android:theme="@style/AppTheme" />
-        <activity android:name="Playground.PlaygroundFicheActivity" />
+        <activity android:name="Playground.PlaygroundFicheActivity"
+            android:label="@string/Worker_brute_textView"/>
         <activity
             android:name="Playground.NewPlayground"
             android:label="@string/NewPlayground" />

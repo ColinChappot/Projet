@@ -1,14 +1,17 @@
 package com.example.colin.projet;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,8 +19,8 @@ import java.util.ArrayList;
 import DB.DbHelper;
 import DB.FeedReaderContract;
 import Playground.PlayGroundListMenuActivity;
-import Worker.WorkerFicheActivity;
-import Worker.WorkerListMenuActivity;
+
+import static android.os.Build.VERSION_CODES.M;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -108,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 */
+        checkPermissions();
     }
 
    /* //Méthode pour le lilstener du boutton sign in
@@ -151,10 +155,38 @@ public class LoginActivity extends AppCompatActivity {
             }
             else
             {
-                Toast.makeText(getApplicationContext(), this.getString(R.string.LoginProblem), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Wrong username/password", Toast.LENGTH_SHORT).show();
             }
 
 
+    }
+
+    private void checkPermissions(){
+        int PERMISSION_ALL = 1;
+
+
+        //List of all the permissions needed by the app
+        String[] permissions = new String[]{
+                Manifest.permission.GET_ACCOUNTS,
+                Manifest.permission.READ_CONTACTS,
+                Manifest.permission.CALL_PHONE};
+
+
+        if(!hasPermissions(this, permissions)){
+            ActivityCompat.requestPermissions(this, permissions, PERMISSION_ALL);
+        }
+    }
+
+
+    private static boolean hasPermissions(Context context, String... permissions) {
+        if (android.os.Build.VERSION.SDK_INT >= M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
 
