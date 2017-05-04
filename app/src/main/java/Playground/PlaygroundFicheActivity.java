@@ -58,7 +58,7 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
         btnSave = (Button) findViewById(R.id.btnAddTask);
 /*        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
