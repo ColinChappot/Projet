@@ -54,4 +54,5 @@
     <string name="newWorkerCreated">Neue Arbeiter erstellt</string>
     <string name="btnTaskTerminate">Beendet</string>
     <string name="taskUpdate">Aufgabe beendet</string>
+    <string name="workerDelete">Arbeiter gelöscht</string>
 </resources>

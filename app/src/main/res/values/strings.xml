@@ -81,6 +81,7 @@
     <string name="NewWorker">NewWorker</string>
     <string name="btnTaskTerminate">Terminated</string>
     <string name="taskUpdate">Task terminated</string>
+    <string name="workerDelete">Worker deleted</string>
 
 
 </resources>

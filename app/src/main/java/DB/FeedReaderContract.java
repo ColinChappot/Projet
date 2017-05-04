@@ -2,9 +2,7 @@ package DB;
 
 import android.provider.BaseColumns;
 
-/**
- * Created by Colin on 11.04.2017.
- */
+//Toutes les tables de la base de donée
 
 public final class FeedReaderContract {
 
@@ -135,7 +133,7 @@ public final class FeedReaderContract {
                     + State.COLUMN_NAME_DESCRIPTION+TEXT_TYPE+" )";
 
 
-
+    //Toute les drop de table
 
     public static final String SQL_DELETE_PLAYGROUND=
             "DROP TABLE IF EXISTS" + Playground.TABLE_NAME;

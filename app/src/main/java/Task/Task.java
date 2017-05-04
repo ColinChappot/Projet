@@ -9,14 +9,10 @@ public class Task {
     Declaration variables
      */
 
-    private int idPlayground ;
-    private String idWorker;
-    private int idGravity;
+
     private String description;
-    private String observation;
-    private int idState;
+
     private String date;
-    private String idTask;
 
     /*
     Constructor
@@ -25,8 +21,10 @@ public class Task {
         this.description = description;
     }
 
-    //c est pour créer les infos pour une lastTask
-    public Task ( String description,  String date){
+    /*
+    Constructor
+     */
+    public Task ( String description, String date){
         this.description=description;
         this.date=date;
     }
