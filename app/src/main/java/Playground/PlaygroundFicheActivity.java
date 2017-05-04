@@ -1,7 +1,6 @@
 package Playground;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -17,15 +16,14 @@ import com.example.colin.projet.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import DB.DbHelper;
 import DB.FeedReaderContract;
-import Worker.Worker;
-import Worker.WorkerFicheActivity;
+import Task.TaskToDoActivity;
 
 public class PlaygroundFicheActivity extends AppCompatActivity {
 
-    private Button btnPreviewTask;
-    private Button btnNextTask;
+
     private Button btnAddMateriel;
     private Button btnSave;
     private TextView txtVPlayGroundName;
@@ -37,6 +35,7 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
     private EditText eTxtObservation;
     private ListView listViewMateriel;
     private String idTask;
+    private Button btnTerminated;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +47,18 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
         txtVPlayGroundName = (TextView) findViewById(R.id.txtVLogin);
         txtTask = (TextView) findViewById((R.id.txtTask));
         listViewMateriel = (ListView) findViewById(R.id.listViewMateriel);
-
+        btnTerminated = (Button) findViewById(R.id.btnTerminate);
         Intent intent = getIntent();
         idTask = intent.getStringExtra("idTask");
 
-
+        btnTerminated.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(PlaygroundFicheActivity.this, TaskToDoActivity.class);
+                startActivity(intent);
+            }
+        });
+        
         btnSave = (Button) findViewById(R.id.btnAddTask);
 /*        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
