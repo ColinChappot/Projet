@@ -63,7 +63,7 @@
     <string name="TaskModified">Task modified</string>
     <string name="settingsSaved">Settings saved</string>
     <string name="save">Save</string>
-    <string name="btnPlayGround" translatable="false">Add New PlayGround</string>
+
     <string name="Label_NewPlayground">New Playground</string>
     <string name="btnPlayGround">Add new PlayGround</string>
     <string name="NewPlayground">New Playground</string>
@@ -78,6 +78,7 @@
     <string name="Label_ListPlayGround">Playground\'s list</string>
     <string name="title_Application">PLAYGROUND MANAGER</string>
     <string name="newWorkerCreated">New worker created</string>
+    <string name="btnTaskTerminate">Terminated</string>
 
 
 </resources>
