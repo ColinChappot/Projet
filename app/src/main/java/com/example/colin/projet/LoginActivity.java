@@ -82,6 +82,10 @@ public class LoginActivity extends AppCompatActivity {
             db.InsertMaterial(this, "perceuse");
             db.InsertMaterial(this, "visseuse");
             db.InsertMaterial(this, "autre");
+            db.InsertMaterialNeeded(this,"1","1");
+            db.InsertMaterialNeeded(this,"2","1");
+            db.InsertMaterialNeeded(this,"3","1");
+            db.InsertMaterialNeeded(this,"4","1");
             db.InsertState(this, "libre");
             db.InsertState(this, "en cours");
             db.InsertState(this, "terminer");
