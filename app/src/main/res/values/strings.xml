@@ -2,25 +2,12 @@
     <string name="app_name">Projet</string>
 
     <!--LoginActivity-->
-    <string name="txtVLogin">Login</string>
     <string name="textVUserName">User Name</string>
     <string name="textPassword">Password</string>
-    <string name="edTxtUserName">prenom.nom</string>
-    <string name="edTxtPassword" />
     <string name="btnSignIn">Sign in</string>
     <string name="title_activity_login">LoginActivity</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."
-    </string>
 
     <string name="title_activity_play_ground_menu">PlayGroundMenu</string>
 
@@ -37,22 +24,15 @@
 
 
     <!-- String Task-->
-    <string name="Description_editText">Entrer une description</string>
-    <string name="Observation_editText">Entrer une Observation</string>
     <string name="Playground_brute_textView">Playground</string>
-    <string name="Task_brute_textView">Task</string>
     <string name="Description_brute_textView">Description</string>
     <string name="Observation_brute_textView">Observation</string>
     <string name="NeedsMaterials_brute_textView">Needs Materials</string>
 
     <!-- String Worker -->
-    <string name="Firstname_textView">Fname</string>
-    <string name="Lastname_textView">Lname</string>
-    <string name="Cellphone_textView">Cphone</string>
     <string name="Firstname_brute_textView">Firstname</string>
     <string name="Lastname_brute_textView">Lastname</string>
     <string name="Cellphone_brute_textView">Cellphone</string>
-    <string name="Worker_brute_textView">Worker</string>
     <string name="taskDescription">taskDescription</string>
 
 
@@ -62,6 +42,9 @@
     <string name="btnInfoZone">Information Zone</string>
     <string name="btnAddTask">Add Task</string>
     <string name="taskLastUpdate">taskLastUpdate</string>
+    <string name="UserName">User Name</string>
+    <string name="PlayGroundCityManagerLogin">PlayGround City Manager Login</string>
+    <string name="Login_textView">Login</string>
     <string name="txtbTown">Town</string>
     <string name="txtView">TownName</string>
     <string name="txtBName">Place\'s name</string>

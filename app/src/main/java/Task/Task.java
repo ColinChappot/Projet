@@ -10,12 +10,13 @@ public class Task {
      */
 
     private int idPlayground ;
-    private int idWorker;
+    private String idWorker;
     private int idGravity;
     private String description;
     private String observation;
     private int idState;
     private String date;
+    private String idTask;
 
     //pour créer les infos d'une simple tache
     public Task(String description){
@@ -23,16 +24,17 @@ public class Task {
     }
 
     //c est pour créer les infos pour une lastTask
-    public Task (String description, int idWorker, String date){
+    public Task (String idTask, String description, String idWorker, String date){
         this.description=description;
         this.idWorker = idWorker;
         this.date=date;
+        this.idTask=idTask;
     }
 
     /*
     Constructeur de la classe
      */
-    public Task(int idPlayground, int idWorker, int idGravity, String description, String observation, int idState, String date ){
+    public Task(int idPlayground, String idWorker, int idGravity, String description, String observation, int idState, String date ){
         this.idPlayground=idPlayground;
         this.idWorker=idWorker;
         this.idGravity=idGravity;

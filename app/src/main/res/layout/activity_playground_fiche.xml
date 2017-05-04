@@ -35,6 +35,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:text="@string/Description_brute_textView"
         android:textAlignment="center"
         android:textColor="@color/black_overlay"
         android:textSize="20dp"
@@ -51,6 +52,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:text="@string/Observation_brute_textView"
         android:textAlignment="center"
         android:textColor="@color/black_overlay"
         android:textSize="20dp"
@@ -64,21 +66,22 @@
 
     <TextView
         android:id="@+id/txtBNeedMaterial"
-        android:layout_width="184dp"
-        android:layout_height="20dp"
+        android:layout_width="183dp"
+        android:layout_height="24dp"
         android:layout_marginBottom="110dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="6dp"
+        android:text="@string/NeedsMaterials_brute_textView"
         android:textAlignment="center"
         android:textColor="@color/black_overlay"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.978"
+        app:layout_constraintVertical_bias="0.983"
         tools:text="@string/NeedsMaterials_brute_textView" />
 
     <TextView
@@ -113,58 +116,17 @@
         android:id="@+id/btnAddMatriel"
         android:layout_width="46dp"
         android:layout_height="29dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="110dp"
         android:layout_marginEnd="7dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="7dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintHorizontal_bias="0.965"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteX="322dp" />
+        app:layout_constraintRight_toRightOf="parent" />
 
-    <Button
-        android:id="@+id/btnNextTask"
-        android:layout_width="48dp"
-        android:layout_height="23dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/droite"
-        app:layout_constraintLeft_toRightOf="@+id/txtTask"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnPreviewTask"
-        android:layout_width="48dp"
-        android:layout_height="23dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/gauche"
-        app:layout_constraintRight_toLeftOf="@+id/txtTask"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="90dp" />
-
-
-    <ListView
-        android:id="@+id/listViewMateriel"
-        android:layout_width="361dp"
-        android:layout_height="94dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtBNeedMaterial"
-        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/eTxtDescription"
@@ -173,7 +135,6 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/lightblue"
         android:ems="10"
-        android:hint="@string/Description_editText"
         android:inputType="textMultiLine"
         android:selectAllOnFocus="false"
         app:layout_constraintTop_toBottomOf="@+id/txtBDescritpion"
@@ -186,9 +147,24 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/lightblue"
         android:ems="10"
-        android:hint="@string/Observation_editText"
         android:inputType="textMultiLine"
         app:layout_constraintTop_toBottomOf="@+id/txtBObservation"
         tools:layout_editor_absoluteX="1dp" />
+
+    <ListView
+        android:id="@+id/listViewMateriel"
+        android:layout_width="282dp"
+        android:layout_height="101dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

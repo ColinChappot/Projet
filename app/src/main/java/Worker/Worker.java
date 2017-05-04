@@ -13,26 +13,26 @@ public class Worker {
     private String  firstname;
     private String  lastname;
     private String phone;
-    private Image image;
+    private String idWorker;
 
 
 
-    public Worker ( String firstname, String lastname){
+    public Worker (String idWorker,String firstname, String lastname){
         this.firstname=firstname;
         this.lastname=lastname;
     }
 
 
-    public Worker ( String login, String password, String firstname, String lastname, String phone, Image image){
+    public Worker ( String login, String password, String firstname, String lastname, String phone){
         this.login = login;
         this.password=password;
         this.firstname=firstname;
         this.lastname=lastname;
         this.phone =phone;
-        this.image = image;
     }
 
     public String getName(){
         return firstname + " " + lastname ;
     }
+    public String getID(){return idWorker;}
 }

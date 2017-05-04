@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Projet</string>
-    <string name="Cellphone_brute_textView"></string>
+    <string name="Cellphone_brute_textView">Handy</string>
+    <string name="Description_brute_textView">Beschreibung</string>
+    <string name="Firstname_brute_textView"></string>
 </resources>

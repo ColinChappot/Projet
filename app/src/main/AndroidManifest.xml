@@ -30,19 +30,14 @@
         <activity android:name="Playground.PlaygroundFicheActivity" />
 
         <!-- Worker -->
-        <activity android:name="Worker.WorkerListMenuActivity"
-            android:label="@string/Worker_brute_textView" />
+        <activity android:name="Worker.WorkerListMenuActivity" />
         <activity android:name="Worker.WorkerFicheActivity" />
 
         <!-- Task -->
         <activity android:name="Task.TaskToDoActivity" />
         <activity android:name="Task.TaskLastUpdate" />
         <activity android:name="Task.TaskInfoZoneActivity" />
-
-        <!-- <activity android:name=".TestToolbar"></activity> -->
-        <activity
-            android:name=".PlayGroundSubMenuBottomBarActitivy"
-            android:label="@string/title_activity_play_ground_sub_menu_bottom_bar_actitivy"></activity>
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>

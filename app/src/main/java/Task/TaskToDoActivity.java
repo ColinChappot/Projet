@@ -1,30 +1,44 @@
 package Task;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.colin.projet.LoginActivity;
 import com.example.colin.projet.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import DB.DbHelper;
+import DB.FeedReaderContract;
+import Playground.Playground;
 import Playground.PlaygroundFicheActivity;
+import Worker.WorkerFicheActivity;
+import Worker.WorkerListMenuActivity;
 
 public class TaskToDoActivity extends AppCompatActivity {
 
     private ListView listTasks;
     private TaskToDoAdapter adapter;
     private Button btnAddTask;
+    private String idPlayground;
+    private Cursor c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_to_do);
+
+        Intent intent = getIntent();
+        idPlayground = intent.getStringExtra("idPlayground");
 
         listTasks = (ListView) findViewById(R.id.list_view_Task);
         btnAddTask = (Button) findViewById(R.id.btnAddTask);
@@ -36,26 +50,38 @@ public class TaskToDoActivity extends AppCompatActivity {
             }
         });
 
-
         showListTask();
         //showListtask2();
     }
 
     private void showListTask(){
-        Task t1 = new Task("Tache1");
-        Task t2 = new Task ("Tache2");
 
         ArrayList<Task> listest = new ArrayList<Task>();
-        listest.add(t1);
-        listest.add(t2);
+
+        SQLiteDatabase dbR = new DbHelper(this).getReadableDatabase();
+
+        c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Task.TABLE_NAME+
+                " where "+FeedReaderContract.Task.COLUMN_NAME_IDPLAYGROUND+" = '"+idPlayground+"'", null);
+
+
+        if (c.moveToFirst())
+        {
+            do{
+                listest.add(new Task(
+                        c.getString(6)
+                ));
+            } while (c.moveToNext());
+        }
 
         listTasks.setAdapter(new TaskToDoAdapter(this, listest));
         listTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent=new Intent(TaskToDoActivity.this, PlaygroundFicheActivity.class);
-               // intent.putExtra("IdPlayground", position);
+                c.moveToPosition(position);
+                intent.putExtra("idTask",c.getString(0));
                 startActivity(intent);
+                Toast.makeText(getApplicationContext(), c.getString(0), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -69,6 +95,7 @@ public class TaskToDoActivity extends AppCompatActivity {
 
         Tasks.add(new Task("tache Générée"));
         return Tasks;
+
     }
 
     /*
