@@ -58,7 +58,9 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(PlayGroundListMenuActivity.this, NewPlayground.class);
+                intent.putExtra("idWorker",idWorker);
                 startActivity(intent);
+                finish();
             }
         });
 

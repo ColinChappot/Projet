@@ -56,29 +56,31 @@
     </string>
     <string name="material">material</string>
     <string name="Label_NewWorker">New Worker</string>
-    <string name="btnAddWorker" translatable="false">Add new Worker</string>
+    <string name="btnAddWorker">Add new Worker</string>
     <string name="Worker_brute_textView">Worker</string>
     <string name="btnInfoZone">Area information</string>
     <string name="LoginProblem">Wrong login or password</string>
     <string name="TaskModified">Task modified</string>
     <string name="settingsSaved">Settings saved</string>
     <string name="save">Save</string>
-
+    <string name="btnPlayGround">Add New PlayGround</string>
     <string name="Label_NewPlayground">New Playground</string>
-    <string name="btnPlayGround">Add new PlayGround</string>
     <string name="NewPlayground">New Playground</string>
     <string name="TaskName">Task Name</string>
-    <string name="Label_title_Application">PLAYGROUND MANAGER</string>
+    <string name="Label_title_Application" translatable="false">PLAYGROUND MANAGER</string>
     <string name="Label_NewTask">New Task</string>
     <string name="Label_Setting">Settings</string>
     <string name="Label_LastUpdate">Last updates</string>
-    <string name="Label_TaskTODO">TasK to do</string>
     <string name="Label_ListWorker">Worker\'s list</string>
     <string name="Label_DetailTask">Task Detail</string>
     <string name="Label_ListPlayGround">Playground\'s list</string>
-    <string name="title_Application">PLAYGROUND MANAGER</string>
+    <string name="title_Application" translatable="false">PLAYGROUND MANAGER</string>
     <string name="newWorkerCreated">New worker created</string>
+    <string name="newPlaygroundCreated">New playground created</string>
+    <string name="newTaskCreated">New task created</string>
+    <string name="NewWorker">NewWorker</string>
     <string name="btnTaskTerminate">Terminated</string>
+    <string name="taskUpdate">Task terminated</string>
 
 
 </resources>

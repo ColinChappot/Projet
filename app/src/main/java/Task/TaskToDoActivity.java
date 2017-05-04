@@ -35,19 +35,20 @@ public class TaskToDoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         idPlayground = intent.getStringExtra("idPlayground");
-
+        Toast.makeText(getApplicationContext(), idPlayground, Toast.LENGTH_SHORT).show();
         listTasks = (ListView) findViewById(R.id.list_view_Task);
         btnAddTask = (Button) findViewById(R.id.btnAddTask);
         btnAddTask.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(TaskToDoActivity.this, NewTask.class);
+                intent.putExtra("idPlayground",idPlayground);
                 startActivity(intent);
+                finish();
             }
         });
 
         showListTask();
-        //showListtask2();
     }
 
     private void showListTask(){
@@ -57,17 +58,19 @@ public class TaskToDoActivity extends AppCompatActivity {
         SQLiteDatabase dbR = new DbHelper(this).getReadableDatabase();
 
         c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Task.TABLE_NAME+
-                " where "+FeedReaderContract.Task.COLUMN_NAME_IDPLAYGROUND+" = '"+idPlayground+"'", null);
-
+                " where "+FeedReaderContract.Task.COLUMN_NAME_IDPLAYGROUND+" = "+idPlayground+
+                " And "+ FeedReaderContract.Task.COLUMN_NAME_IDSTATE+" = 1", null);
 
         if (c.moveToFirst())
         {
             do{
                 listest.add(new Task(
-                        c.getString(6)
+                        c.getString(5)
                 ));
             } while (c.moveToNext());
         }
+        else
+            Toast.makeText(getApplicationContext(), idPlayground, Toast.LENGTH_SHORT).show();
 
         listTasks.setAdapter(new TaskToDoAdapter(this, listest));
         listTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -77,31 +80,10 @@ public class TaskToDoActivity extends AppCompatActivity {
                 c.moveToPosition(position);
                 intent.putExtra("idTask",c.getString(0));
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), c.getString(0), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), idPlayground, Toast.LENGTH_SHORT).show();
             }
         });
 
-    }
-
-    /*
-   Méthode  genereWorkers : génère la liste
-    */
-    private List<Task> generetaks(){
-        List<Task> Tasks = new ArrayList<>();
-
-        Tasks.add(new Task("tache Générée"));
-        return Tasks;
-
-    }
-
-    /*
-    Méthodes shoListWorker:
-     */
-    private void showListtask2(){
-        List<Task> tasks = generetaks();
-
-        TaskToDoAdapter adapter = new TaskToDoAdapter(TaskToDoActivity.this, tasks );
-        listTasks.setAdapter(adapter);
     }
 
 

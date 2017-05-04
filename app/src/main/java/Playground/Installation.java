@@ -7,12 +7,10 @@ package Playground;
 public class Installation {
 
     private String description;
-    private String state;
 
-    public Installation(String description,String state){
+    public Installation(String description){
 
         this.description=description;
-        this.state = state;
     }
 
     public String getDescripition(){

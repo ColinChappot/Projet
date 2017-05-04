@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.colin.projet.LoginActivity;
 import com.example.colin.projet.R;
@@ -36,6 +37,7 @@ public class PlayGroundSubMenuActivity extends AppCompatActivity {
 
             Intent intent = getIntent();
            idPlayground = intent.getStringExtra("IdPlayGround");
+            Toast.makeText(getApplicationContext(), idPlayground, Toast.LENGTH_SHORT).show();
 
             SQLiteDatabase dbR = new DbHelper(this).getWritableDatabase();
 

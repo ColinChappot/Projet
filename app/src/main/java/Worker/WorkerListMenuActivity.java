@@ -48,6 +48,7 @@ public class WorkerListMenuActivity extends AppCompatActivity {
                 Intent intent=new Intent(WorkerListMenuActivity.this, NewWorkerActitivy.class);
                 intent.putExtra("idWorker",idWorker);
                 startActivity(intent);
+                finish();
             }
         });
 

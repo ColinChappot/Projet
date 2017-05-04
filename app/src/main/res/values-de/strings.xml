@@ -41,4 +41,17 @@
     <string name="btnAddWorker">Neue Arbeiter hizufügen</string>
     <string name="textPassword">Passwort</string>
     <string name="btnPlayGround">Neuen Park hizufügen</string>
+    <string name="Label_DetailTask">Aufagebe Detail</string>
+    <string name="Label_LastUpdate">letztes Update</string>
+    <string name="Label_ListPlayGround">Parks Liste</string>
+    <string name="Label_ListWorker">Arbeiterliste</string>
+    <string name="Label_NewPlayground">Neuer park</string>
+    <string name="Label_NewTask">Neue Aufgabe</string>
+    <string name="Label_NewWorker">Neuer Arbeiter</string>
+    <string name="Label_Setting">Einstellungen</string>
+    <string name="newPlaygroundCreated">Neuer Spielplatz geschaffen</string>
+    <string name="newTaskCreated">Neue Aufgabe geschaffen</string>
+    <string name="newWorkerCreated">Neue Arbeiter erstellt</string>
+    <string name="btnTaskTerminate">Beendet</string>
+    <string name="taskUpdate">Aufgabe beendet</string>
 </resources>

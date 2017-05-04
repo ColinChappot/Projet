@@ -12,18 +12,17 @@
         android:id="@+id/txtVPlayGroundName"
         android:layout_width="354dp"
         android:layout_height="57dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@drawable/grey"
         android:textAlignment="center"
         android:textColor="@color/black_overlay"
         android:textSize="30dp"
         tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="3dp"
-        tools:text="@string/Playground_brute_textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        tools:layout_editor_absoluteY="3dp" />
 
     <TextView
         android:id="@+id/txtVTaskName"
@@ -44,15 +43,14 @@
         android:id="@+id/eTextTaskName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="109dp"
-        android:layout_marginBottom="21dp"
         android:layout_above="@+id/txtBDescritpion"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="21dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="109dp" />
 
 
     <TextView

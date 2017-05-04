@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,15 +27,10 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
 
     private Button btnAddMateriel;
     private Button btnSave;
-    private TextView txtVPlayGroundName;
-    private TextView txtTask;
-    private TextView txtBDescription;
-    private TextView txtBObservation;
-    private TextView txtBNeedMaterials;
-    private EditText eTxtDescription;
-    private EditText eTxtObservation;
+
     private ListView listViewMateriel;
     private String idTask;
+    private String idPlayground;
     private Button btnTerminated;
 
     @Override
@@ -44,49 +40,73 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
 
         btnAddMateriel = (Button) findViewById(R.id.btnAddMatriel);
         btnSave = (Button) findViewById(R.id.btnSave);
-        txtVPlayGroundName = (TextView) findViewById(R.id.txtVLogin);
-        txtTask = (TextView) findViewById((R.id.txtTask));
         listViewMateriel = (ListView) findViewById(R.id.listViewMateriel);
         btnTerminated = (Button) findViewById(R.id.btnTerminate);
         Intent intent = getIntent();
         idTask = intent.getStringExtra("idTask");
 
-        btnTerminated.setOnClickListener( new View.OnClickListener(){
+        SQLiteDatabase dbR = new DbHelper(this).getWritableDatabase();
+
+        Cursor c = dbR.rawQuery("SELECT idPlayground FROM " + FeedReaderContract.Task.TABLE_NAME + "" +
+                " where " + FeedReaderContract.Task._ID + " = " + idTask, null);
+
+        if (c.moveToFirst()) {
+            idPlayground = c.getString(0);
+        }
+
+
+
+
+
+      btnTerminated.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(PlaygroundFicheActivity.this, TaskToDoActivity.class);
+                terminate();
+                Intent intent=new Intent(PlaygroundFicheActivity.this,PlayGroundListMenuActivity.class);
+                intent.putExtra("idPlayground",idPlayground);
                 startActivity(intent);
+                finish();
+            }
+        });
+        btnSave.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+               save();
+                Intent intent=new Intent(PlaygroundFicheActivity.this, PlaygroundFicheActivity.class);
+                intent.putExtra("idTask",idTask);
+                startActivity(intent);
+                finish();
+            }
+        });
+        btnAddMateriel.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                add();
+                Intent intent=new Intent(PlaygroundFicheActivity.this, PlaygroundFicheActivity.class);
+                intent.putExtra("idTask",idTask);
+                startActivity(intent);
+                finish();
             }
         });
 
-        btnSave = (Button) findViewById(R.id.btnAddTask);
-/*        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            save();
-            }
-        });*/
-        SQLiteDatabase dbR= new DbHelper(this).getReadableDatabase();
-
-        Cursor c = dbR.rawQuery("SELECT idPlayground FROM " + FeedReaderContract.Task.TABLE_NAME+
-                " task where task."+FeedReaderContract.Task._ID+" = "+idTask, null);
+        c = dbR.rawQuery("SELECT idPlayground FROM " + FeedReaderContract.Task.TABLE_NAME +
+                " task where task." + FeedReaderContract.Task._ID + " = " + idTask, null);
 
         String message = "";
         c.moveToFirst();
         String idPlayground = c.getString(0);
 
 
-
-         c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Playground.TABLE_NAME+
-                " playground where playground."+FeedReaderContract.Playground._ID+" = "+idPlayground, null);
+        c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Playground.TABLE_NAME +
+                " playground where playground." + FeedReaderContract.Playground._ID + " = " + idPlayground, null);
 
         if (c.moveToFirst()) {
             message = c.getString(2);
             TextView textView = (TextView) findViewById(R.id.txtVPlayGroundName);
             textView.setText(message);
         }
-         c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Task.TABLE_NAME+" where "+FeedReaderContract.Task._ID+" = "+idTask, null);
+        c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Task.TABLE_NAME + " where " + FeedReaderContract.Task._ID + " = " + idTask, null);
 
         if (c.moveToFirst()) {
             message = c.getString(0);
@@ -102,6 +122,10 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
 
         showMaterial();
     }
+
+
+
+
     private void showMaterial(){
 
 
@@ -121,6 +145,8 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
                 ));
             }while (c.moveToNext());
         }
+        else
+            Toast.makeText(getApplicationContext(), "MEEEERDDE", Toast.LENGTH_SHORT).show();
 
         listViewMateriel.setAdapter(new MaterialAdapter(this, listest));
 
@@ -142,12 +168,12 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
 
     public void save()
     {
-        EditText descritpion = (EditText) findViewById(R.id.txtBDescritpion);
-        EditText observation = (EditText) findViewById(R.id.txtBObservation);
+        EditText descritpion = (EditText) findViewById(R.id.eTxtDescription);
+        EditText observation = (EditText) findViewById(R.id.eTxtObservation);
 
         SQLiteDatabase db = new DbHelper(this).getWritableDatabase();
 
-        String strSQL = "UPDATE task SET (description,observation) = ('"+descritpion+"','"+observation+"') WHERE "+ FeedReaderContract.Task._ID+" = "+idTask ;
+        String strSQL = "UPDATE task SET description = '"+descritpion.getText().toString()+"' , observation = '"+observation.getText().toString()+"' WHERE "+ FeedReaderContract.Task._ID+" = "+idTask ;
         db.execSQL(strSQL);
         Toast.makeText(getApplicationContext(), this.getString(R.string.TaskModified), Toast.LENGTH_SHORT).show();
     }
@@ -175,6 +201,14 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
             db.InsertMaterialNeeded(this,idTask,c.getString(0));
         }
 
+    }
+    public void terminate()
+    {
+        SQLiteDatabase db = new DbHelper(this).getWritableDatabase();
+
+        String strSQL = "UPDATE task SET idState = 3 where "+ FeedReaderContract.Task._ID+" = "+idTask;
+        db.execSQL(strSQL);
+        Toast.makeText(getApplicationContext(), idTask, Toast.LENGTH_SHORT).show();
     }
 
 

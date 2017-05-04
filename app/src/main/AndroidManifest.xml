@@ -52,7 +52,7 @@
 
         <!-- Task -->
         <activity android:name="Task.TaskToDoActivity"
-            android:label="@string/Label_TaskTODO"/>/>
+            android:label="@string/title_PlayGroundSubMenu_TaskToDo"/>/>
         <activity android:name="Task.TaskLastUpdate"
             android:label="@string/Label_LastUpdate"/>
         <activity android:name="Task.TaskInfoZoneActivity" />

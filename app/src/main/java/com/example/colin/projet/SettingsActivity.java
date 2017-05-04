@@ -135,6 +135,7 @@ public class SettingsActivity extends AppCompatActivity {
         intent.putExtra("idWorker",idWorker);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
 
     }
     public void changeToDE(Resources res, View v)
@@ -153,6 +154,7 @@ public class SettingsActivity extends AppCompatActivity {
         intent.putExtra("idWorker",idWorker);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
     public void changeToEN(Resources res, View v)
     {
@@ -170,6 +172,7 @@ public class SettingsActivity extends AppCompatActivity {
         intent.putExtra("idWorker",idWorker);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
 
     }
 }
