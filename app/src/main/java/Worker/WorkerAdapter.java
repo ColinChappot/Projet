@@ -13,19 +13,20 @@ import com.example.colin.projet.R;
 
 import java.util.List;
 
-/**
- * Created by uadmin on 30.04.2017.
- */
 
 public class
 WorkerAdapter extends ArrayAdapter<Worker> {
 
+    /*
+    Déclaration des variables
+     */
     public WorkerAdapter(Context context, List<Worker> playgrounds){
         super(context, 0, playgrounds);
     }
 
-
-
+     /*
+     Création des adapters pour les listView, cela prend une row et cela la définit comme model pour chaque ligne de la listView
+      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
@@ -48,6 +49,9 @@ WorkerAdapter extends ArrayAdapter<Worker> {
         return convertView;
     }
 
+    /*
+    Tag Worker
+     */
     private class WorkerViewHoldder{
         public TextView namePG;
     }

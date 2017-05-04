@@ -18,7 +18,9 @@ public class Task {
     private String date;
     private String idTask;
 
-    //pour créer les infos d'une simple tache
+    /*
+    Constructor
+     */
     public Task(String description){
         this.description = description;
     }
@@ -29,36 +31,9 @@ public class Task {
         this.date=date;
     }
 
-    /*
-    Constructeur de la classe
-     */
-    public Task(int idPlayground, String idWorker, int idGravity, String description, String observation, int idState, String date ){
-        this.idPlayground=idPlayground;
-        this.idWorker=idWorker;
-        this.idGravity=idGravity;
-        this.description=description;
-        this.observation=observation;
-        this.idState=idState;
-        this.date=date;
-    }
-
-    public void setTaskDescription(String description){
-        this.description = description;
-    }
-
     public String getTaskDescription(){
         return  description;
     }
-    public String getTaskObservation(){
-        return this.observation;
-    }
-
-    public String getTaskDate(){
-        return this.date;
-    }
-
-
-
 
     public String getLastTask(){
         return this.description + " - " + this.date;

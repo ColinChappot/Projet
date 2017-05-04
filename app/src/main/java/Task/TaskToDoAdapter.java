@@ -24,6 +24,9 @@ public class TaskToDoAdapter extends ArrayAdapter<Task> {
         super(context,0,tasks);
     }
 
+    /*
+     Création des adapters pour les listView, cela prend une row et cela la définit comme model pour chaque ligne de la listView
+      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         if(convertView == null){

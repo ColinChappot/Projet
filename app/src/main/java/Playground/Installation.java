@@ -6,13 +6,21 @@ package Playground;
 
 public class Installation {
 
+    /*
+    Declaration des variables
+     */
     private String description;
 
-    public Installation(String description){
+    /*
+    Constructeur
+     */
 
-        this.description=description;
+    public Installation(String description) {
+        this.description = description;
     }
-
+    /*
+    Méthode getDestcription retourne la description de l'installation
+     */
     public String getDescripition(){
         return this.description;
     }

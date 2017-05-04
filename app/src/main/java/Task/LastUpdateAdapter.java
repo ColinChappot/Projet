@@ -23,6 +23,10 @@ public class LastUpdateAdapter extends ArrayAdapter {
         super(context,0,lastTaks);
     }
 
+
+    /*
+     Création des adapters pour les listView, cela prend une row et cela la définit comme model pour chaque ligne de la listView
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup  parent){
 

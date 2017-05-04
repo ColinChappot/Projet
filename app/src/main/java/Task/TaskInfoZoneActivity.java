@@ -16,13 +16,11 @@ import android.widget.TextView;
 import com.example.colin.projet.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import DB.DbHelper;
 import DB.FeedReaderContract;
 import Playground.Installation;
 import Playground.InstallationAdapter;
-import Worker.Worker;
 
 public class TaskInfoZoneActivity extends AppCompatActivity {
 

@@ -15,6 +15,9 @@ import Worker.WorkerListMenuActivity;
 
 public class NewPlayground extends AppCompatActivity {
 
+    /*
+    Declaration des variables
+     */
     private EditText etxtTown;
     private EditText etxtPlacesName;
     private EditText etxtSurface;
@@ -24,7 +27,9 @@ public class NewPlayground extends AppCompatActivity {
     private String idWorker;
 
 
-
+    /*
+    Méthode on create charge l'actitivité
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

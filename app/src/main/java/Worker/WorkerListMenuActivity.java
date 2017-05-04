@@ -26,6 +26,9 @@ import Playground.PlayGroundListMenuActivity;
 
 public class WorkerListMenuActivity extends AppCompatActivity {
 
+    /*
+    Déclaration des variables
+     */
     private Session session;
     private ListView listWorker;
     private Button btnAddNewWorker;
@@ -34,6 +37,9 @@ public class WorkerListMenuActivity extends AppCompatActivity {
     private List<Worker> workers ;
     private Cursor c;
 
+    /*
+    Méthodes onCreate lie le java
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

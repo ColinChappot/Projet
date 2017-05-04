@@ -11,19 +11,22 @@ import android.widget.Toast;
 import com.example.colin.projet.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import DB.DbHelper;
 import DB.FeedReaderContract;
-import Playground.Playground;
 
 public class TaskLastUpdate extends AppCompatActivity {
 
+    /*
+    Constructor
+     */
     private ListView listLastTasks;
     private LastUpdateAdapter adapter;
     private String idPlayground;
 
-
+    /*
+    Méthode de liaison du java au layout
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,9 @@ public class TaskLastUpdate extends AppCompatActivity {
         showListLasTaks();
     }
 
-
+    /*
+    Méhtdo showLIstLasTaks affiche  la listView de l'activtié LastUpdate
+     */
     private void showListLasTaks(){
 
         ArrayList<Task> listest = new ArrayList<Task>();
