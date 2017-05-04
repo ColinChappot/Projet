@@ -2,20 +2,64 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.colin.projet">
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/Playground_brute_textView"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity"
+            android:label="@string/Label_title_Application">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Playground -->
+        <activity
+            android:name="Playground.PlayGroundListMenuActivity"
+            android:label="@string/Label_ListPlayGround" />
+        <activity
+            android:name="Playground.PlayGroundSubMenuActivity"
+            android:label="@string/title_activity_play_ground_sub_menu"
+            android:theme="@style/AppTheme" />
+        <activity android:name="Playground.PlaygroundFicheActivity"
+            android:label="@string/Label_DetailTask"/>
+        <activity
+            android:name="Playground.NewPlayground"
+            android:label="@string/NewPlayground" />
+
+        <!-- Worker -->
+        <activity
+            android:name="Worker.WorkerListMenuActivity"
+            android:label="@string/Label_ListWorker" />
+        <activity android:name="Worker.WorkerFicheActivity"
+            android:label="@string/Worker_brute_textView"/>
+        <activity
+            android:name="Worker.NewWorkerActitivy"
+            android:label="@string/NewWorker" />
+
+        <!-- Task -->
+        <activity android:name="Task.TaskToDoActivity"
+            android:label="@string/title_PlayGroundSubMenu_TaskToDo"/>/>
+        <activity android:name="Task.TaskLastUpdate"
+            android:label="@string/Label_LastUpdate"/>
+        <activity android:name="Task.TaskInfoZoneActivity" />
+        <activity android:name=".SettingsActivity"
+            android:label="@string/Label_Setting"/>
+        <activity android:name="Task.NewTask"
+            android:label="@string/Label_NewTask"></activity>
     </application>
 
 </manifest>

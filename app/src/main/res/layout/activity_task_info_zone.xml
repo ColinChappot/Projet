@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="Task.TaskInfoZoneActivity">
+
+    <TextView
+        android:id="@+id/txtBTown"
+        android:layout_width="104dp"
+        android:layout_height="20dp"
+        android:text="@string/txtbTown"
+        tools:text="@string/txtbTown"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/txtVTown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBTown" />
+
+    <TextView
+        android:id="@+id/txtBName"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="107dp"
+        android:layout_height="19dp"
+        android:text="@string/txtBName"
+        tools:text="@string/txtBName"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="14dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtVTown" />
+
+    <TextView
+        android:id="@+id/txtVPlacesName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBName" />
+
+    <TextView
+        android:id="@+id/txtVSurfafce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBSurface" />
+
+    <TextView
+        android:id="@+id/txtBSurface"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="105dp"
+        android:layout_height="17dp"
+        android:text="@string/txtBSurface"
+        tools:text="@string/txtBSurface"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="22dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtVPlacesName" />
+
+    <ImageView
+        android:id="@+id/ImgPlayGround"
+        android:layout_width="172dp"
+        android:layout_height="185dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="31dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/txtBTimeToAvoid"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="109dp"
+        android:layout_height="18dp"
+        android:text="@string/txtBTimeToAvoid"
+        tools:text="@string/txtBTimeToAvoid"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="14dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtVSurfafce" />
+
+    <TextView
+        android:id="@+id/txtVGPS"
+        android:layout_width="269dp"
+        android:layout_height="33dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBGPS" />
+
+    <TextView
+        android:id="@+id/txtBGPS"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="103dp"
+        android:layout_height="19dp"
+        android:text="@string/txtBGPS"
+        tools:text="@string/txtBGPS"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="13dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtVTimeToAvoid" />
+
+    <TextView
+        android:id="@+id/txtVTimeToAvoid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBTimeToAvoid" />
+
+    <TextView
+        android:id="@+id/txtBInstallation"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="323dp"
+        android:layout_height="27dp"
+        android:text="@string/txtBInstallation"
+        tools:text="@string/txtBInstallation"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtVGPS" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="245dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtBInstallation"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/btnAddInstallation"
+        android:layout_marginLeft="8dp" />
+
+    <Button
+        android:id="@+id/btnAddInstallation"
+        android:layout_width="63dp"
+        android:layout_height="44dp"
+        android:background="@drawable/add"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtBInstallation"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <ListView
+        android:id="@+id/listViewInstallation"
+        android:layout_width="335dp"
+        android:layout_height="105dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="16dp" />
+</android.support.constraint.ConstraintLayout>

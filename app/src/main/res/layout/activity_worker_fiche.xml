@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="Worker.WorkerListMenuActivity">
+
+    <TextView
+        android:id="@+id/txtbFirstname"
+        android:layout_width="93dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/Firstname_brute_textView"
+        android:textColor="@color/black_overlay"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtBlastName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="@string/Firstname_brute_textView" />
+
+    <TextView
+        android:id="@+id/txtVFirstname"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="31dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginRight="43dp"
+        android:textColor="@color/black_overlay"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtVLastname"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/txtBlastName"
+        android:layout_width="93dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="23dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/Lastname_brute_textView"
+        android:textColor="@color/black_overlay"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtbCellPhone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="@string/Lastname_brute_textView" />
+
+    <TextView
+        android:id="@+id/txtbCellPhone"
+        android:layout_width="93dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="105dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/Cellphone_brute_textView"
+        android:textColor="@color/black_overlay"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="@string/Cellphone_brute_textView" />
+
+    <TextView
+        android:id="@+id/txtVLastname"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="23dp"
+        android:layout_marginRight="43dp"
+        android:textColor="@color/black_overlay"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtVCellphone"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="@string/Lastname_brute_textView"
+        android:layout_marginEnd="43dp" />
+
+    <TextView
+        android:id="@+id/txtVCellphone"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:textColor="@color/black_overlay"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="104dp"
+        android:layout_marginRight="43dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgWorker"
+        android:layout_width="129dp"
+        android:layout_height="130dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="49dp"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/grey"
+        android:text="@string/Worker_brute_textView"
+        android:textAlignment="center"
+        android:textColor="@color/black_overlay"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp"
+        tools:text="@string/Worker_brute_textView" />
+
+    <Button
+        android:id="@+id/btnCall"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="101dp"
+        android:layout_marginStart="84dp"
+        android:background="@drawable/telephone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.214" />
+
+    <Button
+        android:id="@+id/btnDeleteWorker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/ic_menu_delete"
+        tools:layout_editor_absoluteX="270dp"
+        tools:layout_editor_absoluteY="41dp" />
+
+</android.support.constraint.ConstraintLayout>
