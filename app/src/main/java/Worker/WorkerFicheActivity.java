@@ -53,10 +53,6 @@ public class WorkerFicheActivity extends AppCompatActivity {
         imgWorker = (ImageView) findViewById((R.id.imgWorker));
 
 
-        getIntent().getIntExtra("IdWorker", 0);//Ligne pour sélectionner le bon worker
-
-
-
 
         SQLiteDatabase dbR= new DbHelper(this).getReadableDatabase();
 
@@ -69,18 +65,18 @@ public class WorkerFicheActivity extends AppCompatActivity {
 
         if (c.moveToFirst()) {
             message = c.getString(3);
-            TextView  textView = (TextView) findViewById(R.id.textView14);
+            TextView  textView = (TextView) findViewById(R.id.txtVFirstname);
             textView.setText(message);
             message = c.getString(4);
-            textView = (TextView) findViewById(R.id.textView10);
+            textView = (TextView) findViewById(R.id.txtVLastname);
             textView.setText(message);
             message = c.getString(5);
-            textView = (TextView) findViewById(R.id.textView11);
+            textView = (TextView) findViewById(R.id.txtVCellphone);
             textView.setText(message);
 
            int resID = res.getIdentifier("worker"+c.getString(0), "drawable",  WorkerFicheActivity.this.getPackageName());
 
-            ImageView imageView = (ImageView) findViewById(R.id.imageView);
+            ImageView imageView = (ImageView) findViewById(R.id.imgWorker);
             imageView.setImageResource(resID);
         }
     }

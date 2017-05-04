@@ -20,6 +20,7 @@ public class Worker {
     public Worker (String idWorker,String firstname, String lastname){
         this.firstname=firstname;
         this.lastname=lastname;
+        this.idWorker=idWorker;
     }
 
 
@@ -34,5 +35,4 @@ public class Worker {
     public String getName(){
         return firstname + " " + lastname ;
     }
-    public String getID(){return idWorker;}
 }

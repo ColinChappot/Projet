@@ -54,16 +54,6 @@ public class WorkerListMenuActivity extends AppCompatActivity {
         }*/
         listWorker = (ListView) findViewById(R.id.list_view_worker);
 
-//
-//        btnSwitchPlayGround = (Button) findViewById(R.id.btnSwitchPlayGround);
-//
-//        btnSwitchPlayGround.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(WorkerListMenuActivity.this, PlayGroundListMenuActivity.class);
-//                startActivity(intent);
-//            }
-//        });
 
         //affiche la liste des workers
         workers = genereWorkers();
@@ -126,16 +116,6 @@ public class WorkerListMenuActivity extends AppCompatActivity {
 
     }
 
-    /*
-    Méthodes shoListWorker:
-     */
-    private void showListWorker2(){
-        List<Worker> workers = genereWorkers();
-
-        WorkerAdapter adapter = new WorkerAdapter(WorkerListMenuActivity.this, workers );
-        listWorker.setAdapter(adapter);
-    }
-
       /*
     Méthode pour la toolbar.
      */
@@ -156,8 +136,8 @@ public class WorkerListMenuActivity extends AppCompatActivity {
         }
 
 
-        if(id == R.id.action_switch_worker){
-            Intent intent = new Intent(this,WorkerListMenuActivity.class);
+        if(id == R.id.btnSwitchPlayGround){
+            Intent intent = new Intent(this,PlayGroundListMenuActivity.class);
             intent.putExtra("idWorker",idWorker);
             startActivity(intent);
             return true;
