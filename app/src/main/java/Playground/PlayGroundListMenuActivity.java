@@ -5,19 +5,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.colin.projet.LoginActivity;
 import com.example.colin.projet.R;
-import com.example.colin.projet.Session;
 import com.example.colin.projet.SettingsActivity;
 
 import java.util.ArrayList;
@@ -29,25 +24,24 @@ import Worker.WorkerListMenuActivity;
 
 
 public class PlayGroundListMenuActivity extends ActionBarActivity {
-    private Session session;
+
+    /*
+    Declaration des variables
+     */
     private ListView listPlayGround;
     private PlayGroundAdapter adapter;
     private Button btnAddPlayGround;
-    private Toolbar toolbar;
     private String idWorker;
     private Cursor c;
 
+    /*
+    Méthodes onCreat charge l'activité
+     */
     @Override
     protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_play_ground_list_menu);
-
-        //A décommenter quand on pourra utilisez le login avec la BD
-        /*session = new Session(this);
-        if(!session.loggedIn()){
-            logout();
-        }*/
 
         Intent intent = getIntent();
         idWorker = intent.getStringExtra("idWorker");
@@ -65,25 +59,14 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
         });
 
 
-        //Affiche la liste des playgrounds
-        //showListPlayGround();
        showListPlayGroundName();
 
     }
 
-
-    //méthode qui renvoie à la page login si la sessin n'est pas logée
-    private void logout(){
-        session.setLoggedIn(false);
-        finish();
-        startActivity(new Intent(PlayGroundListMenuActivity.this, LoginActivity.class));
-    }
-
-    //méthode qui affiche la liste
+    /*
+    Méthode qui affiche la liste de playground
+     */
     private void showListPlayGroundName(){
-        //android.R.layout.simple_list_item_1 est une vue disponible de base dans le SDK android,
-        //Contenant une TextView avec comme identifiant "@android:id/text1"
-        // ArrayAdapter<String> adapter = new ArrayAdapter<String>(PlayGroundListMenuActivity.this, R.layout.row_playground,playGrounds);
 
         final ArrayList<Playground> listest = new ArrayList<Playground>();
 
@@ -114,6 +97,7 @@ public class PlayGroundListMenuActivity extends ActionBarActivity {
         });
 
     }
+
     //méthodes qui génère liste
     private  List<Playground> generePlayGrounds() {
         List<Playground> playgrounds = new ArrayList<Playground>();

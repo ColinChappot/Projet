@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.example.colin.projet.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import DB.DbHelper;
 import DB.FeedReaderContract;
@@ -22,12 +21,19 @@ import Playground.PlaygroundFicheActivity;
 
 public class TaskToDoActivity extends AppCompatActivity {
 
+    /*
+    Déclaration des variables
+     */
     private ListView listTasks;
     private TaskToDoAdapter adapter;
     private Button btnAddTask;
     private String idPlayground;
     private Cursor c;
 
+
+    /*
+    Méthode de liaison de la classe java et du layout activity_task_todo et lance l'activité
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +57,9 @@ public class TaskToDoActivity extends AppCompatActivity {
         showListTask();
     }
 
+    /*
+    Méthode showlistTask affiche la listView et récupère les données dedans
+     */
     private void showListTask(){
 
         ArrayList<Task> listest = new ArrayList<Task>();

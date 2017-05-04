@@ -17,12 +17,16 @@ import java.util.List;
 
 public class PlayGroundAdapter extends ArrayAdapter<Playground> {
 
+    /*
+   Constructeur
+    */
     public PlayGroundAdapter(Context context, List<Playground> playgrounds){
         super(context, 0, playgrounds);
     }
 
-
-
+    /*
+    Création des adapters pour les listView, cela prend une row et cela la définit comme model pour chaque ligne de la listView
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
@@ -45,6 +49,9 @@ public class PlayGroundAdapter extends ArrayAdapter<Playground> {
         return convertView;
     }
 
+    /*
+  Création du conteneur du tag
+   */
     private class PlayGroundViewHoldder{
         public TextView namePG;
     }

@@ -25,6 +25,9 @@ import DB.FeedReaderContract;
 
 public class WorkerFicheActivity extends AppCompatActivity {
 
+    /*
+    Déclaration des variables
+     */
     private TextView txtBFirstName;
     private TextView txtVFirstName;
     private TextView txtBLastName;
@@ -33,8 +36,8 @@ public class WorkerFicheActivity extends AppCompatActivity {
     private TextView txtVCellPhone;
     private Button btnCall;
     private ImageView imgWorker;
-
-    String idWorker;
+    private String idWorker;
+    private Button btnDeleteWorker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,16 +47,21 @@ public class WorkerFicheActivity extends AppCompatActivity {
         Intent intent = getIntent();
         idWorker = intent.getStringExtra("idWorker");
         Toast.makeText(getApplicationContext(), idWorker, Toast.LENGTH_SHORT).show();
-
         String message = "";
-
-
         btnCall = (Button) findViewById(R.id.btnCall);
         imgWorker = (ImageView) findViewById((R.id.imgWorker));
-
+        btnDeleteWorker = (Button) findViewById(R.id.btnDeleteWorker);
+        btnDeleteWorker.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WorkerFicheActivity.this, WorkerListMenuActivity.class);
+                intent.putExtra("idPlayground",idPlayground);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         SQLiteDatabase dbR = new DbHelper(this).getReadableDatabase();
-
 
         final Cursor c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Worker.TABLE_NAME + " where " + FeedReaderContract.Worker._ID + " = " + idWorker, null);
         Resources res = getResources();

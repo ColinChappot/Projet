@@ -20,12 +20,13 @@ public class InstallationAdapter extends ArrayAdapter {
     /*
     Constructeur
      */
-
-
     public InstallationAdapter(Context context, List<Installation> installations){
         super(context,0,installations);
     }
 
+    /*
+    Création des adapters pour les listView, cela prend une row et cela la définit comme model pour chaque ligne de la listView
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
 
@@ -48,7 +49,7 @@ public class InstallationAdapter extends ArrayAdapter {
     }
 
     /*
-    Tag lasttask
+    Création du conteneur du tag
      */
     private class InstallationViewHolder{
         public TextView installation;

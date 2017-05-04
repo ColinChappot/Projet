@@ -16,13 +16,11 @@ import android.widget.TextView;
 import com.example.colin.projet.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import DB.DbHelper;
 import DB.FeedReaderContract;
 import Playground.Installation;
 import Playground.InstallationAdapter;
-import Worker.Worker;
 
 public class TaskInfoZoneActivity extends AppCompatActivity {
 
@@ -104,8 +102,10 @@ public class TaskInfoZoneActivity extends AppCompatActivity {
     private void showInstallation(){
         ArrayList<Installation> listest = new ArrayList<>();
         dbR = new DbHelper(this).getReadableDatabase();
-        Cursor c = dbR.rawQuery("SELECT install."+ FeedReaderContract.Installation.COLUMN_NAME_DESCRIPTION+" FROM " +FeedReaderContract.Installation.TABLE_NAME +" install, "+FeedReaderContract.InstallationPlaced.TABLE_NAME+" place "+
-                 "where place."+ FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDPLAYGROUND+" = "+idPlayground+" and install."+ FeedReaderContract.Installation._ID+" = "+ FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDINSTALLATION, null);
+        Cursor c = dbR.rawQuery("SELECT install."+ FeedReaderContract.Installation.COLUMN_NAME_DESCRIPTION+" FROM " +FeedReaderContract.Installation.TABLE_NAME
+                +" install, "+FeedReaderContract.InstallationPlaced.TABLE_NAME+" place "+
+                 "where place."+ FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDPLAYGROUND+" = "
+                +idPlayground+" and install."+ FeedReaderContract.Installation._ID+" = "+ FeedReaderContract.InstallationPlaced.COLUMN_NAME_IDINSTALLATION, null);
         String message;
         if (c.moveToFirst())
         {

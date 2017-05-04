@@ -1,13 +1,11 @@
 package Worker;
 
-import android.media.Image;
-
-/**
- * Created by uadmin on 30.04.2017.
- */
 
 public class Worker {
 
+    /*
+    Déclaration des variables
+     */
     private String login;
     private String password;
     private String  firstname;
@@ -16,14 +14,18 @@ public class Worker {
     private String idWorker;
 
 
-
+    /*
+    Constructeur
+     */
     public Worker (String idWorker,String firstname, String lastname){
         this.firstname=firstname;
         this.lastname=lastname;
         this.idWorker=idWorker;
     }
 
-
+    /*
+    Constructeur
+     */
     public Worker ( String login, String password, String firstname, String lastname, String phone){
         this.login = login;
         this.password=password;
@@ -32,6 +34,9 @@ public class Worker {
         this.phone =phone;
     }
 
+    /*
+     Méthodes getName retourne nom prénom pour l'afficher dans la listView
+    */
     public String getName(){
         return firstname + " " + lastname ;
     }

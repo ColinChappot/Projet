@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,11 +19,12 @@ import java.util.List;
 
 import DB.DbHelper;
 import DB.FeedReaderContract;
-import Task.TaskToDoActivity;
 
 public class PlaygroundFicheActivity extends AppCompatActivity {
 
-
+    /*
+    Déclaration des variables
+     */
     private Button btnAddMateriel;
     private Button btnSave;
 
@@ -33,6 +33,9 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
     private String idPlayground;
     private Button btnTerminated;
 
+    /*
+    Méthodes  on create charge l'activité
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

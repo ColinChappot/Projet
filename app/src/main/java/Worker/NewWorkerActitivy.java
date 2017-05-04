@@ -1,7 +1,6 @@
 package Worker;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,20 +11,23 @@ import android.widget.Toast;
 import com.example.colin.projet.R;
 
 import DB.DbHelper;
-import DB.FeedReaderContract;
 
 public class NewWorkerActitivy extends AppCompatActivity {
 
+    /*
+    Déclaration des variables
+     */
     private EditText etxtFirstname;
     private EditText etxtLastname;
     private EditText etxtCellphone;
     private EditText etxtLogin;
     private EditText etxtPassword;
-
     private Button btnsaveWorker;
+    private String idWorker;
 
-    String idWorker;
-
+    /*
+    Méthodes onCreate lie le java et le layout, puis lance l'activité
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,10 @@ public class NewWorkerActitivy extends AppCompatActivity {
             }
         });
     }
+
+    /*
+    Méthode add ajoute de nouveaux worker
+     */
     public void add()
     {
         DbHelper db = new DbHelper(this);

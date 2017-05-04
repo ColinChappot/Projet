@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.colin.projet.LoginActivity;
 import com.example.colin.projet.R;
 
 import DB.DbHelper;
@@ -81,42 +80,11 @@ public class PlayGroundSubMenuActivity extends AppCompatActivity {
             });
 
 
-//    TextView txtVTaskTodo;
-//    TextView txtVLastUpdate;
-//    TextView txtVInfozone;
-//
-//
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_play_ground_sub_menu);
-//
-//        txtVTaskTodo=(TextView) findViewById(R.id.txtTaskTodo);
-//        txtVLastUpdate=(TextView) findViewById(R.id.txtLastUpdate);
-//        txtVInfozone=(TextView) findViewById(R.id.txtInfoZone);
-//
-//        FragmentManager fm = getSupportFragmentManager();
-//        FragmentTransaction ft = fm.beginTransaction();
-//
-//        //faire le switch case pour dire que si on clique sur l'un des trois onglets on va dessus
-//
-//        TaskToDoFragment fTaskToDo = new TaskToDoFragment();
-//        TaskLastUpadteFragment fLastUpdate = new TaskLastUpadteFragment();
-//        TaskInfoZone  fInfoZone = new TaskInfoZone();
-//
-//
-//        ft.replace(R.id.fragmentPosition, fTaskToDo);
-//        ft.commit();
-//
-//
-//       txtVLastUpdate.setOnClickListener(
-//               FragmentTransaction ft = new FragmentTransaction() {
-//               } );
-//
-//
-//
-//    }
+
+        }
 
 
-        }}
+
+
+    }
+

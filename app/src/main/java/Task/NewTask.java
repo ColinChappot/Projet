@@ -18,6 +18,9 @@ import DB.FeedReaderContract;
 
 public class NewTask extends AppCompatActivity {
 
+    /*
+    Déclaration des variables
+     */
     private TextView txtVPlayGroundName;
     private EditText etextTaskName;
     private EditText eTextBDescription;
@@ -25,7 +28,9 @@ public class NewTask extends AppCompatActivity {
     private Button btnSaveTask2;
     private String idPlayground;
 
-
+    /*
+    Methode onCreate relie le java au layout
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +67,10 @@ public class NewTask extends AppCompatActivity {
             }
         });
     }
+
+    /*
+    Méthode d'ajout d'une nouvelle tâche
+     */
     public void add()
     {
         DbHelper db = new DbHelper(this);
