@@ -74,7 +74,7 @@ public class WorkerListMenuActivity extends AppCompatActivity {
  Méthode showListWorker: adapte la list dans la liste view
   */
     private void showListWorker(){
-        ArrayAdapter<String> adapter = new ArrayAdapter(WorkerListMenuActivity.this, android.R.layout.simple_list_item_1,workers );
+        ArrayAdapter<Worker> adapter = new ArrayAdapter(WorkerListMenuActivity.this, android.R.layout.simple_list_item_1,workers );
 
 
         listWorker.setAdapter(adapter);
