@@ -66,6 +66,7 @@
     <string name="btnPlayGround" translatable="false">Add New PlayGround</string>
     <string name="NewPlayground">New Playground</string>
     <string name="TaskName">Task Name</string>
+    <string name="title_Application">PLAYGROUND MANAGER</string>
 
 
 </resources>
