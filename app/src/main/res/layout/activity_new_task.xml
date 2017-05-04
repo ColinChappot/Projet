@@ -21,7 +21,9 @@
         tools:text="@string/Playground_brute_textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/txtVTaskName"
@@ -78,9 +80,10 @@
         android:selectAllOnFocus="false"
         tools:layout_editor_absoluteX="5dp"
         tools:layout_editor_absoluteY="196dp"
+        android:layout_marginBottom="12dp"
         android:layout_above="@+id/txtBObservation"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/txtBObservation"
