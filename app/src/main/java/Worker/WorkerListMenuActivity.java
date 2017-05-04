@@ -41,7 +41,14 @@ public class WorkerListMenuActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         idWorker = intent.getStringExtra("idWorker");
-
+        btnAddNewWorker =(Button) findViewById(R.id.btnAddWorker);
+        btnAddNewWorker.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(WorkerListMenuActivity.this, NewWorkerActitivy.class);
+                startActivity(intent);
+            }
+        });
 
         session = new Session(this);
         /*if(!session.loggedIn()){
