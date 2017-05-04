@@ -17,7 +17,8 @@ import java.util.List;
  * Created by uadmin on 30.04.2017.
  */
 
-public class WorkerAdapter extends ArrayAdapter<Worker> {
+public class
+WorkerAdapter extends ArrayAdapter<Worker> {
 
     public WorkerAdapter(Context context, List<Worker> playgrounds){
         super(context, 0, playgrounds);
