@@ -24,10 +24,7 @@ import static DB.FeedReaderContract.SQL_DELETE_TASK;
 import static DB.FeedReaderContract.SQL_DELETE_WORKER;
 import static DB.FeedReaderContract.SQL_CREAT_INSTALLATIONPLACED;
 
-/**
- * Created by Colin on 11.04.2017.
- */
-
+//Classe qui sert pour l'initialisation de la DB ainsi que la mise a jour
 public class DbHelper extends SQLiteOpenHelper {
 
     public static final  int DATABASE_VERSION = 1;
@@ -69,6 +66,8 @@ public class DbHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
+    //Toutes les méthodes d'insertion dans la DB
+
     public void InsertPlayground(Context context, String name, String town, String surface, String GPS, String timeTable) {
         DbHelper mDbHelper = new DbHelper(context);
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -86,21 +85,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
-    public void UpdatePlayground(Context context,int Id, String name, String town, String surface, String GPS,String image, String timeTable, String installation)
-    {
-        DbHelper mDbHelper = new DbHelper(context);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues value = new ContentValues();
-
-        value.put(FeedReaderContract.Playground.COLUMN_NAME_NAME, name);
-        value.put(FeedReaderContract.Playground.COLUMN_NAME_TOWN, town);
-        value.put(FeedReaderContract.Playground.COLUMN_NAME_SURFACE, surface);
-        value.put(FeedReaderContract.Playground.COLUMN_NAME_GPSLOCALISATION, GPS);
-        value.put(FeedReaderContract.Playground.COLUMN_NAME_TIMETABLETOAVOID, timeTable);
-
-        db.update(FeedReaderContract.Playground.TABLE_NAME, value, FeedReaderContract.Playground._ID + " = ?", new String[] {String.valueOf(Id)});
-    }
-
     public void InsertWorker(Context context, String login, String password, String firstname, String lastname, String phone)
     {
         DbHelper mDbHelper = new DbHelper(context);
@@ -116,23 +100,6 @@ public class DbHelper extends SQLiteOpenHelper {
         db.insert(FeedReaderContract.Worker.TABLE_NAME, null,value);
 
     }
-
-    public void UpdateWorker(Context context,int Id, String login, String password, String firstname, String lastname, String phone)
-    {
-        DbHelper mDbHelper = new DbHelper(context);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues value = new ContentValues();
-
-        value.put(FeedReaderContract.Worker.COLUMN_NAME_LOGIN, login);
-        value.put(FeedReaderContract.Worker.COLUMN_NAME_PASSWORD, password);
-        value.put(FeedReaderContract.Worker.COLUMN_NAME_FIRSTNAME, firstname);
-        value.put(FeedReaderContract.Worker.COLUMN_NAME_LASTNAME, lastname);
-        value.put(FeedReaderContract.Worker.COLUMN_NAME_CELLPHONE, phone);
-
-        db.update(FeedReaderContract.Worker.TABLE_NAME, value, FeedReaderContract.Worker._ID + " = ?", new String[] {String.valueOf(Id)});
-
-    }
-
     public void InsertTask(Context context, int playground, int worker, String description, String observation,String name)
     {
         DbHelper mDbHelper = new DbHelper(context);
@@ -149,23 +116,6 @@ public class DbHelper extends SQLiteOpenHelper {
         value.put(FeedReaderContract.Task.COLUMN_NAME_DATE, "");
 
         db.insert(FeedReaderContract.Task.TABLE_NAME, null,value);
-    }
-
-    public void UpdateTask(Context context,int Id, int playground, int worker, String description, String observation, String name, int state, ArrayList material)
-    {
-        DbHelper mDbHelper = new DbHelper(context);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        ContentValues value = new ContentValues();
-
-        value.put(FeedReaderContract.Task.COLUMN_NAME_IDPLAYGROUND, playground);
-        value.put(FeedReaderContract.Task.COLUMN_NAME_IDWORKER, worker);
-        value.put(FeedReaderContract.Task.COLUMN_NAME_DESCRIPTION, description);
-        value.put(FeedReaderContract.Task.COLUMN_NAME_OBSERVATION, observation);
-        value.put(FeedReaderContract.Task.COLUMN_NAME_NAME,name);
-        value.put(FeedReaderContract.Task.COLUMN_NAME_IDSTATE, state);
-
-
-        db.update(FeedReaderContract.Task.TABLE_NAME, value, FeedReaderContract.Task._ID + " = ?", new String[] {String.valueOf(Id)});
     }
 
 
@@ -228,6 +178,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.insert(FeedReaderContract.State.TABLE_NAME, null,value);
     }
+
+    //Toutes les méthodes deletes employée
 
     public int DeletePlayground(Context context,int Id)
     {

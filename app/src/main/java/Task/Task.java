@@ -9,14 +9,10 @@ public class Task {
     Declaration variables
      */
 
-    private int idPlayground ;
-    private String idWorker;
-    private int idGravity;
+
     private String description;
-    private String observation;
-    private int idState;
+
     private String date;
-    private String idTask;
 
     /*
     Constructor
@@ -28,7 +24,7 @@ public class Task {
     /*
     Constructor
      */
-    public Task ( String description, String idWorker, String date){
+    public Task ( String description, String date){
         this.description=description;
         this.date=date;
     }

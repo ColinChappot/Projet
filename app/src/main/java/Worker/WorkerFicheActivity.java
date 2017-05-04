@@ -19,6 +19,9 @@ import android.widget.Toast;
 
 import com.example.colin.projet.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import DB.DbHelper;
 import DB.FeedReaderContract;
 
@@ -54,9 +57,7 @@ public class WorkerFicheActivity extends AppCompatActivity {
         btnDeleteWorker.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WorkerFicheActivity.this, WorkerListMenuActivity.class);
-                intent.putExtra("idPlayground",idPlayground);
-                startActivity(intent);
+                delete();
                 finish();
             }
         });
@@ -96,6 +97,15 @@ public class WorkerFicheActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public void delete()
+    {
+
+        SQLiteDatabase db = new DbHelper(this).getWritableDatabase();
+
+        String strSQL = "DELETE From "+ FeedReaderContract.Worker.TABLE_NAME+" where "+ FeedReaderContract.Worker._ID+"  = "+idWorker;
+        db.execSQL(strSQL);
+        Toast.makeText(getApplicationContext(),this.getString(R.string.workerDelete) , Toast.LENGTH_SHORT).show();
     }
 
 

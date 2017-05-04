@@ -107,6 +107,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="0dp"
         android:background="@drawable/grey"
+        android:text="@string/Worker_brute_textView"
         android:textAlignment="center"
         android:textColor="@color/black_overlay"
         android:textSize="30dp"
