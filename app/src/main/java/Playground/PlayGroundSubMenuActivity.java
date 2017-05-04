@@ -1,6 +1,8 @@
 package Playground;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +11,9 @@ import android.widget.TextView;
 
 import com.example.colin.projet.LoginActivity;
 import com.example.colin.projet.R;
+
+import DB.DbHelper;
+import DB.FeedReaderContract;
 
 public class PlayGroundSubMenuActivity extends AppCompatActivity {
 
@@ -27,9 +32,20 @@ public class PlayGroundSubMenuActivity extends AppCompatActivity {
             btnTaskTodo = (Button) findViewById(R.id.btnTaskToDo);
             btnLastUpdate = (Button) findViewById(R.id.btnLastUpdate);
             btnInfoZone = (Button) findViewById(R.id.btnInfoZone);
+            titlePlayGround = (TextView) findViewById(R.id.textView) ;
 
             Intent intent = getIntent();
            idPlayground = intent.getStringExtra("IdPlayGround");
+
+            SQLiteDatabase dbR = new DbHelper(this).getWritableDatabase();
+
+            Cursor c = dbR.rawQuery("SELECT * FROM "+ FeedReaderContract.Playground.TABLE_NAME+"" +
+                    " where "+ FeedReaderContract.Playground._ID+" = "+idPlayground, null);
+
+            if(c.moveToFirst())
+            {
+                titlePlayGround.setText(c.getString(2));
+            }
 
 
             btnTaskTodo.setOnClickListener(new View.OnClickListener() {

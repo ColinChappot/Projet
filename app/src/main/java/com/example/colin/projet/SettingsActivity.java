@@ -19,11 +19,16 @@ import java.util.Locale;
 import DB.DbHelper;
 import DB.FeedReaderContract;
 import Worker.WorkerFicheActivity;
+import Worker.WorkerListMenuActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 
     private Button btnSave;
+    private Button btnCH;
+    private Button btnDE;
+    private Button btnEN;
     private String idWorker;
+    private Resources res;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +41,33 @@ public class SettingsActivity extends AppCompatActivity {
         String message="";
 
         btnSave = (Button) findViewById(R.id.buttonSave);
+        btnCH = (Button) findViewById(R.id.drapeauCH);
+        btnEN = (Button) findViewById(R.id.drapeauEn);
+        btnDE = (Button) findViewById(R.id.drapeauDE);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 save();
+            }
+        });
+        btnCH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeToFr(res,v);
+            }
+        });
+        btnDE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeToDE(res,v);
+            }
+        });
+        btnEN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeToEN(res,v);
             }
         });
 
@@ -80,38 +106,70 @@ public class SettingsActivity extends AppCompatActivity {
         EditText Firstname = (EditText) findViewById(R.id.editTextFirstW);
         EditText Lastname = (EditText) findViewById(R.id.editTextLastW);
         EditText Cellphone = (EditText) findViewById(R.id.editText2);
+
+
         
         SQLiteDatabase db = new DbHelper(this).getWritableDatabase();
 
-        String strSQL = "UPDATE worker SET (login,password,firstname,lastname,cellphone) = " +
-                "('"+Login+"','"+Password+"','"+Firstname+"','"+Lastname+"','"+Cellphone+ "')" +
-                " WHERE "+ FeedReaderContract.Worker._ID+" = "+idWorker ;
+        String strSQL = "UPDATE worker SET login = '"+Login.getText().toString()+"',password = '"+Password.getText().toString()+"' ,firstname = '"+Firstname.getText().toString()+"' ,lastname = '"+Lastname.getText().toString()+
+                "' ,cellphone = '"+Cellphone.getText().toString()+"' WHERE "+ FeedReaderContract.Worker._ID+" = "+idWorker ;
         db.execSQL(strSQL);
         Toast.makeText(getApplicationContext(), this.getString(R.string.settingsSaved), Toast.LENGTH_SHORT).show();
     }
 
-    public static void changeToFr(Resources res)
+    public void changeToFr(Resources res, View v)
     {
-        Configuration config;
-        config = new Configuration(res.getConfiguration());
 
-        config.locale = Locale.FRENCH;
+
+        String languageToLoad="fr";
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+
+        config.locale=locale;
+
+        getResources().updateConfiguration(config,v.getResources().getDisplayMetrics());
+
+
+        Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra("idWorker",idWorker);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
 
     }
-    public static void changeToDE(Resources res)
+    public void changeToDE(Resources res, View v)
     {
-        Configuration config;
-        config = new Configuration(res.getConfiguration());
+        String languageToLoad="de";
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
 
-        config.locale = Locale.GERMAN;
+        config.locale=locale;
 
+        getResources().updateConfiguration(config,v.getResources().getDisplayMetrics());
+
+
+        Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra("idWorker",idWorker);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
-    public static void changeToEN(Resources res)
+    public void changeToEN(Resources res, View v)
     {
-        Configuration config;
-        config = new Configuration(res.getConfiguration());
+        String languageToLoad="en";
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
 
-        config.locale = Locale.ENGLISH;
+        config.locale=locale;
+
+        getResources().updateConfiguration(config,v.getResources().getDisplayMetrics());
+
+
+        Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra("idWorker",idWorker);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
 
     }
 }

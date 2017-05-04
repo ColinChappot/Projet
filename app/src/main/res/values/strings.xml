@@ -2,7 +2,7 @@
     <string name="app_name">Projet</string>
 
     <!--LoginActivity-->
-    <string name="textPassword" translatable="false">Password</string>
+    <string name="textPassword">Password</string>
     <string name="btnSignIn">Sign in</string>
     <string name="title_activity_login" translatable="false">LoginActivity</string>
 
@@ -65,6 +65,8 @@
     <string name="save">Save</string>
     <string name="btnPlayGround" translatable="false">Add New PlayGround</string>
     <string name="Label_NewPlayground">New Playground</string>
+    <string name="btnPlayGround">Add new PlayGround</string>
+    <string name="NewPlayground">New Playground</string>
     <string name="TaskName">Task Name</string>
     <string name="Label_title_Application">PLAYGROUND MANAGER</string>
     <string name="Label_NewTask">New Task</string>
@@ -74,6 +76,8 @@
     <string name="Label_ListWorker">Worker\'s list</string>
     <string name="Label_DetailTask">Task Detail</string>
     <string name="Label_ListPlayGround">Playground\'s list</string>
+    <string name="title_Application">PLAYGROUND MANAGER</string>
+    <string name="newWorkerCreated">New worker created</string>
 
 
 </resources>

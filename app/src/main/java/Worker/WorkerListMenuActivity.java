@@ -46,6 +46,7 @@ public class WorkerListMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(WorkerListMenuActivity.this, NewWorkerActitivy.class);
+                intent.putExtra("idWorker",idWorker);
                 startActivity(intent);
             }
         });

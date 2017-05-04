@@ -38,5 +38,7 @@
     <string name="NewPlayground">Neuer Park</string>
     <string name="NewWorker">Neue Arbeiter</string>
     <string name="TaskName">Aufgabenname</string>
-    <string name="btnAddWorker"></string>
+    <string name="btnAddWorker">Neue Arbeiter hizufügen</string>
+    <string name="textPassword">Passwort</string>
+    <string name="btnPlayGround">Neuen Park hizufügen</string>
 </resources>
