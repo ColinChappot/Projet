@@ -14,7 +14,10 @@ import android.widget.Toast;
 
 import com.example.colin.projet.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import DB.DbHelper;
@@ -115,10 +118,10 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
             message = c.getString(0);
             TextView textView = (TextView) findViewById(R.id.txtTask);
             textView.setText(message);
-            message = c.getString(4);
+            message = c.getString(3);
             EditText editText = (EditText) findViewById(R.id.eTxtDescription);
             editText.setText(message);
-            message = c.getString(5);
+            message = c.getString(4);
             editText = (EditText) findViewById(R.id.eTxtObservation);
             editText.setText(message);
         }
@@ -136,20 +139,20 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
 
         SQLiteDatabase dbR= new DbHelper(this).getReadableDatabase();
 
-        Cursor c = dbR.rawQuery("SELECT * FROM "+ FeedReaderContract.Material.TABLE_NAME+" material , "+ FeedReaderContract.MaterialNeeded.TABLE_NAME+
+       Cursor c = dbR.rawQuery("SELECT material."+ FeedReaderContract.Material.COLUMN_NAME_DESCRIPTION+" FROM "+ FeedReaderContract.Material.TABLE_NAME+" material , "+ FeedReaderContract.MaterialNeeded.TABLE_NAME+
                 " need where material."+ FeedReaderContract.Material._ID+" = need."+ FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDMATERIAL+"" +
                 " and need."+ FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDTASK+" = "+idTask, null);
+
+       //Cursor c = dbR.rawQuery("Select * FROM "+ FeedReaderContract.MaterialNeeded.TABLE_NAME,null);
 
         if (c.moveToFirst())
         {
             do {
                 listest.add(new Material(
-                       c.getString(1)
+                       c.getString(0)
                 ));
             }while (c.moveToNext());
         }
-        else
-            Toast.makeText(getApplicationContext(), "MEEEERDDE", Toast.LENGTH_SHORT).show();
 
         listViewMateriel.setAdapter(new MaterialAdapter(this, listest));
 
@@ -189,7 +192,7 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
 
         Cursor c = dbR.rawQuery("SELECT * FROM "+ FeedReaderContract.Material.TABLE_NAME+"" +
                 " where "+ FeedReaderContract.Material.COLUMN_NAME_DESCRIPTION+" = '"+message+"'", null);
-
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
         if(c.moveToFirst())
         {
             db.InsertMaterialNeeded(this,idTask,c.getString(0));
@@ -209,9 +212,16 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
     {
         SQLiteDatabase db = new DbHelper(this).getWritableDatabase();
 
-        String strSQL = "UPDATE task SET idState = 3 where "+ FeedReaderContract.Task._ID+" = "+idTask;
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => " + c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String Today = df.format(c.getTime());
+
+
+        String strSQL = "UPDATE task SET idState = 3 , date = '"+Today+"' where "+ FeedReaderContract.Task._ID+" = "+idTask;
         db.execSQL(strSQL);
-        Toast.makeText(getApplicationContext(), idTask, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),this.getString(R.string.taskUpdate) , Toast.LENGTH_SHORT).show();
     }
 
 

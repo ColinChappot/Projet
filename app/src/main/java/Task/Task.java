@@ -30,7 +30,6 @@ public class Task {
      */
     public Task ( String description, String idWorker, String date){
         this.description=description;
-        this.idWorker = idWorker;
         this.date=date;
     }
 
@@ -39,6 +38,6 @@ public class Task {
     }
 
     public String getLastTask(){
-        return this.description + " - " + this.idWorker + " - " + this.date;
+        return this.description + " - " + this.date;
     }
 }
