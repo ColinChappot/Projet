@@ -7,8 +7,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity"
+        <activity
+            android:name=".LoginActivity"
             android:label="@string/Label_title_Application">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,38 +28,45 @@
 
         <!-- Playground -->
         <activity
-            android:name="Playground.PlayGroundListMenuActivity"
+            android:name="playground.PlayGroundListMenuActivity"
             android:label="@string/Label_ListPlayGround" />
         <activity
-            android:name="Playground.PlayGroundSubMenuActivity"
+            android:name="playground.PlayGroundSubMenuActivity"
             android:label="@string/title_activity_play_ground_sub_menu"
             android:theme="@style/AppTheme" />
-        <activity android:name="Playground.PlaygroundFicheActivity"
-            android:label="@string/Label_DetailTask"/>
         <activity
-            android:name="Playground.NewPlayground"
+            android:name="playground.PlaygroundFicheActivity"
+            android:label="@string/Label_DetailTask" />
+        <activity
+            android:name="playground.NewPlayground"
             android:label="@string/NewPlayground" />
 
         <!-- Worker -->
         <activity
-            android:name="Worker.WorkerListMenuActivity"
+            android:name="worker.WorkerListMenuActivity"
             android:label="@string/Label_ListWorker" />
-        <activity android:name="Worker.WorkerFicheActivity"
-            android:label="@string/Worker_brute_textView"/>
         <activity
-            android:name="Worker.NewWorkerActitivy"
+            android:name="worker.WorkerFicheActivity"
+            android:label="@string/Worker_brute_textView" />
+        <activity
+            android:name="worker.NewWorkerActitivy"
             android:label="@string/NewWorker" />
 
         <!-- Task -->
-        <activity android:name="Task.TaskToDoActivity"
-            android:label="@string/title_PlayGroundSubMenu_TaskToDo"/>/>
-        <activity android:name="Task.TaskLastUpdate"
-            android:label="@string/Label_LastUpdate"/>
-        <activity android:name="Task.TaskInfoZoneActivity" />
-        <activity android:name=".SettingsActivity"
-            android:label="@string/Label_Setting"/>
-        <activity android:name="Task.NewTask"
-            android:label="@string/Label_NewTask"></activity>
+        <activity
+            android:name="task.TaskToDoActivity"
+            android:label="@string/title_PlayGroundSubMenu_TaskToDo" />
+        />
+        <activity
+            android:name="task.TaskLastUpdate"
+            android:label="@string/Label_LastUpdate" />
+        <activity android:name="task.TaskInfoZoneActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/Label_Setting" />
+        <activity
+            android:name="task.NewTask"
+            android:label="@string/Label_NewTask" />
     </application>
 
 </manifest>

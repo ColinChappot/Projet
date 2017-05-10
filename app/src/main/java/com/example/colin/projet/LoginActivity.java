@@ -14,11 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
-import DB.DbHelper;
-import DB.FeedReaderContract;
-import Playground.PlayGroundListMenuActivity;
+import db.DbHelper;
+import db.FeedReaderContract;
+import playground.PlayGroundListMenuActivity;
 
 import static android.os.Build.VERSION_CODES.M;
 
