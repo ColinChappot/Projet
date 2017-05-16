@@ -61,7 +61,7 @@ public class NewPlayground extends AppCompatActivity {
         DbHelper db = new DbHelper(this);
 
         db.InsertPlayground(this,etxtPlacesName.getText().toString(),etxtTown.getText().toString(),etxtSurface.getText().toString(),etxtGPS.getText().toString(),etxtTimtoAvoid.getText().toString());
-
+        db.toCloudPlayground();
         Toast.makeText(getApplicationContext(), this.getString(R.string.newPlaygroundCreated), Toast.LENGTH_SHORT).show();
     }
 }

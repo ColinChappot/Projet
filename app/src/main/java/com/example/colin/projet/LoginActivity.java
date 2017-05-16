@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import cloud.ListPlaygroundAsyc;
 import db.DbHelper;
 import db.FeedReaderContract;
 import playground.PlayGroundListMenuActivity;
@@ -60,11 +61,11 @@ public class LoginActivity extends AppCompatActivity {
         dbR = new DbHelper(this).getReadableDatabase();
         Cursor c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Worker.TABLE_NAME, null);
 
-
+        db = new DbHelper(this);
         if(c.moveToFirst()==false)
         {
 
-            db = new DbHelper(this);
+
 
             db.InsertWorker(this, "Marc", "123", "Marc", "Panatier", "11111111");
             db.InsertWorker(this, "Paul", "123", "Paul", "Zufferey", "00000000");
@@ -93,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
             db.InsertInstallationPlaced(this,2,"3");
             db.InsertPlayground(this, "Parc des écoles", "Martigny", "40", "46.10192488017465 - 7.070822239184054", "10h00 - 10h30");
             db.InsertPlayground(this, "Parc municipale", "Martigny", "70", "46.097758806831635 - 7.073804855608614", "16h00 - 17h00");
+
             db.InsertTask(this, 1, 0, "Grand trou dans le parc", "Essayer de combler le trou avec des fleures","Combler trou");
             db.InsertTask(this, 2, 0, "Tondre le gazon", "Prendre tondeuse et faire bien attention aux arbustes","Tondre pelouse");
             db.InsertTask(this, 1, 0, "", "Prendre rateau","nettoyer parc");
@@ -142,6 +144,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if(c.moveToFirst())
             {
+                new ListPlaygroundAsyc(db).execute();
                 session.setLoggedIn(true);
                 Intent intent = new Intent(this, PlayGroundListMenuActivity.class);
                 String message= c.getString(0);
@@ -183,6 +186,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         return true;
     }
+
 }
 
 

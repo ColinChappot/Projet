@@ -134,6 +134,7 @@ public class TaskInfoZoneActivity extends AppCompatActivity {
         if(c.moveToFirst())
         {
             db.InsertInstallationPlaced(this,Integer.valueOf(idPlayground),c.getString(0));
+            db.toCloudInstallation();
         }
         else
         {
