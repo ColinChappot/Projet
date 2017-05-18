@@ -18,6 +18,7 @@ public class EntityDB {
     private boolean installationPlacedUpdated = false;
     private boolean materialNeededUpdated = false;
 
+
     //controle les boolean concernant les tables qui sont liées au cloud
     public static ArrayList<Boolean> loadingDone = new ArrayList<Boolean>();
 
