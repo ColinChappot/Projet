@@ -1,14 +1,10 @@
 <resources>
-    <string name="app_name">Projet</string>
 
     <!--LoginActivity-->
     <string name="textPassword">Password</string>
     <string name="btnSignIn">Sign in</string>
-    <string name="title_activity_login" translatable="false">LoginActivity</string>
 
     <!-- Strings related to login -->
-
-    <string name="title_activity_play_ground_menu" translatable="false">PlayGroundMenu</string>
 
     <!-- PLayGroundListMenu -->
     <string name="action_stwich_worker">Worker</string>
@@ -22,7 +18,6 @@
 
     <!-- String Task-->
     <string name="Playground_brute_textView">Playground</string>
-    <string name="Description_brute_textView">Description</string>
     <string name="Observation_brute_textView">Observation</string>
     <string name="NeedsMaterials_brute_textView">Needs Materials</string>
 
@@ -48,23 +43,14 @@
     <string name="txtBTimeToAvoid">Time To Avoid</string>
     <string name="txtBGPS">GPS location</string>
     <string name="installation">Installation</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard" translatable="false">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_activity_play_ground_sub_menu_bottom_bar_actitivy" translatable="false">
-        PlayGroundSubMenuBottomBarActitivy
-    </string>
     <string name="material">material</string>
-    <string name="Label_NewWorker">New Worker</string>
     <string name="btnAddWorker">Add new Worker</string>
     <string name="Worker_brute_textView">Worker</string>
     <string name="btnInfoZone">Area information</string>
-    <string name="LoginProblem">Wrong login or password</string>
     <string name="TaskModified">Task modified</string>
     <string name="settingsSaved">Settings saved</string>
     <string name="save">Save</string>
     <string name="btnPlayGround">Add New PlayGround</string>
-    <string name="Label_NewPlayground">New Playground</string>
     <string name="NewPlayground">New Playground</string>
     <string name="TaskName">Task Name</string>
     <string name="Label_title_Application" translatable="false">PLAYGROUND MANAGER</string>
@@ -74,7 +60,6 @@
     <string name="Label_ListWorker">Worker\'s list</string>
     <string name="Label_DetailTask">Task Detail</string>
     <string name="Label_ListPlayGround">Playground\'s list</string>
-    <string name="title_Application" translatable="false">PLAYGROUND MANAGER</string>
     <string name="newWorkerCreated">New worker created</string>
     <string name="newPlaygroundCreated">New playground created</string>
     <string name="newTaskCreated">New task created</string>
@@ -82,6 +67,8 @@
     <string name="btnTaskTerminate">Terminated</string>
     <string name="taskUpdate">Task terminated</string>
     <string name="workerDelete">Worker deleted</string>
+    <string name="btnUpdate">Update</string>
+    <string name="loading">Loading</string>
 
 
 </resources>

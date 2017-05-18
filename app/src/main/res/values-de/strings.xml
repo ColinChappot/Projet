@@ -15,7 +15,6 @@
     <string name="action_settings">Einstellungen</string>
     <string name="action_stwich_playground">Park</string>
     <string name="action_stwich_worker">Arbeiter</string>
-    <string name="app_name">Projekt</string>
     <string name="btnAddTask">hinzufügen Aufgabe</string>
     <string name="btnInfoZone">Information Zone</string>
     <string name="btnLastUpdate">neuestes Update</string>
@@ -29,9 +28,6 @@
     <string name="txtBName">Name des Parks</string>
     <string name="txtBInstallation">Installationen</string>
     <string name="txtBGPS">GPS-Standort</string>
-    <string name="title_notifications">Benachrichtigungen</string>
-    <string name="title_home">Startseite</string>
-    <string name="LoginProblem">Falsches Login oder Passwort</string>
     <string name="save">Speichern</string>
     <string name="settingsSaved">Optionen gespeichert</string>
     <string name="TaskModified">Bearbeitet Job</string>
@@ -45,9 +41,7 @@
     <string name="Label_LastUpdate">letztes Update</string>
     <string name="Label_ListPlayGround">Parks Liste</string>
     <string name="Label_ListWorker">Arbeiterliste</string>
-    <string name="Label_NewPlayground">Neuer park</string>
     <string name="Label_NewTask">Neue Aufgabe</string>
-    <string name="Label_NewWorker">Neuer Arbeiter</string>
     <string name="Label_Setting">Einstellungen</string>
     <string name="newPlaygroundCreated">Neuer Spielplatz geschaffen</string>
     <string name="newTaskCreated">Neue Aufgabe geschaffen</string>
@@ -55,4 +49,6 @@
     <string name="btnTaskTerminate">Beendet</string>
     <string name="taskUpdate">Aufgabe beendet</string>
     <string name="workerDelete">Arbeiter gelöscht</string>
+    <string name="btnUpdate">Aktualisieren</string>
+    <string name="loading">Laden</string>
 </resources>

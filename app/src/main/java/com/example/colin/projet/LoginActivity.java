@@ -1,6 +1,7 @@
 package com.example.colin.projet;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,16 +10,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
-import DB.DbHelper;
-import DB.FeedReaderContract;
-import Playground.PlayGroundListMenuActivity;
+import cloud.EntityDB;
+import cloud.ListPlaygroundAsyc;
+import db.DbHelper;
+import db.FeedReaderContract;
+import playground.PlayGroundListMenuActivity;
 
 import static android.os.Build.VERSION_CODES.M;
 
@@ -32,18 +34,26 @@ public class LoginActivity extends AppCompatActivity {
     private Button signIn;
     private DbHelper db;
     private Session session;
-    SQLiteDatabase dbR;
+    private SQLiteDatabase dbR;
+    private ProgressDialog progress ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //db = new DbHelper(this);
+        EntityDB entityDB = new EntityDB();
+
         session = new Session(this);
         username = (EditText) findViewById(R.id.edTxtUserName);
         password = (EditText) findViewById(R.id.edTxtPassword);
         signIn = (Button) findViewById(R.id.btnSignIn);
 
+
+        db = new DbHelper(this);
+
+        new ListPlaygroundAsyc(db).execute();
+
+        laodingProcess();
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,11 +72,10 @@ public class LoginActivity extends AppCompatActivity {
         dbR = new DbHelper(this).getReadableDatabase();
         Cursor c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Worker.TABLE_NAME, null);
 
-
         if(c.moveToFirst()==false)
         {
 
-            db = new DbHelper(this);
+
 
             db.InsertWorker(this, "Marc", "123", "Marc", "Panatier", "11111111");
             db.InsertWorker(this, "Paul", "123", "Paul", "Zufferey", "00000000");
@@ -95,6 +104,7 @@ public class LoginActivity extends AppCompatActivity {
             db.InsertInstallationPlaced(this,2,"3");
             db.InsertPlayground(this, "Parc des écoles", "Martigny", "40", "46.10192488017465 - 7.070822239184054", "10h00 - 10h30");
             db.InsertPlayground(this, "Parc municipale", "Martigny", "70", "46.097758806831635 - 7.073804855608614", "16h00 - 17h00");
+
             db.InsertTask(this, 1, 0, "Grand trou dans le parc", "Essayer de combler le trou avec des fleures","Combler trou");
             db.InsertTask(this, 2, 0, "Tondre le gazon", "Prendre tondeuse et faire bien attention aux arbustes","Tondre pelouse");
             db.InsertTask(this, 1, 0, "", "Prendre rateau","nettoyer parc");
@@ -103,32 +113,9 @@ public class LoginActivity extends AppCompatActivity {
             db.InsertTask(this, 2, 0, "peindre barrière", "couleur = brun","Peinture");
         }
 
-/*
-        if(session.loggedIn()){
-            startActivity(new Intent(LoginActivity.this, PlayGroundListMenuActivity.class));
-            finish();
-        }
-*/
         checkPermissions();
     }
 
-   /* //Méthode pour le lilstener du boutton sign in
-    @Override
-    public void  onClick(View v){
-        switch (v.getId()){
-            case R.id.btnSignIn :
-                Log.i("DEBUG", "Bouton Cliqué");
-
-                //pour voir dans la continuité des frame
-                //startActivity(new Intent(LoginActivity.this, PlayGroundListMenuActivity.class));
-                Intent intent=new Intent(LoginActivity.this, WorkerListMenuActivity.class);
-                startActivity(intent);
-
-
-                // checkData();
-                break;
-        }
-    }*/
 
     //méthode pour checker si le login et le password sont justes
 
@@ -185,6 +172,43 @@ public class LoginActivity extends AppCompatActivity {
         }
         return true;
     }
+//méthode pour faire patienter pendant le téléchargement du cloud
+    public void laodingProcess(){
+        progress=new ProgressDialog(this);
+        progress.setMessage(getString(R.string.loading)); // Setting Message
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progress.show(); // Display Progress Dialog
+        progress.setCancelable(false);
+
+
+        Log.d("Thread","starting");
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    int cpt=0;
+                    while (true){
+                        cpt=0;
+
+                        for(int i = 0; i< EntityDB.loadingDone.size(); i++){
+
+                            if (EntityDB.loadingDone.get(i)){
+                                cpt++;
+                            }
+                        }
+                        if(cpt==8){
+                            break;
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                progress.dismiss();
+
+            }
+
+        }).start();
+    };
 }
 
 
