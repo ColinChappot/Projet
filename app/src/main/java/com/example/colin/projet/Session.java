@@ -3,9 +3,6 @@ package com.example.colin.projet;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by uadmin on 30.04.2017.
- */
 public class Session {
 
     SharedPreferences prefs;

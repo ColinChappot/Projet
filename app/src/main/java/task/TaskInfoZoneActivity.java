@@ -24,13 +24,9 @@ import playground.InstallationAdapter;
 
 public class TaskInfoZoneActivity extends AppCompatActivity {
 
-    private TextView txtBTown;
     private TextView txtVTown;
-    private TextView txtBPlacesName;
     private TextView txtVPlacesName;
-    private TextView txtBSurface;
     private TextView txtVSurface;
-    private TextView txtBTimeToAvoid;
     private TextView txtVTimeToAvoid;
     private TextView txtBGPSlocation;
     private TextView txtVGPSlocation;

@@ -21,14 +21,9 @@ import cloud.ListPlaygroundAsyc;
 import db.DbHelper;
 import db.FeedReaderContract;
 
+
 import static cloud.EntityDB.loadingDone;
-import static cloud.EntityDB.setInstallationPlacedUpdated;
-import static cloud.EntityDB.setInstallationUpdated;
-import static cloud.EntityDB.setMaterielUpdated;
-import static cloud.EntityDB.setPlaygroundUpdated;
-import static cloud.EntityDB.setStateUpdated;
-import static cloud.EntityDB.setTaskUpdated;
-import static cloud.EntityDB.setWorkerUpdated;
+
 
 public class SettingsActivity extends AppCompatActivity {
 

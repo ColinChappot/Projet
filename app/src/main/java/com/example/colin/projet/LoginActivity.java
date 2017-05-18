@@ -27,7 +27,6 @@ import static android.os.Build.VERSION_CODES.M;
 
 public class LoginActivity extends AppCompatActivity {
 
-    // info pris de: https://www.youtube.com/watch?v=x0I5vJfaRIU
     /*Declaration des variables*/
     private EditText username;
     private EditText password;
@@ -57,16 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* switch (v.getId()){
-                    case R.id.btnSignIn :
-                        Log.i("DEBUG", "Bouton Cliqué");*/
-
-                        //pour voir dans la continuité des frame
-                        //startActivity(new Intent(LoginActivity.this, PlayGroundListMenuActivity.class));
-
                 checkData();
-                   /*     break;
-                }*/
             }
         });
         dbR = new DbHelper(this).getReadableDatabase();

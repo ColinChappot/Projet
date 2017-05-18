@@ -11,9 +11,7 @@ import com.example.colin.projet.R;
 
 import java.util.List;
 
-/**
- * Created by uadmin on 28.04.2017.
- */
+
 
 public class PlayGroundAdapter extends ArrayAdapter<Playground> {
 
