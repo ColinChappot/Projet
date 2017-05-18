@@ -2,9 +2,6 @@ package cloud;
 
 import android.os.AsyncTask;
 
-import com.example.Colin.myapplication.backend.classes.MaterielNeeded;
-import com.example.colin.myapplication.backend.classes.materialApi.MaterialApi;
-import com.example.colin.myapplication.backend.classes.materialApi.model.Material;
 import com.example.colin.myapplication.backend.classes.materielNeededApi.MaterielNeededApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
@@ -17,10 +14,10 @@ import java.util.List;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 16.05.2017.
- */
+import static cloud.EntityDB.setMaterialNeededUpdated;
 
+
+//donne la liste des materialNeed du cloud
 public class ListMaterialNeedAsyc extends AsyncTask<Void, Void, List<com.example.colin.myapplication.backend.classes.materielNeededApi.model.MaterielNeeded>> {
 
     private static MaterielNeededApi materialNeededApi = null;
@@ -65,6 +62,8 @@ public class ListMaterialNeedAsyc extends AsyncTask<Void, Void, List<com.example
         if (materielNeededs != null) {
             db.fromCloudMaterialNeeded(materielNeededs);
         }
+        setMaterialNeededUpdated ();
+        new ListPlacedInstallationAsyc(db).execute();
     }
 
 }

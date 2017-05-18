@@ -75,8 +75,10 @@ public class NewTask extends AppCompatActivity {
     {
         DbHelper db = new DbHelper(this);
 
+        //insert dans la db
         db.InsertTask(this,Integer.valueOf(idPlayground),0,eTextBDescription.getText().toString(),eTextObservation.getText().toString(),etextTaskName.getText().toString());
-
+        //met a jour dans le cloud
+        db.toCloudTask();
         Toast.makeText(getApplicationContext(), this.getString(R.string.newTaskCreated), Toast.LENGTH_SHORT).show();
     }
 }

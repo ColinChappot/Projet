@@ -14,10 +14,8 @@ import java.io.IOException;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 16.05.2017.
- */
 
+//permet d'inserer les material
 public class InsertMaterialAsyc extends AsyncTask<Void, Void, Material> {
 
     private static MaterialApi materialApi = null;

@@ -49,4 +49,6 @@
     <string name="btnTaskTerminate">Terminer</string>
     <string name="taskUpdate">Tâche terminée</string>
     <string name="workerDelete">Travailleur effacer</string>
+    <string name="btnUpdate">Mettre à jour</string>
+    <string name="loading">Chargement</string>
 </resources>

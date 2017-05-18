@@ -49,4 +49,6 @@
     <string name="btnTaskTerminate">Beendet</string>
     <string name="taskUpdate">Aufgabe beendet</string>
     <string name="workerDelete">Arbeiter gelöscht</string>
+    <string name="btnUpdate">Aktualisieren</string>
+    <string name="loading">Laden</string>
 </resources>

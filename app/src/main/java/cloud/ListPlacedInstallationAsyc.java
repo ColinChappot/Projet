@@ -17,10 +17,10 @@ import java.util.List;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 16.05.2017.
- */
+import static cloud.EntityDB.setInstallationPlacedUpdated;
 
+
+//donne la liste des placedInstallation du cloud
 public class ListPlacedInstallationAsyc extends AsyncTask<Void, Void, List<InstallationPlaced>> {
 
     private static InstallationPlacedApi installationPlacedApi = null;
@@ -65,6 +65,8 @@ public class ListPlacedInstallationAsyc extends AsyncTask<Void, Void, List<Insta
         if (installationPlaceds != null) {
             db.fromCloudInstallationPlaced(installationPlaceds);
         }
+        setInstallationPlacedUpdated();
+        new ListStateAsyc(db).execute();
     }
 
 }

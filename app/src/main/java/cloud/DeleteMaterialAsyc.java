@@ -2,8 +2,8 @@ package cloud;
 
 import android.os.AsyncTask;
 
-import com.example.colin.myapplication.backend.classes.workerApi.WorkerApi;
-import com.example.colin.myapplication.backend.classes.workerApi.model.Worker;
+import com.example.colin.myapplication.backend.classes.materialApi.MaterialApi;
+import com.example.colin.myapplication.backend.classes.materialApi.model.Material;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
@@ -14,15 +14,16 @@ import java.io.IOException;
 import db.DbHelper;
 
 
-//permet d'inserer les worker
-public class InsertWorkerAsyc  extends AsyncTask<Void, Void, Worker> {
 
-    private static WorkerApi workerApi = null;
+//permet de delete les material
+public class DeleteMaterialAsyc extends AsyncTask<Void, Void, Long> {
+
+    private static MaterialApi materialApi = null;
     private DbHelper db;
-    private Worker worker;
+    private long id =-1l;
 
-    public InsertWorkerAsyc(Worker worker) {
-        this.worker = worker;
+    public DeleteMaterialAsyc(long id) {
+        this.id = id;
     }
 
     @Override
@@ -31,9 +32,9 @@ public class InsertWorkerAsyc  extends AsyncTask<Void, Void, Worker> {
     }
 
     @Override
-    protected Worker doInBackground(Void... params) {
-        if (workerApi == null) {
-            com.example.colin.myapplication.backend.classes.workerApi.WorkerApi.Builder builder = new WorkerApi.Builder(AndroidHttp.newCompatibleTransport(),
+    protected Long doInBackground(Void... params) {
+        if (materialApi == null) {
+            com.example.colin.myapplication.backend.classes.materialApi.MaterialApi.Builder builder = new MaterialApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null);
             builder.setRootUrl("https://myapplication-167216.appspot.com/_ah/api/");
             builder.setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
@@ -42,17 +43,16 @@ public class InsertWorkerAsyc  extends AsyncTask<Void, Void, Worker> {
                     abstractGoogleClientRequest.setDisableGZipContent(true);
                 }
             });
-            workerApi = builder.build();
+            materialApi = builder.build();
         }
 
         try {
-            if(worker!=null)
-                workerApi.insert(worker).execute();
+            if (id != -1l)
+                materialApi.remove(id).execute();
 
-            return worker;
+            return id;
         } catch (IOException e) {
-            return new Worker();
+            return -2l;
         }
     }
-
 }

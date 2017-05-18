@@ -21,6 +21,17 @@ public class InstallationPlaced {
     private int idPlayground ;
     private int idInstallation;
 
+    public InstallationPlaced(Long id, int idPlayground, int idInstallation) {
+        this.id = id;
+        this.idPlayground = idPlayground;
+        this.idInstallation = idInstallation;
+    }
+
+    public InstallationPlaced()
+    {
+
+    }
+
     public Long getId() {
         return id;
     }

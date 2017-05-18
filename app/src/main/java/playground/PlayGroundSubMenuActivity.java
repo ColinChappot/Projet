@@ -35,8 +35,7 @@ public class PlayGroundSubMenuActivity extends AppCompatActivity {
             titlePlayGround = (TextView) findViewById(R.id.textView) ;
 
             Intent intent = getIntent();
-           idPlayground = intent.getStringExtra("IdPlayGround");
-            Toast.makeText(getApplicationContext(), idPlayground, Toast.LENGTH_SHORT).show();
+            idPlayground = intent.getStringExtra("IdPlayGround");
 
             SQLiteDatabase dbR = new DbHelper(this).getWritableDatabase();
 

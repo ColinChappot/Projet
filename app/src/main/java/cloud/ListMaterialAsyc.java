@@ -15,10 +15,10 @@ import java.util.List;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 16.05.2017.
- */
+import static cloud.EntityDB.setMaterielUpdated;
 
+
+//donne la liste des matrial du cloud
 public class ListMaterialAsyc extends AsyncTask<Void, Void, List<Material>> {
 
     private static MaterialApi materialApi = null;
@@ -63,6 +63,8 @@ public class ListMaterialAsyc extends AsyncTask<Void, Void, List<Material>> {
         if (materials != null) {
             db.fromCloudMaterial(materials);
         }
+        setMaterielUpdated();
+        new ListMaterialNeedAsyc(db).execute();
     }
 
 }

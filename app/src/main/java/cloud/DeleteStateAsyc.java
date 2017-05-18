@@ -2,8 +2,8 @@ package cloud;
 
 import android.os.AsyncTask;
 
-import com.example.colin.myapplication.backend.classes.workerApi.WorkerApi;
-import com.example.colin.myapplication.backend.classes.workerApi.model.Worker;
+import com.example.colin.myapplication.backend.classes.stateApi.StateApi;
+import com.example.colin.myapplication.backend.classes.stateApi.model.State;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
@@ -14,26 +14,25 @@ import java.io.IOException;
 import db.DbHelper;
 
 
-//permet d'inserer les worker
-public class InsertWorkerAsyc  extends AsyncTask<Void, Void, Worker> {
+//permet de delete les State
+public class DeleteStateAsyc extends AsyncTask<Void, Void, Long> {
 
-    private static WorkerApi workerApi = null;
+    private static StateApi stateApi = null;
     private DbHelper db;
-    private Worker worker;
+    private long id =-1l;
 
-    public InsertWorkerAsyc(Worker worker) {
-        this.worker = worker;
+    public DeleteStateAsyc(long id) {
+        this.id = id;
     }
-
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
     }
 
     @Override
-    protected Worker doInBackground(Void... params) {
-        if (workerApi == null) {
-            com.example.colin.myapplication.backend.classes.workerApi.WorkerApi.Builder builder = new WorkerApi.Builder(AndroidHttp.newCompatibleTransport(),
+    protected Long doInBackground(Void... params) {
+        if (stateApi == null) {
+            com.example.colin.myapplication.backend.classes.stateApi.StateApi.Builder builder = new StateApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null);
             builder.setRootUrl("https://myapplication-167216.appspot.com/_ah/api/");
             builder.setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
@@ -42,17 +41,16 @@ public class InsertWorkerAsyc  extends AsyncTask<Void, Void, Worker> {
                     abstractGoogleClientRequest.setDisableGZipContent(true);
                 }
             });
-            workerApi = builder.build();
+            stateApi = builder.build();
         }
 
         try {
-            if(worker!=null)
-                workerApi.insert(worker).execute();
+            if (id != -1l)
+                stateApi.remove(id).execute();
 
-            return worker;
+            return id;
         } catch (IOException e) {
-            return new Worker();
+            return -2l;
         }
     }
-
 }

@@ -79,7 +79,14 @@ public class TaskInfoZoneActivity extends AppCompatActivity {
                 message = c.getString(5);
                 txtVGPSlocation.setText(message);
 
-                int resID = res.getIdentifier("parc"+c.getString(0), "drawable",  TaskInfoZoneActivity.this.getPackageName());
+                int photo = Integer.valueOf(idPlayground);
+
+                if(photo>7)
+                {
+                    photo=photo-7;
+                }
+
+                int resID = res.getIdentifier("parc"+photo, "drawable",  TaskInfoZoneActivity.this.getPackageName());
                 imgPlayground .setImageResource(resID);
 
             }while (c.moveToNext());
@@ -134,7 +141,7 @@ public class TaskInfoZoneActivity extends AppCompatActivity {
         if(c.moveToFirst())
         {
             db.InsertInstallationPlaced(this,Integer.valueOf(idPlayground),c.getString(0));
-            db.toCloudInstallation();
+
         }
         else
         {
@@ -147,6 +154,9 @@ public class TaskInfoZoneActivity extends AppCompatActivity {
                 db.InsertInstallationPlaced(this,Integer.valueOf(idPlayground),c.getString(0));
             }
         }
+        //pour mettre a jour dans le cloud
+        db.toCloudInstallation();
+        db.toCloudInstallationPlaced();
 
     }
 }

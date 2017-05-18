@@ -2,8 +2,8 @@ package cloud;
 
 import android.os.AsyncTask;
 
-import com.example.colin.myapplication.backend.classes.workerApi.WorkerApi;
-import com.example.colin.myapplication.backend.classes.workerApi.model.Worker;
+import com.example.colin.myapplication.backend.classes.playgroundApi.PlaygroundApi;
+import com.example.colin.myapplication.backend.classes.playgroundApi.model.Playground;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
@@ -13,16 +13,15 @@ import java.io.IOException;
 
 import db.DbHelper;
 
+//permet de delete les playground
+public class DeletePlaygroundAsyc extends AsyncTask<Void, Void, Playground> {
 
-//permet d'inserer les worker
-public class InsertWorkerAsyc  extends AsyncTask<Void, Void, Worker> {
-
-    private static WorkerApi workerApi = null;
+    private static PlaygroundApi playgroundApi = null;
     private DbHelper db;
-    private Worker worker;
+    private Playground playground;
 
-    public InsertWorkerAsyc(Worker worker) {
-        this.worker = worker;
+    public DeletePlaygroundAsyc(Playground playground) {
+        this.playground = playground;
     }
 
     @Override
@@ -31,9 +30,9 @@ public class InsertWorkerAsyc  extends AsyncTask<Void, Void, Worker> {
     }
 
     @Override
-    protected Worker doInBackground(Void... params) {
-        if (workerApi == null) {
-            com.example.colin.myapplication.backend.classes.workerApi.WorkerApi.Builder builder = new WorkerApi.Builder(AndroidHttp.newCompatibleTransport(),
+    protected Playground doInBackground(Void... params) {
+        if (playgroundApi == null) {
+            com.example.colin.myapplication.backend.classes.playgroundApi.PlaygroundApi.Builder builder = new PlaygroundApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null);
             builder.setRootUrl("https://myapplication-167216.appspot.com/_ah/api/");
             builder.setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
@@ -42,16 +41,16 @@ public class InsertWorkerAsyc  extends AsyncTask<Void, Void, Worker> {
                     abstractGoogleClientRequest.setDisableGZipContent(true);
                 }
             });
-            workerApi = builder.build();
+            playgroundApi = builder.build();
         }
 
         try {
-            if(worker!=null)
-                workerApi.insert(worker).execute();
+            if(playground!=null)
+                playgroundApi.insert(playground).execute();
 
-            return worker;
+            return playground;
         } catch (IOException e) {
-            return new Worker();
+            return new Playground();
         }
     }
 

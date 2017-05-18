@@ -13,10 +13,7 @@ import java.io.IOException;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 15.05.2017.
- */
-
+//permet d'inserer les installations
 public class InsertInstallationAsyc extends AsyncTask<Void, Void, Installation> {
 
     private static com.example.colin.myapplication.backend.classes.installationApi.InstallationApi InstallationApi = null;

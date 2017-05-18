@@ -160,7 +160,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
-    public void toCloudWorker(Context context){
+    public void toCloudWorker(){
 
         SQLiteDatabase dbR= new DbHelper(context).getReadableDatabase();
 
@@ -311,7 +311,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void fromCloudInstallation(List<com.example.colin.myapplication.backend.classes.installationApi.model.Installation> items){
         DbHelper db = new DbHelper(context);
         SQLiteDatabase sqlDB = db.getReadableDatabase();
-        sqlDB.delete(FeedReaderContract.Task.TABLE_NAME, null, null);
+        sqlDB.delete(FeedReaderContract.Installation.TABLE_NAME, null, null);
 
         for (com.example.colin.myapplication.backend.classes.installationApi.model.Installation t : items) {
             ContentValues value = new ContentValues();
@@ -407,7 +407,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
             }while (c.moveToNext());
         }
-        Log.e("debugCloud","all material data saved");
     }
 
     public void fromCloudMaterial(List<com.example.colin.myapplication.backend.classes.materialApi.model.Material> items){

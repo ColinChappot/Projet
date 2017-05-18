@@ -1,6 +1,7 @@
 package com.example.colin.projet;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,11 +10,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import cloud.EntityDB;
 import cloud.ListPlaygroundAsyc;
 import db.DbHelper;
 import db.FeedReaderContract;
@@ -31,18 +34,26 @@ public class LoginActivity extends AppCompatActivity {
     private Button signIn;
     private DbHelper db;
     private Session session;
-    SQLiteDatabase dbR;
+    private SQLiteDatabase dbR;
+    private ProgressDialog progress ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //db = new DbHelper(this);
+        EntityDB entityDB = new EntityDB();
+
         session = new Session(this);
         username = (EditText) findViewById(R.id.edTxtUserName);
         password = (EditText) findViewById(R.id.edTxtPassword);
         signIn = (Button) findViewById(R.id.btnSignIn);
 
+
+        db = new DbHelper(this);
+
+        new ListPlaygroundAsyc(db).execute();
+
+        laodingProcess();
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
         dbR = new DbHelper(this).getReadableDatabase();
         Cursor c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Worker.TABLE_NAME, null);
 
-        db = new DbHelper(this);
         if(c.moveToFirst()==false)
         {
 
@@ -103,32 +113,9 @@ public class LoginActivity extends AppCompatActivity {
             db.InsertTask(this, 2, 0, "peindre barrière", "couleur = brun","Peinture");
         }
 
-/*
-        if(session.loggedIn()){
-            startActivity(new Intent(LoginActivity.this, PlayGroundListMenuActivity.class));
-            finish();
-        }
-*/
         checkPermissions();
     }
 
-   /* //Méthode pour le lilstener du boutton sign in
-    @Override
-    public void  onClick(View v){
-        switch (v.getId()){
-            case R.id.btnSignIn :
-                Log.i("DEBUG", "Bouton Cliqué");
-
-                //pour voir dans la continuité des frame
-                //startActivity(new Intent(LoginActivity.this, PlayGroundListMenuActivity.class));
-                Intent intent=new Intent(LoginActivity.this, WorkerListMenuActivity.class);
-                startActivity(intent);
-
-
-                // checkData();
-                break;
-        }
-    }*/
 
     //méthode pour checker si le login et le password sont justes
 
@@ -144,7 +131,6 @@ public class LoginActivity extends AppCompatActivity {
 
             if(c.moveToFirst())
             {
-                new ListPlaygroundAsyc(db).execute();
                 session.setLoggedIn(true);
                 Intent intent = new Intent(this, PlayGroundListMenuActivity.class);
                 String message= c.getString(0);
@@ -186,7 +172,43 @@ public class LoginActivity extends AppCompatActivity {
         }
         return true;
     }
+//méthode pour faire patienter pendant le téléchargement du cloud
+    public void laodingProcess(){
+        progress=new ProgressDialog(this);
+        progress.setMessage(getString(R.string.loading)); // Setting Message
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progress.show(); // Display Progress Dialog
+        progress.setCancelable(false);
 
+
+        Log.d("Thread","starting");
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    int cpt=0;
+                    while (true){
+                        cpt=0;
+
+                        for(int i = 0; i< EntityDB.loadingDone.size(); i++){
+
+                            if (EntityDB.loadingDone.get(i)){
+                                cpt++;
+                            }
+                        }
+                        if(cpt==8){
+                            break;
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                progress.dismiss();
+
+            }
+
+        }).start();
+    };
 }
 
 

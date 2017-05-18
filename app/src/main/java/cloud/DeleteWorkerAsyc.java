@@ -1,6 +1,7 @@
 package cloud;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.colin.myapplication.backend.classes.workerApi.WorkerApi;
 import com.example.colin.myapplication.backend.classes.workerApi.model.Worker;
@@ -13,16 +14,20 @@ import java.io.IOException;
 
 import db.DbHelper;
 
+/**
+ * Created by Colin on 16.05.2017.
+ */
 
-//permet d'inserer les worker
-public class InsertWorkerAsyc  extends AsyncTask<Void, Void, Worker> {
+//permet de delete les workers
+public class DeleteWorkerAsyc extends AsyncTask<Void, Void, Long> {
 
     private static WorkerApi workerApi = null;
     private DbHelper db;
-    private Worker worker;
+    private Long id =-1l;
 
-    public InsertWorkerAsyc(Worker worker) {
-        this.worker = worker;
+    public DeleteWorkerAsyc(Long id) {
+        this.id = id;
+        Log.e("debugCloud", String.valueOf(id));
     }
 
     @Override
@@ -31,7 +36,7 @@ public class InsertWorkerAsyc  extends AsyncTask<Void, Void, Worker> {
     }
 
     @Override
-    protected Worker doInBackground(Void... params) {
+    protected Long doInBackground(Void... params) {
         if (workerApi == null) {
             com.example.colin.myapplication.backend.classes.workerApi.WorkerApi.Builder builder = new WorkerApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null);
@@ -46,12 +51,13 @@ public class InsertWorkerAsyc  extends AsyncTask<Void, Void, Worker> {
         }
 
         try {
-            if(worker!=null)
-                workerApi.insert(worker).execute();
+            if(id != -1l)
+                workerApi.remove(id).execute();
 
-            return worker;
+
+            return id;
         } catch (IOException e) {
-            return new Worker();
+            return -2l;
         }
     }
 

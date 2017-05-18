@@ -15,10 +15,8 @@ import java.io.IOException;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 16.05.2017.
- */
 
+//permet d'inserer les InsertTask
 public class InsertTaskAsyc extends AsyncTask<Void, Void, Task> {
 
     private static TaskApi taskApi = null;

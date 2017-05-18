@@ -15,10 +15,7 @@ import java.io.IOException;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 16.05.2017.
- */
-
+////permet d'inserer les materialNeed
 public class InsertMaterialNeedAsyc extends AsyncTask<Void, Void, MaterielNeeded> {
 
     private static MaterielNeededApi materielNeededApi = null;

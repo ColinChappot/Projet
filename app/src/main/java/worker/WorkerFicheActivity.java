@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.colin.projet.R;
 
+import cloud.DeleteWorkerAsyc;
 import db.DbHelper;
 import db.FeedReaderContract;
 
@@ -46,7 +47,7 @@ public class WorkerFicheActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         idWorker = intent.getStringExtra("idWorker");
-        Toast.makeText(getApplicationContext(), idWorker, Toast.LENGTH_SHORT).show();
+
         String message = "";
         btnCall = (Button) findViewById(R.id.btnCall);
         imgWorker = (ImageView) findViewById((R.id.imgWorker));
@@ -76,7 +77,17 @@ public class WorkerFicheActivity extends AppCompatActivity {
             textView = (TextView) findViewById(R.id.txtVCellphone);
             textView.setText(message);
 
-            int resID = res.getIdentifier("worker" + c.getString(0), "drawable", WorkerFicheActivity.this.getPackageName());
+
+            int photo = Integer.valueOf(idWorker);
+
+            if(photo>7)
+            {
+                photo=photo-7;
+            }
+
+            int resID = res.getIdentifier("worker" + photo, "drawable", WorkerFicheActivity.this.getPackageName());
+
+
 
             ImageView imageView = (ImageView) findViewById(R.id.imgWorker);
             imageView.setImageResource(resID);
@@ -99,9 +110,13 @@ public class WorkerFicheActivity extends AppCompatActivity {
     {
 
         SQLiteDatabase db = new DbHelper(this).getWritableDatabase();
+        DbHelper dbHelper = new DbHelper(this);
 
         String strSQL = "DELETE From "+ FeedReaderContract.Worker.TABLE_NAME+" where "+ FeedReaderContract.Worker._ID+"  = "+idWorker;
         db.execSQL(strSQL);
+        new DeleteWorkerAsyc(Long.valueOf(idWorker)).execute();
+
+
         Toast.makeText(getApplicationContext(),this.getString(R.string.workerDelete) , Toast.LENGTH_SHORT).show();
     }
 

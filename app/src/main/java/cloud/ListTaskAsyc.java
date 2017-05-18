@@ -15,10 +15,10 @@ import java.util.List;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 16.05.2017.
- */
+import static cloud.EntityDB.setTaskUpdated;
 
+
+//donne la liste des task du cloud
 public class ListTaskAsyc extends AsyncTask<Void, Void, List<Task>> {
 
     private static TaskApi taskApi = null;
@@ -63,6 +63,8 @@ public class ListTaskAsyc extends AsyncTask<Void, Void, List<Task>> {
         if (tasks != null) {
             db.fromCloudTask(tasks);
         }
+        setTaskUpdated();
+        new ListInstallationAsyc(db).execute();
     }
 
 }

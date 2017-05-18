@@ -23,7 +23,6 @@ public class Worker {
     private String  firstname;
     private String  lastname;
     private String phone;
-    private String idWorker;
 
 
     /*
@@ -34,22 +33,18 @@ public class Worker {
 
     }
 
-    public Worker(Long id, String login, String password, String firstname, String lastname, String phone, String idWorker) {
+    public Worker(Long id, String login, String password, String firstname, String lastname, String phone) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;
-        this.idWorker = idWorker;
     }
 
     /*
          Méthodes getName retourne nom prénom pour l'afficher dans la listView
         */
-    public String getName(){
-        return firstname + " " + lastname ;
-    }
 
     public Long getId() {
         return id;
@@ -99,11 +94,4 @@ public class Worker {
         this.phone = phone;
     }
 
-    public String getIdWorker() {
-        return idWorker;
-    }
-
-    public void setIdWorker(String idWorker) {
-        this.idWorker = idWorker;
-    }
 }

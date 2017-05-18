@@ -16,32 +16,16 @@ public class Installation {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    /*
-    Declaration des variables
-     */
+
     private String description;
 
-    /*
-    Constructeur
-     */
-
-    public Installation(long id, String description)
+    public Installation()
     {
+
+    }
+
+    public Installation(Long id, String description) {
         this.id = id;
-        this.description = description;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-
-        return description;
-    }
-
-    public void setDescription(String description) {
-
         this.description = description;
     }
 
@@ -49,5 +33,15 @@ public class Installation {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

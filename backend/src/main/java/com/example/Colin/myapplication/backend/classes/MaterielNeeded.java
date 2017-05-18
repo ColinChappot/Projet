@@ -27,6 +27,11 @@ public class MaterielNeeded {
         this.idMaterial = idMaterial;
     }
 
+    public MaterielNeeded()
+    {
+
+    }
+
     public void setId(Long id) {
         this.id = id;
     }

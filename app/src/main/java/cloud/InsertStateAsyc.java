@@ -15,10 +15,8 @@ import java.io.IOException;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 16.05.2017.
- */
 
+//permet d'inserer les State
 public class InsertStateAsyc extends AsyncTask<Void, Void, State> {
 
     private static StateApi stateApi = null;

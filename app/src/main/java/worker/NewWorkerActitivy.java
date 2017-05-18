@@ -62,8 +62,10 @@ public class NewWorkerActitivy extends AppCompatActivity {
     {
         DbHelper db = new DbHelper(this);
 
+        //insert dans la DB
         db.InsertWorker(this,etxtLogin.getText().toString(), etxtPassword.getText().toString(),etxtFirstname.getText().toString(),etxtLastname.getText().toString(),etxtCellphone.getText().toString());
-
+       //met a jour dans le cloud
+        db.toCloudWorker();
         Toast.makeText(getApplicationContext(), this.getString(R.string.newWorkerCreated), Toast.LENGTH_SHORT).show();
 
     }

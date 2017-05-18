@@ -15,10 +15,11 @@ import java.util.List;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 15.05.2017.
- */
+import static cloud.EntityDB.setPlaygroundUpdated;
 
+
+
+//donne la liste des playground du cloud
 public class ListPlaygroundAsyc extends AsyncTask<Void, Void, List<Playground>> {
 
     private static PlaygroundApi playgroundAPI = null;
@@ -63,6 +64,8 @@ public class ListPlaygroundAsyc extends AsyncTask<Void, Void, List<Playground>> 
         if (playgrounds != null) {
             db.fromCloudPlayground(playgrounds);
         }
+        setPlaygroundUpdated();
+        new ListWorkerAsyc(db).execute();
     }
 
 }

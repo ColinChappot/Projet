@@ -49,7 +49,6 @@ public class TaskLastUpdate extends AppCompatActivity {
         ArrayList<Task> listest = new ArrayList<Task>();
 
         SQLiteDatabase dbR = new DbHelper(this).getReadableDatabase();
-        Toast.makeText(getApplicationContext(), idPlayground, Toast.LENGTH_SHORT).show();
 
         Cursor c = dbR.rawQuery("SELECT * FROM " + FeedReaderContract.Task.TABLE_NAME+
                 " where "+ FeedReaderContract.Task.COLUMN_NAME_IDSTATE+" = 3 " +
@@ -71,8 +70,6 @@ public class TaskLastUpdate extends AppCompatActivity {
                 ));
             } while (c.moveToNext());
         }
-        else
-            Toast.makeText(getApplicationContext(), "vide", Toast.LENGTH_SHORT).show();
 
         listLastTasks.setAdapter(new LastUpdateAdapter(this, listest));
     }

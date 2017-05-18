@@ -34,6 +34,7 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
     private String idTask;
     private String idPlayground;
     private Button btnTerminated;
+    DbHelper dbHelper = new DbHelper(this);
 
     /*
     Méthodes  on create charge l'activité
@@ -142,7 +143,6 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
                 " need where material."+ FeedReaderContract.Material._ID+" = need."+ FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDMATERIAL+"" +
                 " and need."+ FeedReaderContract.MaterialNeeded.COLUMN_NAME_IDTASK+" = "+idTask, null);
 
-       //Cursor c = dbR.rawQuery("Select * FROM "+ FeedReaderContract.MaterialNeeded.TABLE_NAME,null);
 
         if (c.moveToFirst())
         {
@@ -157,19 +157,6 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
 
     }
 
-    private List<Material> genereMaterial(){
-        List<Material> materials = new ArrayList<>();
-
-        materials.add(new Material("Gant"));
-        return materials;
-    }
-
-    private void showMaterial2(){
-        List<Material> materials = genereMaterial();
-
-        MaterialAdapter adapter = new MaterialAdapter(PlaygroundFicheActivity.this, materials);
-        listViewMateriel.setAdapter(adapter);
-    }
 
     public void save()
     {
@@ -180,6 +167,7 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
 
         String strSQL = "UPDATE task SET description = '"+descritpion.getText().toString()+"' , observation = '"+observation.getText().toString()+"' WHERE "+ FeedReaderContract.Task._ID+" = "+idTask ;
         db.execSQL(strSQL);
+        dbHelper.toCloudTask();
         Toast.makeText(getApplicationContext(), this.getString(R.string.TaskModified), Toast.LENGTH_SHORT).show();
     }
     public  void add()
@@ -205,11 +193,15 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
             c.moveToFirst();
             db.InsertMaterialNeeded(this,idTask,c.getString(0));
         }
+        //met a jour dans le cloud
+            db.toCloudMaterial();
+            db.toCloudMaterialNeeded();
 
     }
     public void terminate()
     {
         SQLiteDatabase db = new DbHelper(this).getWritableDatabase();
+
 
         Calendar c = Calendar.getInstance();
         System.out.println("Current time => " + c.getTime());
@@ -217,9 +209,11 @@ public class PlaygroundFicheActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String Today = df.format(c.getTime());
 
-
+        //update dans la db
         String strSQL = "UPDATE task SET idState = 3 , date = '"+Today+"' where "+ FeedReaderContract.Task._ID+" = "+idTask;
         db.execSQL(strSQL);
+        //met a jour dans le cloud
+        dbHelper.toCloudTask();
         Toast.makeText(getApplicationContext(),this.getString(R.string.taskUpdate) , Toast.LENGTH_SHORT).show();
     }
 

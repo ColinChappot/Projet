@@ -14,10 +14,7 @@ import java.io.IOException;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 15.05.2017.
- */
-
+//permet d'inserer les playground
 public class InsertPlaygroundAsyc extends AsyncTask<Void, Void, Playground> {
 
     private static PlaygroundApi playgroundApi = null;

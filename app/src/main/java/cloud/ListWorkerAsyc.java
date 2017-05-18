@@ -15,10 +15,10 @@ import java.util.List;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 16.05.2017.
- */
+import static cloud.EntityDB.setWorkerUpdated;
 
+
+//donne la liste des Worker du cloud
 public class ListWorkerAsyc extends AsyncTask<Void, Void, List<Worker>> {
 
     private static WorkerApi workerAPI = null;
@@ -63,6 +63,8 @@ public class ListWorkerAsyc extends AsyncTask<Void, Void, List<Worker>> {
         if (workers != null) {
             db.fromCloudWorker(workers);
         }
+        setWorkerUpdated();
+        new ListTaskAsyc(db).execute();
     }
 
 }

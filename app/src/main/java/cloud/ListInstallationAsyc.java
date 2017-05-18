@@ -15,10 +15,10 @@ import java.util.List;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 15.05.2017.
- */
+import static cloud.EntityDB.setInstallationUpdated;
 
+
+//donne la liste des installation du cloud
 public class ListInstallationAsyc  extends AsyncTask<Void, Void, List<Installation>> {
 
     private static InstallationApi InstallationApi = null;
@@ -62,8 +62,9 @@ public class ListInstallationAsyc  extends AsyncTask<Void, Void, List<Installati
 
         if (installations != null) {
             db.fromCloudInstallation(installations);
-
         }
+        setInstallationUpdated();
+        new ListMaterialAsyc(db).execute();
     }
 
 }

@@ -17,10 +17,10 @@ import java.util.List;
 
 import db.DbHelper;
 
-/**
- * Created by Colin on 16.05.2017.
- */
+import static cloud.EntityDB.setStateUpdated;
 
+
+//donne la liste des State du cloud
 public class ListStateAsyc  extends AsyncTask<Void, Void, List<State>> {
 
     private static StateApi stateApi = null;
@@ -65,6 +65,7 @@ public class ListStateAsyc  extends AsyncTask<Void, Void, List<State>> {
         if (states != null) {
             db.fromCloudState(states);
         }
+        setStateUpdated();
     }
 
 }
